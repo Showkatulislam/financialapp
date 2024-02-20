@@ -46,7 +46,7 @@ export async function PATCH(req: Request) {
 
     const clients = await db.client.update({
       where: {
-        id: clientId
+        id: clientId ?? undefined,
       },
       data: {
         name,
@@ -74,7 +74,7 @@ export async function DELETE(req: Request) {
     const clientId = searchParams.get("clientId") as string;
     const client = await db.client.delete({
       where: {
-        id: clientId
+        id: clientId ?? undefined,
       },
       include:{
         orders:true

@@ -52,7 +52,7 @@ export async function PATCH(req: Request) {
     }
     const products = await db.product.update({
       where: {
-        id: productId 
+        id: productId ?? undefined,
       },
       data: {
         productName,
@@ -78,7 +78,7 @@ export async function DELETE(req: Request) {
     const productId = searchParams.get("productId") as string
     const product = await db.product.delete({
       where: {
-        id: productId
+        id: productId ?? undefined,
       }
     });
     return NextResponse.json(product);
