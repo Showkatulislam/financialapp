@@ -52,7 +52,7 @@ export async function PATCH(req: Request) {
     }
     const products = await db.product.update({
       where: {
-        id: productId as any
+        id: productId as string
       },
       data: {
         productName,
@@ -78,7 +78,7 @@ export async function DELETE(req: Request) {
     const productId = searchParams.get("productId");
     const product = await db.product.delete({
       where: {
-        id: productId as any
+        id: productId as string
       }
     });
     return NextResponse.json(product);

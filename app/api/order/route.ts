@@ -37,7 +37,7 @@ export async function PATCH(req: Request) {
     const orderId = searchParams.get("orderId");
     const order = await db.order.update({
       where: {
-        id: orderId as any
+        id: orderId as string
       },
       data: {
         clientId,
@@ -63,7 +63,7 @@ export async function DELETE(req: Request) {
     const orderId = searchParams.get("orderId");
     const order = await db.order.delete({
       where: {
-        id: orderId as any
+        id: orderId as string
       },
       include:{
         client:true,
