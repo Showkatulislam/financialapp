@@ -45,14 +45,14 @@ export async function PATCH(req: Request) {
     const { productName, country, language, price } = body;
     const Iam = await initailUser();
     const { searchParams } = new URL(req.url);
-    const productId = searchParams.get("productId");
+    const productId = searchParams.get("productId") as string;
 
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }
     const products = await db.product.update({
       where: {
-        id: productId as string
+        id: productId 
       },
       data: {
         productName,
@@ -75,10 +75,10 @@ export async function DELETE(req: Request) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }
     const { searchParams } = new URL(req.url);
-    const productId = searchParams.get("productId");
+    const productId = searchParams.get("productId") as string
     const product = await db.product.delete({
       where: {
-        id: productId as string
+        id: productId
       }
     });
     return NextResponse.json(product);

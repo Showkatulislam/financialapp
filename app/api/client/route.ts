@@ -37,7 +37,7 @@ export async function PATCH(req: Request) {
     const { name, email, phone, address, contact1, contact2 } = body;
     const Iam = await initailUser();
     const { searchParams } = new URL(req.url);
-    const clientId = searchParams.get("clientId");
+    const clientId = searchParams.get("clientId") as string;
 
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
@@ -46,7 +46,7 @@ export async function PATCH(req: Request) {
 
     const clients = await db.client.update({
       where: {
-        id: clientId as string
+        id: clientId
       },
       data: {
         name,
@@ -71,10 +71,10 @@ export async function DELETE(req: Request) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }
     const { searchParams } = new URL(req.url);
-    const clientId = searchParams.get("clientId");
+    const clientId = searchParams.get("clientId") as string;
     const client = await db.client.delete({
       where: {
-        id: clientId as string
+        id: clientId
       },
       include:{
         orders:true
