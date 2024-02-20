@@ -79,7 +79,7 @@ export async function DELETE(req: Request) {
     const product = await db.product.delete({
       where: {
         id: productId,
-      },
+      }
     });
     return NextResponse.json(product);
   } catch (error) {

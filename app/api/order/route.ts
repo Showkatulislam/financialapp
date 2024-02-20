@@ -65,6 +65,10 @@ export async function DELETE(req: Request) {
       where: {
         id: orderId,
       },
+      include:{
+        client:true,
+        product:true
+      }
     });
     return NextResponse.json(order);
   } catch (error) {
