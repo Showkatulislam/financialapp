@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String     @unique
+  name      String
+  email     String     @db.String
+  role      MemberRole @default(GUEST)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+enum MemberRole {
+  ADMIN
+  GUEST
+}
+
+model Client {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String   @unique
+  phone     String
+  address   String
+  contact1  String
+  contact2  String
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  productName String
+  country     String
+  language    String
+  price       String
+  products    Order[]
+  createdAt   DateTime @default(now())
+  updateAt    DateTime @updatedAt
+}
+
+model Order {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  dob        DateTime @default(now())
+  priority  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId  String   @db.ObjectId
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String   @db.ObjectId
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+
+  @@index([clientId])
+  @@index([productId])
+}
+
+model Report {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  report    Json
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
