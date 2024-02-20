@@ -2,7 +2,7 @@
 import { SkeletonTable } from "../../components/Skeleton-Component";
 const loading = () => {
   return (
-    <div>
+    <div className="h-full flex justify-center items-center">
      <SkeletonTable/>
     </div>
   );
