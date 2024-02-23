@@ -12,6 +12,7 @@ import { BankInfo } from "./bank-inputs";
 import { ActivityInput } from "./activity-input";
 import { ExtraInfo } from "./extra-info";
 import { Client } from "@prisma/client";
+import { CompanyName } from "./companyName";
 interface reportProps{
   clients:Client[]
 }
@@ -19,6 +20,7 @@ export const Reportform = ({clients}:reportProps) => {
   const { shareholders, managers, financialdata,banks,DeleteShareholder,DeleteManager,DeleteFinancialData,DeleteBank} = useReportStore();
   return (
     <div className="grid gird-col-12 gap-2 p-5">
+      <CompanyName/>
       <OrderDetail clients={clients}/>
       <OfficialCompanyData />
       <SummaryInfo />

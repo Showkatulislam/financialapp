@@ -12,7 +12,7 @@ export const FinancailIndicator = () => {
       <div>
         <Table>
           <TableBody>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell></TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -20,7 +20,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>Net profitability</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -28,7 +28,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>ROE Return On Equity</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -36,7 +36,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>ROA Return On Asset</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -44,7 +44,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>Autonomy Financial</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -52,7 +52,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>EBITDA</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -60,7 +60,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>Lead time Suppliers</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>
@@ -68,7 +68,7 @@ export const FinancailIndicator = () => {
                 </TableCell>
               ))}
             </TableRow>
-            <TableRow className="border-none font-normal">
+            <TableRow className="border-none font-semibold">
               <TableCell>Customer lead time</TableCell>
               {financialdata.map((f) => (
                 <TableCell key={f.id}>

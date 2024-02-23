@@ -1,9 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-
+#00cc00
+#33cc33
+#66cc66;
+#99cc99
+#cccccc
+#ff6666;
+#ff3333
+#ff0000
+#cc0000
+#990000;
+#ffcc00;
+#808080;
+https://invoify.vercel.app/
+https://github.dev/aliabb01/invoify/blob/master/app/components/invoice/form/sections/Items.tsx
+https://demo.nextcrm.io/en/projects/tasks/65d7e37c67bb8d1536f60f96
 First, run the development server:
-
+https://github.com/pdovhomilja/nextcrm-app?tab=readme-ov-file
 ```bash
 npm run dev
 # or

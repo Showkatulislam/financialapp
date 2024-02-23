@@ -7,9 +7,11 @@ interface orderdetail {
   priority: string;
   language: string;
   creditRequested: string;
+  
 }
 
 interface companycontactinfo {
+  companyName:string;
   Denomination: string;
   address: string;
   tel: string;
@@ -123,6 +125,7 @@ export const useReportStore = create<reportState>((set) => ({
     creditRequested: "",
   },
   companydetail: {
+    companyName:"",
     Denomination: "",
     address: "",
     tel: "",

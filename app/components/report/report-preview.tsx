@@ -20,6 +20,8 @@ import { useReactToPrint } from "react-to-print";
 import { useReportStore } from "@/hooks/useReportStore";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Conclusion } from "./conclusion";
+import { CodeAndDefination } from "./code-and-defination";
 export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
   const {
@@ -82,6 +84,8 @@ export const Reportpreview = () => {
           <BankAndApprecation />
           <SecondaryEstablishment />
           <OfficailPublication />
+          <Conclusion/>
+          <CodeAndDefination/>
         </div>
       </div>
       <div className="flex justify-center items-center">
