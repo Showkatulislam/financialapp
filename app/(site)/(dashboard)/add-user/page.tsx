@@ -1,11 +1,11 @@
-import { DataTableDemo } from '@/app/components/dataTable/DataTable';
-import React from 'react';
+import Container from "@/app/components/Container"
+import Adduser from "./components/add-user";
 
 const page = () => {
     return (
-        <div>
-            <DataTableDemo/>
-        </div>
+        <Container title="Add User" description="">
+            <Adduser/>
+        </Container>
     );
 };
 

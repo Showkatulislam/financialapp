@@ -7,8 +7,6 @@ import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { routes } from "@/app/data/routes";
-import { UserButton } from "@clerk/nextjs";
-import { ModeToggle } from "./togglebutton";
 const Sidebar = () => {
   const path = usePathname();
   console.log(path);
@@ -37,10 +35,6 @@ const Sidebar = () => {
             </div>
           </Link>
         ))}
-      </div>
-      <div className="fixed right-0 flex gap-x-4 items-center pr-10">
-        <UserButton afterSignOutUrl="/" />
-        <ModeToggle />
       </div>
     </div>
   );

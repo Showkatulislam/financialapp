@@ -63,6 +63,11 @@ export const routes = [
     href: "/add-user",
   },
   {
+    label: "User list",
+    icon: User,
+    href: "/user-list",
+  },
+  {
     label: "Admin",
     icon: User,
     href: "/admin-list",
