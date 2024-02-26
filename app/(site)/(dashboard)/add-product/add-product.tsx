@@ -37,7 +37,7 @@ export const AddProduct = () => {
       price: "",
     },
   });
-  const loading = form.formState.isSubmitting;
+  const isloading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post("/api/product", values);
@@ -51,14 +51,14 @@ export const AddProduct = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
         <InputField placeholder="Product Name" form={form} name="productName" />
         <DropDownField
          type1={true}
           items={countries}
           form={form}
           name="country"
-          disable={loading}
+          disable={isloading}
           placeholder="Select Country"
         />
         <DropDownField
@@ -67,18 +67,20 @@ export const AddProduct = () => {
           form={form}
           name="language"
           placeholder="Select Language"
-          disable={loading}
+          disable={isloading}
         />
         <InputField
           type="number"
-          disable={loading}
+          disable={isloading}
           placeholder="Price"
           form={form}
           name="price"
         />
-        <Button disabled={loading} type="submit" size="lg">
-          Submit
-        </Button>
+        <div className="pt-2">
+          <Button disabled={isloading} type="submit" size="lg">
+            Submit
+          </Button>
+        </div>
       </form>
     </Form>
   );

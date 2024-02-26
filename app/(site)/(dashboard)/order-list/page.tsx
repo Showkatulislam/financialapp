@@ -3,6 +3,7 @@ import OrderList from "./order-list";
 import { getOrder } from "@/app/actions/get-order";
 import { GetClient } from "@/app/actions/get-client";
 import { getProduct } from "@/app/actions/get-product";
+import Container from "@/app/components/Container";
 
 const page = async() => {
   const orders=await getOrder()
@@ -11,12 +12,12 @@ const page = async() => {
   console.log(orders);
   
   return (
-    <div className="h-full flex justify-center items-center">
-      <div className="max-w-3xl">
-        <Title title="Order List" />
-        <OrderList orders={orders} products={products} clients={clients} />
-      </div>
-    </div>
+    <Container
+    title="Order list"
+    description={""}
+    >
+      <OrderList orders={orders} clients={clients} products={products}/>
+    </Container>
   );
 };
 

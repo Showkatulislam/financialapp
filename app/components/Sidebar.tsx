@@ -23,22 +23,24 @@ const Sidebar = () => {
           FINANCE GO
         </h1>
       </div>
-      {routes.map((route) => (
-        <Link href={route.href} key={route.label}>
-          <div
-            className={cn(
-              "flex gap-2 p-2",
-              path.includes(route.href) ? "text-muted-foreground" : ""
-            )}
-          >
-            <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />
-            {route.label}
-          </div>
-        </Link>
-      ))}
+      <div className="overflow-y-auto">
+        {routes.map((route) => (
+          <Link href={route.href} key={route.label}>
+            <div
+              className={cn(
+                "flex gap-2 p-2",
+                path.includes(route.href) ? "text-muted-foreground" : ""
+              )}
+            >
+              <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />
+              {route.label}
+            </div>
+          </Link>
+        ))}
+      </div>
       <div className="fixed right-0 flex gap-x-4 items-center pr-10">
-      <UserButton afterSignOutUrl="/"/>
-      <ModeToggle/>
+        <UserButton afterSignOutUrl="/" />
+        <ModeToggle />
       </div>
     </div>
   );

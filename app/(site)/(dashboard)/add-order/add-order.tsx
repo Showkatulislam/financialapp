@@ -11,8 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import DropDownField from "@/components/inputs/DropDownField";
-import InputField from "@/components/inputs/InputField";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DatePicker from "@/components/inputs/DatePicker";
 
 const formSchema = z.object({
@@ -44,7 +43,7 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
     defaultValues: {
       clientId: "",
       productId: "",
-      dob:new Date(),
+      dob: new Date(),
       priority: "",
     },
   });
@@ -63,7 +62,7 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
         <DropDownField
           type3={true}
           type3Items={allclient}
@@ -86,9 +85,11 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
           placeholder="Priority"
           form={form}
         />
-        <Button disabled={isLoading} type="submit" size="lg">
-          Submit
-        </Button>
+        <div className="pt-2">
+          <Button disabled={isLoading} type="submit" size="lg">
+            Submit
+          </Button>
+        </div>
       </form>
     </Form>
   );

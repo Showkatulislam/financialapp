@@ -8,7 +8,7 @@ const layout = ({ children }: { children: ReactNode }) => {
       <div className="lg:fixed inset-y-0">
         <Sidebar />
       </div>
-      <div className="lg:pl-60 h-full">{children}</div>
+      <div className="lg:pl-60 h-full pt-10">{children}</div>
     </div>
   );
 };

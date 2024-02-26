@@ -61,7 +61,7 @@ export const AddClient = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
         <InputField
           disable={loading}
           name="name"
@@ -98,9 +98,11 @@ export const AddClient = () => {
           placeholder="Contact2"
           form={form}
         />
-        <Button disabled={loading} type="submit" size="lg">
-          Submit
-        </Button>
+        <div className="pt-2">
+          <Button disabled={loading} type="submit" size="lg">
+            Submit
+          </Button>
+        </div>
       </form>
     </Form>
   );

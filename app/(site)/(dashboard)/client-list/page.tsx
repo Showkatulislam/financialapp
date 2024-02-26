@@ -1,16 +1,17 @@
 import Title from "@/components/Title";
 import { ClientList } from "./client-list";
 import { GetClient } from "@/app/actions/get-client";
+import Container from "@/app/components/Container";
 
 const page =async () => {
     const clients=await GetClient()
     return (
-        <div className="h-full flex justify-center items-center">
-        <div className="max-w-5xl">
-          <Title title="Client List"/>
-          <ClientList clients={clients}/>
-        </div>
-      </div>
+      <Container
+      title="Client list"
+      description=""
+      >
+        <ClientList clients={clients}/>
+      </Container>
     );
 };
 
