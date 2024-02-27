@@ -14,7 +14,7 @@ const page = async() => {
   return (
     <Container
     title="Order list"
-    description={""}
+    
     >
       <OrderList orders={orders} clients={clients} products={products}/>
     </Container>

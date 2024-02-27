@@ -5,7 +5,7 @@ const page = () => {
   return (
     <Container
     title="Add Product"
-    description="">
+   >
       <AddProduct/>
     </Container>
   );

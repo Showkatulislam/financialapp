@@ -7,8 +7,7 @@ const page = async() => {
   const products=await getProduct()
   return (
     <Container
-     title="Product List"
-     description="des">
+     title="Product List">
       <ShowProduct products={products} />
     </Container>
   );

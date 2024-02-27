@@ -8,7 +8,7 @@ const page =async () => {
     return (
       <Container
       title="Client list"
-      description=""
+     
       >
         <ClientList clients={clients}/>
       </Container>

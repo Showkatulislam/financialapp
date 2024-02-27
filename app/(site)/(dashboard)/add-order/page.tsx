@@ -9,7 +9,6 @@ const page = async () => {
   return (
     <Container
     title="Add Order"
-    description=""
     >
       <AddOrder clients={clients} products={products}/>
     </Container>

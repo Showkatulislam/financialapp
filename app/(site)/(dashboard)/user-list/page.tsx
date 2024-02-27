@@ -3,7 +3,7 @@ import { DataTableDemo } from "@/app/components/dataTable/DataTable";
 
 const page=()=>{
     return (
-    <Container title="User List" description="">
+    <Container title="User List">
         <DataTableDemo/>
     </Container>
     )
