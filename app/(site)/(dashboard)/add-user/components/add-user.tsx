@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form } from "@/components/ui/form"
+import axios from "axios";
+import toast from "react-hot-toast";
 export const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -14,10 +16,7 @@ export const formSchema = z.object({
     .string({
       required_error: "Please select an email to display.",
     })
-    .email(),
-  password: z.string().min(6, {
-    message: "password must be at least 6 characters.",
-  }),
+    .email()
 });
 const Adduser = () => {
   const router = useRouter();
@@ -25,15 +24,17 @@ const Adduser = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
-      password: "",
+      email: ""
     },
   });
   const loading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log(values);
+      await axios.post('/api/user',values)
+      router.refresh()
+      form.reset()
+      toast.success("User Added Successfully.")
     } catch (error) {
       console.log(error);
     }
@@ -51,18 +52,6 @@ const Adduser = () => {
           disable={loading}
           name="email"
           placeholder="Email"
-          form={form}
-        />
-        <InputField
-          disable={loading}
-          name="password"
-          placeholder="password"
-          form={form}
-        />
-        <InputField
-          disable={loading}
-          name="address"
-          placeholder="Address"
           form={form}
         />
         <div className="pt-2">

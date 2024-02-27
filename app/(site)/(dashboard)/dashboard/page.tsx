@@ -6,7 +6,7 @@ const page = async() => {
         <div className='h-full flex justify-center items-center'>
             <div className='flex flex-col items-center'>
             <Image src={logo} alt='logo'/>
-            <h1 className='mt-5 text-7xl text-indigo-600 bg:text-white  font-bold'>Welcome Finance Go</h1>
+            <h1 className='mt-5 lg:text-7xl md:text-3xl font-bold'>Welcome Finance Go</h1>
             </div>
         </div>
     );

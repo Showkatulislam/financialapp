@@ -8,7 +8,7 @@ const layout = ({ children }: { children: ReactNode }) => {
       <div className="lg:fixed inset-y-0">
         <Sidebar />
       </div>
-      <div className="lg:pl-60 h-full ">
+      <div className="md:pl-60 h-full ">
         <div className="flex justify-end items-center gap-x-6 p-5">
           <UserButton afterSignOutUrl="/" />
           <ModeToggle />
