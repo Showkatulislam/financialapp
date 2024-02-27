@@ -1,12 +1,14 @@
 "use client";
 
+import Container from "@/app/components/Container";
 import { SkeletonTable } from "@/app/components/Skeleton-Component";
 
 const loading = () => {
   return (
-    <div className="h-full flex justify-center items-center">
+    <Container 
+    title="..">
       <SkeletonTable />
-    </div>
+    </Container>
   );
 };
 

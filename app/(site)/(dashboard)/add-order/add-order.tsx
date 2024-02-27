@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import DropDownField from "@/components/inputs/DropDownField";
 import { useState } from "react";
 import DatePicker from "@/components/inputs/DatePicker";
+import InputField from "@/components/inputs/InputField";
 
 const formSchema = z.object({
   clientId: z.string().min(1, {
@@ -25,6 +26,12 @@ const formSchema = z.object({
     required_error: "A date of birth is required.",
   }),
   priority: z.string().min(1, {
+    message: "Please Select Product.",
+  }),
+  companyName: z.string().min(1, {
+    message: "Please Select Product.",
+  }),
+  userId: z.string().min(1, {
     message: "Please Select Product.",
   }),
 });
@@ -45,6 +52,8 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
       productId: "",
       dob: new Date(),
       priority: "",
+      companyName: "",
+      userId: "",
     },
   });
   const isLoading = form.formState.isSubmitting;
@@ -62,7 +71,10 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-2 px-4 max-w-lg mx-auto"
+      >
         <DropDownField
           type3={true}
           type3Items={allclient}
@@ -83,6 +95,19 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
           items={priority}
           name="priority"
           placeholder="Priority"
+          form={form}
+        />
+        <InputField
+          form={form}
+          name="companayName"
+          placeholder="Companay Name"
+          disable={isLoading}
+        />
+        <DropDownField
+          type1={true}
+          items={priority}
+          name="UserId"
+          placeholder="User"
           form={form}
         />
         <div className="pt-2">

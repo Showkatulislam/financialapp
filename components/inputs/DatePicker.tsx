@@ -63,9 +63,6 @@ const DatePicker = ({
               </PopoverContent>
             </Popover>
           </FormControl>
-          <FormDescription>
-            Select the date for when the event will take place
-          </FormDescription>
           <FormMessage />
         </FormItem>
       )}

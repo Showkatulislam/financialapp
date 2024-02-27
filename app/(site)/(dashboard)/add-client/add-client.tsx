@@ -61,7 +61,7 @@ export const AddClient = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-1">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 px-4 max-w-lg mx-auto">
         <InputField
           disable={loading}
           name="name"

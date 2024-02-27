@@ -13,7 +13,7 @@ const layout = ({ children }: { children: ReactNode }) => {
           <UserButton afterSignOutUrl="/" />
           <ModeToggle />
         </div>
-        <div>{children}</div>
+        <div className="overflow-auto">{children}</div>
       </div>
     </div>
   );

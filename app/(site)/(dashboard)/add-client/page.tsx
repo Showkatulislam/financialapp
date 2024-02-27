@@ -1,14 +1,13 @@
-import React from 'react';
-import { AddClient } from './add-client';
+import React from "react";
+import { AddClient } from "./add-client";
+import Container from "@/app/components/Container";
 
 const page = () => {
-    return (
-        <div className='h-full flex justify-center items-center'>
-           <div className='w-96'>
-                <AddClient/>
-           </div>
-        </div>
-    );
+  return (
+    <Container title="Add Client" description="">
+      <AddClient />
+    </Container>
+  );
 };
 
 export default page;

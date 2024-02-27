@@ -1,12 +1,13 @@
+import Container from "@/app/components/Container";
 import { AddProduct } from "./add-product";
 
 const page = () => {
   return (
-    <div className="h-full flex justify-center items-center">
-      <div className="w-96">
-        <AddProduct />
-      </div>
-    </div>
+    <Container
+    title="Add Product"
+    description="">
+      <AddProduct/>
+    </Container>
   );
 };
 
