@@ -55,9 +55,6 @@ model Order {
   dob         DateTime @default(now())
   priority    String
   companyName String
-  userName    String
-  clientName  String
-  orderName   String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String   @db.ObjectId
   client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)

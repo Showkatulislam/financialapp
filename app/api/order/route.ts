@@ -9,13 +9,15 @@ export async function POST(req: Request) {
       return new NextResponse("Unathorize User", { status: 501 });
     }
     const body = await req.json();
-    const { clientId, productId, dob, priority } = body;
+    const { clientId, productId, dob, priority,companyName,userId} = body;
     const order = await db.order.create({
       data: {
         clientId,
         productId,
         dob,
         priority,
+        companyName,
+        userId
       },
     });
 

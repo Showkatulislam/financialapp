@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Client, Product } from "@prisma/client";
+import { Client, Product, User } from "@prisma/client";
 
 interface DropDownFieldProps {
   form: any;
@@ -21,23 +21,27 @@ interface DropDownFieldProps {
   items?: string[];
   type2Items?: Product[] | null;
   type3Items?: Client[] | null;
+  type4Items?:User[] | null,
   type1?: boolean;
   type2?: boolean;
   type3?: boolean;
+  type4?:boolean,
   placeholder: string;
   disable?: boolean;
 }
 const DropDownField = ({
   form,
   name,
-  items,
   placeholder,
   disable,
   type1,
   type2,
   type3,
+  type4,
+  items,
   type2Items,
-  type3Items
+  type3Items,
+  type4Items
 }: DropDownFieldProps) => {
   return (
     <FormField
@@ -77,6 +81,15 @@ const DropDownField = ({
             {type3 && (
               <SelectContent>
                 {type3Items?.map((item) => (
+                  <SelectItem key={item.id} value={item.id}>
+                    {item.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            )}
+            {type4 && (
+              <SelectContent>
+                {type4Items?.map((item) => (
                   <SelectItem key={item.id} value={item.id}>
                     {item.name}
                   </SelectItem>

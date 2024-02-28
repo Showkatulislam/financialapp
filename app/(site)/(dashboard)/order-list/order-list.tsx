@@ -28,6 +28,7 @@ const OrderList = ({ orders, products, clients }: OrderListProps) => {
   useEffect(() => {
     setOrder(orders);
   }, [orders]);
+  console.log(allorder)
   return (
     <Table className="border p-4 shadow-sm">
       <TableCaption>A list of your recent Order.</TableCaption>

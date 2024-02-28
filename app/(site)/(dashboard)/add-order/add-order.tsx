@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { priority } from "@/public/dropdownData";
-import { Client, Product } from "@prisma/client";
+import { Client, Product, User } from "@prisma/client";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -32,28 +32,30 @@ const formSchema = z.object({
     message: "Please Select Product.",
   }),
   userId: z.string().min(1, {
-    message: "Please Select Product.",
+    message: "Please Select User.",
   }),
 });
 
 interface AddOrderProps {
   products: Product[] | null;
   clients: Client[] | null;
+  users: User[] | null;
 }
 
-export const AddOrder = ({ products, clients }: AddOrderProps) => {
+export const AddOrder = ({ products, clients, users }: AddOrderProps) => {
   const [allproduct, __] = useState(products);
   const [allclient, _] = useState(clients);
+  const [alluser, ___] = useState(users);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       clientId: "",
       productId: "",
+      userId: "",
       dob: new Date(),
       priority: "",
       companyName: "",
-      userId: "",
     },
   });
   const isLoading = form.formState.isSubmitting;
@@ -99,14 +101,14 @@ export const AddOrder = ({ products, clients }: AddOrderProps) => {
         />
         <InputField
           form={form}
-          name="companayName"
+          name="companyName"
           placeholder="Companay Name"
           disable={isLoading}
         />
         <DropDownField
-          type1={true}
-          items={priority}
-          name="UserId"
+          type4={true}
+          type4Items={alluser}
+          name="userId"
           placeholder="User"
           form={form}
         />
