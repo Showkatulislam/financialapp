@@ -38,12 +38,12 @@ export const routes = [
     href: "/create-invoice",
   },
   {
-    label: "Invoices",
+    label: "Invoices-list",
     icon: File,
     href: "/invoice-list",
   },
   {
-    label: "New Report",
+    label: "create Report",
     icon: Plus,
     href: "/create-report",
   },

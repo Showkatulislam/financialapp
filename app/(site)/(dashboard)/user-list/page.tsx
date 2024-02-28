@@ -1,13 +1,12 @@
 import { getUser } from "@/app/actions/get-user";
 import Container from "@/app/components/Container";
-import { DataTableDemo } from "@/app/components/dataTable/DataTable";
-
+import { UserDataTable } from "./component.tsx/data-table";
+import { columns } from "./component.tsx/columns";
 const page = async () => {
   const user = await getUser();
-  console.log(user);
   return (
     <Container title="User List">
-      <DataTableDemo />
+        <UserDataTable columns={columns} data={user}/>
     </Container>
   );
 };
