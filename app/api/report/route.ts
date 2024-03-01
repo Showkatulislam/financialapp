@@ -27,3 +27,18 @@ export async function GET(req: Request) {
     return new NextResponse("Internal Server Error", { status: 501 });
   }
 }
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const reportId = (await searchParams.get("reportId")) as string;
+    const reports = await db.report.delete({
+      where: {
+        id: reportId,
+      },
+    });
+    return NextResponse.json(reports);
+  } catch (error) {
+    console.log("Error Comming From Report Get Route", error);
+    return new NextResponse("Internal Server Error", { status: 501 });
+  }
+}
