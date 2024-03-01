@@ -16,6 +16,14 @@ export type Order = {
 };
 export const columns: ColumnDef<Order>[] = [
   {
+    accessorKey: "id",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Id" />
+    ),
+    enableSorting: true,
+    enableHiding: false,
+  },
+  {
     accessorKey: "companyName",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Company Name" />
