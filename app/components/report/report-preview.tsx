@@ -26,6 +26,7 @@ export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
   const {
     orderdetail,
+    companydetail,
     officaldata,
     summeryinfo,
     shareholders,
@@ -52,6 +53,7 @@ export const Reportpreview = () => {
   const saveReport = async () => {
     const mydata = {
       orderdetail,
+      companydetail,
       officaldata,
       summeryinfo,
       shareholders,
