@@ -11,14 +11,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { userSchema } from "./schema";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import AlertModal from "@/components/model/alert-modal";
 import RightViewModalNoTrigger from "@/components/model/right-view-modal";
-import EditUser from "./EditUser";
 import qs from "query-string";
+import { ClientSchema } from "./schema";
+import { EditClient } from "./edit-client";
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -27,7 +27,7 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
-  const user = userSchema.parse(row.original);
+  const client = ClientSchema.parse(row.original);
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,9 +36,9 @@ export function DataTableRowActions<TData>({
     setLoading(true);
     try {
       const url = qs.stringifyUrl({
-        url: "/api/user",
+        url: "/api/client",
         query: {
-          userId: user.id,
+          userId: client.id,
         },
       });
       await axios.delete(url);
@@ -61,11 +61,11 @@ export function DataTableRowActions<TData>({
         loading={loading}
       />
       <RightViewModalNoTrigger
-        title={"Edit User"}
+        title={"Edit client"}
         open={updateOpen}
         setOpen={setUpdateOpen}
       >
-        <EditUser intialData={row.original} setOpen={setUpdateOpen} />
+        <EditClient intialData={row.original} setOpen={setUpdateOpen} />
       </RightViewModalNoTrigger>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

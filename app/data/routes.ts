@@ -43,7 +43,7 @@ export const routes = [
     href: "/invoice-list",
   },
   {
-    label: "create Report",
+    label: "New Report",
     icon: Plus,
     href: "/create-report",
   },
@@ -52,11 +52,7 @@ export const routes = [
     icon: File,
     href: "/report-list",
   },
-  {
-    label: "New Report",
-    icon: Plus,
-    href: "/create-report",
-  },
+
   {
     label: "Add User",
     icon: Plus,
@@ -71,5 +67,5 @@ export const routes = [
     label: "Admin",
     icon: User,
     href: "/admin-list",
-  }
+  },
 ];

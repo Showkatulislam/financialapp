@@ -5,7 +5,7 @@ import { columns } from "./component/columns";
 const page = async () => {
   const user = await getUser();
   return (
-    <Container title="User List">
+    <Container title="User list">
         <UserDataTable columns={columns} data={user}/>
     </Container>
   );

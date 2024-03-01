@@ -7,13 +7,13 @@ import { Button } from "@/components/ui/button";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross1Icon } from "@radix-ui/react-icons";
 
-interface Props{
+interface Props {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
-};
+}
 
 const RightViewModalNoTrigger = ({
   title,
@@ -26,19 +26,18 @@ const RightViewModalNoTrigger = ({
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
+  }, [open]);
 
   if (!isMounted) {
     return null;
   }
-
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
-        <Dialog.Overlay className="data-[state=open]:animate-[dialog-overlay-show_1000ms] data-[state=closed]:animate-[dialog-overlay-hide_1000ms] fixed inset-0 bg-black/50" />
+        <Dialog.Overlay className="data-[state=open]:animate-[dialog-overlay-show_1000ms] data-[state=!open]:animate-[dialog-overlay-hide_1000ms] fixed inset-0 bg-black/50" />
         <Dialog.Content
           className={
-            "data-[state=open]:animate-[dialog-content-show_1000ms] data-[state=closed]:animate-[dialog-content-hide_1000ms] fixed top-0 right-0 rounded-md border  h-full bg-white dark:bg-slate-900 shadow-md overflow-hidden"
+            "data-[state=open]:animate-[dialog-content-show_1000ms] data-[state=!open]:animate-[dialog-content-hide_1000ms] fixed top-0 right-0 rounded-md border  h-full bg-white dark:bg-slate-900 shadow-md overflow-hidden"
           }
         >
           <div className="flex flex-col h-full">
@@ -52,9 +51,11 @@ const RightViewModalNoTrigger = ({
                 <Cross1Icon className="w-5 h-5 opacity-50 hover:opacity-100" />
               </Dialog.Close>
             </div>
-            <Dialog.Description className="text-slate-400 p-3 overflow-auto opacity-75">
-              {description}
-            </Dialog.Description>
+            {description && (
+              <Dialog.Description className="text-slate-400 p-3 overflow-auto opacity-75">
+                {description}
+              </Dialog.Description>
+            )}
             <div className="flex-grow border p-5 w-full h-full overflow-auto">
               {children}
             </div>

@@ -2,6 +2,15 @@ import { db } from "@/lib/db";
 import { initailUser } from "@/lib/intial-user";
 import { NextResponse } from "next/server";
 
+export async function GET(req: Request) {
+  try {
+    const client = await db.client.findMany();
+    return NextResponse.json(client);
+  } catch (error) {
+    console.log("Error Comming From Client GET", { error });
+    return new NextResponse("Internal Server Error", { status: 501 });
+  }
+}
 export async function POST(req: Request) {
   try {
     const Iam = await initailUser();
@@ -76,9 +85,9 @@ export async function DELETE(req: Request) {
       where: {
         id: clientId ?? undefined,
       },
-      include:{
-        orders:true
-      }
+      include: {
+        orders: true,
+      },
     });
     return NextResponse.json(client);
   } catch (error) {

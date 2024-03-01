@@ -8,12 +8,12 @@ const layout = ({ children }: { children: ReactNode }) => {
       <div className="lg:fixed inset-y-0">
         <Sidebar />
       </div>
-      <div className="md:pl-60 h-full ">
-        <div className="flex justify-end items-center gap-x-6 p-5">
+      <div className="md:pl-60 h-full">
+        <div className="flex justify-end items-center gap-x-6 p-4">
           <UserButton afterSignOutUrl="/" />
           <ModeToggle />
         </div>
-        <div className="overflow-auto">{children}</div>
+        <div>{children}</div>
       </div>
     </div>
   );

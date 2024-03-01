@@ -1,14 +1,14 @@
-import Title from "@/components/Title";
-import { ShowProduct } from "./product-list";
 import { getProduct } from "@/app/actions/get-product";
 import Container from "@/app/components/Container";
+import { ProductDataTable } from "./component/data-table";
+import { columns } from "./component/columns";
 
 const page = async() => {
   const products=await getProduct()
   return (
     <Container
-     title="Product List">
-      <ShowProduct products={products} />
+     title="Product list">
+      <ProductDataTable columns={columns} data={products}/>
     </Container>
   );
 };

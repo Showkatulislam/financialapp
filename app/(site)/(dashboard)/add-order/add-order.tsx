@@ -15,7 +15,7 @@ import { useState } from "react";
 import DatePicker from "@/components/inputs/DatePicker";
 import InputField from "@/components/inputs/InputField";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   clientId: z.string().min(1, {
     message: "Please Select Client.",
   }),

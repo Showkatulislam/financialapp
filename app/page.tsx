@@ -9,7 +9,7 @@ const page = () => {
       <div className="h-full flex justify-center items-center ">
         <div className="flex flex-col items-center space-y-4">
           <Image src={logo} alt="logo" />
-          <h1 className="mt-5 text-7xl text-indigo-600 font-bold">
+          <h1 className="mt-5 text-7xl font-bold">
             Welcome Finance Go
           </h1>
           <div>

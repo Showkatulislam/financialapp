@@ -1,7 +1,6 @@
 import { db } from "@/lib/db";
 import { initailUser } from "@/lib/intial-user";
 import { NextResponse } from "next/server";
-
 export async function POST(request: Request) {
   try {
     const Iam = await initailUser();
@@ -31,7 +30,7 @@ export async function GET(request: Request) {
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }
-    const products = await db.product.findMany({});
+    const products = await db.product.findMany();
     return NextResponse.json(products);
   } catch (error) {
     console.log("Error Come From Product");

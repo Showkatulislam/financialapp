@@ -11,14 +11,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { userSchema } from "./schema";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import AlertModal from "@/components/model/alert-modal";
 import RightViewModalNoTrigger from "@/components/model/right-view-modal";
-import EditUser from "./EditUser";
 import qs from "query-string";
+import { ProductSchema } from "./schema";
+import { EditProduct } from "./edit-product";
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -27,7 +27,7 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
-  const user = userSchema.parse(row.original);
+  const product = ProductSchema.parse(row.original);
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,16 +36,16 @@ export function DataTableRowActions<TData>({
     setLoading(true);
     try {
       const url = qs.stringifyUrl({
-        url: "/api/user",
+        url: "/api/product",
         query: {
-          userId: user.id,
+          productId: product.id,
         },
       });
       await axios.delete(url);
-      toast.success("User Delete Successfully");
+      toast.success("Product Delete Successfully");
       router.refresh()
     } catch (error) {
-      toast.error("User Not Delete");
+      toast.error("Product Not Delete");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -61,11 +61,11 @@ export function DataTableRowActions<TData>({
         loading={loading}
       />
       <RightViewModalNoTrigger
-        title={"Edit User"}
+        title={"Edit product"}
         open={updateOpen}
         setOpen={setUpdateOpen}
       >
-        <EditUser intialData={row.original} setOpen={setUpdateOpen} />
+        <EditProduct intialData={row.original} setOpen={setUpdateOpen} />
       </RightViewModalNoTrigger>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

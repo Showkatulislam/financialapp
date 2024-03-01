@@ -31,6 +31,7 @@ const Adduser = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      console.log(values);
       await axios.post('/api/user',values)
       router.refresh()
       form.reset()

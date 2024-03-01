@@ -20,7 +20,7 @@ export const riskRating = [
   "Undefined Risk",
 ];
 
-export const languages = ["Englist", "Franch"];
+export const languages = ["English", "Franch"];
 export const priority = ["Flash", "Express", "Standard", "Relaxed"];
 export const countries = [
   "Afghanistan",

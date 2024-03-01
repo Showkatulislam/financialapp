@@ -11,14 +11,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { userSchema } from "./schema";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import AlertModal from "@/components/model/alert-modal";
 import RightViewModalNoTrigger from "@/components/model/right-view-modal";
-import EditUser from "./EditUser";
+import EditUser from "./EditOrder";
 import qs from "query-string";
+import { OrderSchema } from "./schema";
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -27,7 +27,7 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
-  const user = userSchema.parse(row.original);
+  const order = OrderSchema.parse(row.original);
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,16 +36,16 @@ export function DataTableRowActions<TData>({
     setLoading(true);
     try {
       const url = qs.stringifyUrl({
-        url: "/api/user",
+        url: "/api/order",
         query: {
-          userId: user.id,
+          orderId: order.id,
         },
       });
       await axios.delete(url);
-      toast.success("User Delete Successfully");
+      toast.success("Order Delete Successfully");
       router.refresh()
     } catch (error) {
-      toast.error("User Not Delete");
+      toast.error("Order Not Delete");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -61,7 +61,7 @@ export function DataTableRowActions<TData>({
         loading={loading}
       />
       <RightViewModalNoTrigger
-        title={"Edit User"}
+        title={"Edit order"}
         open={updateOpen}
         setOpen={setUpdateOpen}
       >

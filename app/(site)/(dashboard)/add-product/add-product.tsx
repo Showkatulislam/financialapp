@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import InputField from "@/components/inputs/InputField";
 import DropDownField from "@/components/inputs/DropDownField";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   productName: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
