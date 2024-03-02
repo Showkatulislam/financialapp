@@ -1,18 +1,18 @@
-import { File, List, ListChecks, ListOrdered, Plus, User } from "lucide-react";
+import { FileBarChart, List,  Plus, User, FileCheck, UserPlus, ClipboardPlus, ShieldCheck } from "lucide-react";
 
 export const routes = [
   {
-    label: "Add Client",
-    icon: Plus,
+    label: "Add client",
+    icon:  UserPlus,
     href: "/add-client",
   },
   {
-    label: "Clients",
+    label: "Client list",
     icon: User,
     href: "/client-list",
   },
   {
-    label: "Add Product",
+    label: "Add product",
     icon: Plus,
     href: "/add-product",
   },
@@ -23,39 +23,39 @@ export const routes = [
   },
 
   {
-    label: "Add Order",
+    label: "Add order",
     icon: Plus,
     href: "/add-order",
   },
   {
-    label: "Orders",
-    icon: ListChecks,
+    label: "Order list",
+    icon: List,
     href: "/order-list",
   },
   {
-    label: "Invoices",
-    icon: Plus,
+    label: "New invoice",
+    icon: ClipboardPlus,
     href: "/create-invoice",
   },
   {
-    label: "Invoices-list",
-    icon: File,
+    label: "Invoice list",
+    icon: FileCheck,
     href: "/invoice-list",
   },
   {
-    label: "New Report",
-    icon: Plus,
+    label: "New report",
+    icon: ClipboardPlus,
     href: "/create-report",
   },
   {
-    label: "report-list",
-    icon: File,
+    label: "Report list",
+    icon: FileBarChart,
     href: "/report-list",
   },
 
   {
-    label: "Add User",
-    icon: Plus,
+    label: "Add user",
+    icon: UserPlus,
     href: "/add-user",
   },
   {
@@ -65,7 +65,7 @@ export const routes = [
   },
   {
     label: "Admin",
-    icon: User,
+    icon: ShieldCheck,
     href: "/admin-list",
   },
 ];

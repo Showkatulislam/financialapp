@@ -19,11 +19,12 @@ interface reportProps{
 export const Reportform = ({clients}:reportProps) => {
   const { shareholders, managers, financialdata,banks,DeleteShareholder,DeleteManager,DeleteFinancialData,DeleteBank} = useReportStore();
   return (
-    <div className="grid gird-col-12 gap-2 p-5">
+    <div className="grid gird-col-12 gap-4 p-5">
       <CompanyName/>
       <OrderDetail clients={clients}/>
       <OfficialCompanyData />
       <SummaryInfo />
+      <div className="col-span-12 border p-2 space-y-2">
       <ReportTable
         title="shareholder list"
         cols={["name", "percentage", "nationality"]}
@@ -31,14 +32,17 @@ export const Reportform = ({clients}:reportProps) => {
         deleteFun={DeleteShareholder}
       />
       <ShareHolder />
+      </div>
+      <div className="col-span-12 border p-2 space-y-2">
       <ReportTable
         title="Manager list"
         cols={["name", "companyName", "function", "nationality"]}
         rows={managers}
         deleteFun={DeleteManager}
       />
-      <ActivityInput/>
       <Manager />
+      <ActivityInput/>
+      </div>
       <ReportTable
         title="financial list"
         cols={[

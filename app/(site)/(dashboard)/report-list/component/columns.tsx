@@ -2,6 +2,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-action-row";
+import { DataTableRowViewActions } from "./data-table-action-view";
+import { DataTableRowShareActions } from "./data-table-action-share";
 export type Report = {
   id: string;
   report:any;
@@ -12,11 +14,8 @@ export const columns: ColumnDef<Report>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Company Name" />
     ),
-    cell:({row})=>(<div>
-     {row.original.report.companydetail?.companyName??"Unassigned"}
-    </div>),
     enableSorting: true,
-    enableHiding: false,
+    enableHiding: false
   },
   {
     accessorKey: "report",
@@ -32,7 +31,12 @@ export const columns: ColumnDef<Report>[] = [
   {
     accessorKey: "View",
     id: "view",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <DataTableRowViewActions row={row} />,
+  },
+  {
+    accessorKey: "Share link",
+    id: "share",
+    cell: ({ row }) => <DataTableRowShareActions row={row} />,
   },
   {
     accessorKey: "Action",

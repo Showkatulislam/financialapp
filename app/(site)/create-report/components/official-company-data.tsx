@@ -7,7 +7,7 @@ import { currency, legalStateMenu } from "@/public/dropdownData";
 export const OfficialCompanyData = () => {
   const { officaldata, setofficailinfo } = useReportStore();
   return (
-    <>
+    <div className="col-span-12 grid grid-cols-12 gap-2 border p-2 space-y-2">
       <div className="col-span-12">
         <Title title="Official Company Data" />
       </div>
@@ -95,6 +95,6 @@ export const OfficialCompanyData = () => {
           value={officaldata.preShareCapitaltext}
         />
       </div>
-    </>
+    </div>
   );
 };

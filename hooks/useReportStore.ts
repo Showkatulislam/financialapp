@@ -11,7 +11,6 @@ interface orderdetail {
 }
 
 interface companycontactinfo {
-  companyName:string;
   Denomination: string;
   address: string;
   tel: string;
@@ -89,6 +88,7 @@ interface extreinfo {
 }
 
 interface reportState {
+  companyName:string;
   orderdetail: orderdetail;
   companydetail: companycontactinfo;
   officaldata: officalinfo;
@@ -99,6 +99,7 @@ interface reportState {
   commercialdata: commercialinfo;
   banks: bank[];
   extrainfo: extreinfo;
+  setComapanyName: (pro: any) => void;
   setOrderinfo: (pro: any) => void;
   setcompanyinfo: (pro: any) => void;
   setofficailinfo: (pro: any) => void;
@@ -116,6 +117,7 @@ interface reportState {
 }
 
 export const useReportStore = create<reportState>((set) => ({
+  companyName:"",
   orderdetail: {
     client: "",
     object: "",
@@ -125,7 +127,6 @@ export const useReportStore = create<reportState>((set) => ({
     creditRequested: "",
   },
   companydetail: {
-    companyName:"",
     Denomination: "",
     address: "",
     tel: "",
@@ -168,6 +169,10 @@ export const useReportStore = create<reportState>((set) => ({
     secondyestablishment: "",
     officailpublication: "",
   },
+  setComapanyName: (f) =>
+    set((state) => ({
+     companyName:f.companyName
+    })),
   setOrderinfo: (f) =>
     set((state) => ({
       orderdetail: { ...state.orderdetail, ...f },

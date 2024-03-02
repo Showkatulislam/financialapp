@@ -7,8 +7,8 @@ import { Payments, currency, riskRating } from "@/public/dropdownData";
 export const SummaryInfo = () => {
     const {summeryinfo,setsummeryinfo}=useReportStore()
   return (
-    <>
-      <div className="col-span-12">
+    <div className="col-span-12 grid grid-cols-12 gap-2 border p-2 space-y-2">
+      <div className="col-span-12 p-2 border">
         <Title title="SUMMARY" />
       </div>
       <div className="col-span-6">
@@ -69,6 +69,6 @@ export const SummaryInfo = () => {
           value={summeryinfo.equivalentToCreditText}
         />
       </div>
-    </>
+    </div>
   );
 };

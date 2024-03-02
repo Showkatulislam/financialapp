@@ -1,6 +1,9 @@
 import Image from "next/image";
 import img from "@/public/logo.svg";
-export const ReportHeader = () => {
+interface props{
+  companyName:string
+}
+export const ReportHeader = ({companyName}:props) => {
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex justify-between items-center">
@@ -17,7 +20,7 @@ export const ReportHeader = () => {
       </div>
       <div>
         <h1 className="font-bold lg:text-2xl text-xl">Financial Report</h1>
-        <h2 className="lg:text-xl font-semibold text-base">Company</h2>
+        <h2 className="lg:text-xl font-semibold text-base">{companyName}</h2>
       </div>
     </div>
   );

@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import { routes } from "@/app/data/routes";
 const Sidebar = () => {
   const path = usePathname();
-  console.log(path);
   return (
     <div className="flex flex-col space-y-1 py-5 border-r px-8 overflow-y-auto h-full">
       <div className="flex items-center gap-x-2 justify-between mb-4">
@@ -27,7 +26,7 @@ const Sidebar = () => {
             <div
               className={cn(
                 "flex gap-2 p-2",
-                path.includes(route.href) ? "text-muted-foreground" : ""
+                path.includes(route.href) ? "text-muted-foreground px-2 py-1 " : ""
               )}
             >
               <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />

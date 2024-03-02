@@ -10,6 +10,7 @@ export async function POST(req: Request) {
     const report = await db.report.create({
       data: {
         report: mydata,
+        companyName:mydata.companyName
       },
     });
     return NextResponse.json(report);

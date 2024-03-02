@@ -25,6 +25,7 @@ import { CodeAndDefination } from "./code-and-defination";
 export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
   const {
+    companyName,
     orderdetail,
     companydetail,
     officaldata,
@@ -52,6 +53,7 @@ export const Reportpreview = () => {
 
   const saveReport = async () => {
     const mydata = {
+      companyName,
       orderdetail,
       companydetail,
       officaldata,

@@ -2,7 +2,7 @@ import DropDownField from "@/app/components/inputs/Dropdown";
 import InputField from "@/app/components/inputs/InputFields";
 import Title from "@/components/Title";
 import { useReportStore } from "@/hooks/useReportStore";
-import { priority } from "@/public/dropdownData";
+import { languages, priority } from "@/public/dropdownData";
 import { Client } from "@prisma/client";
 import { useState } from "react";
 interface reportProps{
@@ -12,7 +12,7 @@ export const OrderDetail = ({clients}:reportProps) => {
   const [client,__]=useState(clients)
   const { orderdetail, setOrderinfo } = useReportStore();
   return (
-    <>
+    <div className="col-span-12 grid grid-cols-12 gap-2 border p-2 space-y-2">
       <div className="col-span-12">
         <Title title="Order Details" />
       </div>
@@ -55,12 +55,13 @@ export const OrderDetail = ({clients}:reportProps) => {
         />
       </div>
       <div className="col-span-6">
-        <InputField
+        <DropDownField
+         value={orderdetail.language}
           setValue={setOrderinfo}
-          type="text"
-          placeholder="Language"
           name="language"
-          value={orderdetail.language}
+          placeholder="Language"
+          items={languages}
+          type1={true}
         />
       </div>
       <div className="col-span-6">
@@ -72,6 +73,6 @@ export const OrderDetail = ({clients}:reportProps) => {
           value={orderdetail.creditRequested}
         />
       </div>
-    </>
+    </div>
   );
 };

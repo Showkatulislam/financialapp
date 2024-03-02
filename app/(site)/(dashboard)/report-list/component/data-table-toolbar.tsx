@@ -9,18 +9,19 @@ export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
+  const columnName = "companyName";
+  const column = table.getColumn(columnName);
+  const filterValue = (column?.getFilterValue() as string) ?? "";
   return (
     <div className="flex justify-between items-center">
-     <div className="flex-1">
-     <Input
+      <div className="flex-1">
+        <Input
           placeholder="Filter by Company Name..."
-          value={(table.getColumn("companyName")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("companyName")?.setFilterValue(event.target.value)
-          }
+          value={filterValue}
+          onChange={(event) => column?.setFilterValue(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
-     </div>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import img from "@/public/logo.svg";
 import { useReportStore } from "@/hooks/useReportStore";
 export const ReportHeader = () => {
-  const {companydetail}=useReportStore()
+  const {companyName}=useReportStore()
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex justify-between items-center">
@@ -19,7 +19,7 @@ export const ReportHeader = () => {
       </div>
       <div>
         <h1 className="font-bold lg:text-2xl text-xl">Financial Report</h1>
-        <h2 className="lg:text-xl font-normal text-base">{companydetail.companyName}</h2>
+        <h2 className="lg:text-xl font-normal text-base">{companyName}</h2>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ import { OfficailPublication } from "./official-publication";
 import { useReactToPrint } from "react-to-print";
 interface reportProps {
   report: Report | any;
+  
 }
 export const Reportpreview = ({ report }: reportProps) => {
   const [mounted, isMounded] = useState(false);
@@ -41,7 +42,7 @@ export const Reportpreview = ({ report }: reportProps) => {
     <div>
       <div ref={componentRef}>
         <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4">
-          <ReportHeader />
+          <ReportHeader companyName={myreport.companyName} />
           <OrderDetail orderdetail={myreport.orderdetail} />
           <OfficialCompanyData officaldata={myreport.officaldata} />
           <SummaryInfo summeryinfo={myreport.summeryinfo} />
