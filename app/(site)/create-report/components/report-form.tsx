@@ -17,6 +17,7 @@ import { CompanyContactInfo } from "./company-contact-info";
 import Container from "@/app/components/Container";
 import Link from "next/link";
 import { ArrowLeftCircle } from "lucide-react";
+import FinancialTable from "./FinancialTable";
 interface reportProps {
   clients: Client[];
 }
@@ -66,21 +67,8 @@ export const Reportform = ({ clients }: reportProps) => {
             <Manager />
             <ActivityInput />
           </div>
-          <ReportTable
+          <FinancialTable
             title="financial list"
-            cols={[
-              "year",
-              "turnover",
-              "nprofit",
-              "oprofit",
-              "damorliztion",
-              "equityballocation",
-              "supplieraccounts",
-              "purchases",
-              "clientaccounts",
-              "stocks",
-              "total",
-            ]}
             rows={financialdata}
             deleteFun={DeleteFinancialData}
           />

@@ -54,7 +54,7 @@ interface manager {
   function: string;
   nationality: string;
 }
-interface financialdata {
+export interface financialdata {
   id?: string;
   year: string;
   turnover: number;
@@ -210,7 +210,7 @@ export const useReportStore = create<reportState>((set) => ({
     set((state) => ({
       financialdata: [...state.financialdata, { ...f, id: uuidv4() }],
     })),
-    DeleteFinancialData: (id) =>
+    DeleteFinancialData: (id:string) =>
     set((state) => ({
       financialdata: [...state.financialdata.filter(f=>f.id!==id)],
     })),

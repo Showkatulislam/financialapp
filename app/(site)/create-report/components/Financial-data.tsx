@@ -55,14 +55,13 @@ const formSchema = z.object({
 
 export const FinancialData = () => {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema)
+    resolver: zodResolver(formSchema),
   });
   const { setFinancialData } = useReportStore();
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     setFinancialData(values);
-    form.reset()
+    form.reset();
   };
   return (
     <div className="border p-3 col-span-12">

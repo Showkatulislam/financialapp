@@ -44,7 +44,7 @@ export const Reportpreview = ({ report }: reportProps) => {
 
   return (
     <div>
-      <div ref={componentRef}>
+      <div className="h-full" ref={componentRef}>
         <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4">
           <ReportHeader companyName={myreport.companyName} />
           <OrderDetail orderdetail={myreport.orderdetail} />
@@ -66,11 +66,10 @@ export const Reportpreview = ({ report }: reportProps) => {
           <CodeAndDefination/>
         </div>
       </div>
-      {!path.includes("report-list") && (
-        <div className="flex justify-center items-center">
+      {path.includes("report-list/") && (
+        <div className="flex justify-center items-center px-8 mb-20">
           <Button
-            className="my-3 bg-indigo-500 hover:bg-indigo-400 text-2xl font-bold text-white p-1"
-            size="lg"
+           size={"lg"}
             onClick={handlePrint}
           >
             Preview
