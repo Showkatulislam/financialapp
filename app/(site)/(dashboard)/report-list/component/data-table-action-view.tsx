@@ -20,7 +20,9 @@ export function DataTableRowViewActions<TData>({
       open={open}
       setOpen={setOpen}
       >
-         <Reportpreview report={row.original}/>
+      <div className="max-w-5xl">
+      <Reportpreview report={row.original}/>
+      </div>
       </RightViewModalNoTrigger>
       <Button variant={'ghost'}
        className="flex h-8 w-8 p-0 data-[state=open]:bg-muted justify-center"

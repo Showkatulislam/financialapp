@@ -1,3 +1,4 @@
+
 export const Payments = [
   "Very Regular",
   "Regular",
@@ -7,7 +8,7 @@ export const Payments = [
   "Not Available",
 ];
 export const riskRating = [
-  " Excellent Risk",
+  "Excellent Risk",
   "Very Low Risk",
   "Low Risk",
   "Moderate Risk",

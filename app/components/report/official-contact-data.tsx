@@ -14,19 +14,12 @@ export const OfficialCompanyData = () => {
           description={officaldata.legalStatus}
         />
         <ReportItem
-          title="Unique identifier
-"
+          title="Unique identifier"
           description={officaldata.uniqueIdentifier}
         />
         <ReportItem
-          title="Creation date
-"
+          title="Creation date"
           description={officaldata.creationData}
-        />
-        <ReportItem
-          title="Start of activity
-"
-          description={officaldata.startOfActivity}
         />
         <ReportItem
           title="Activity status"

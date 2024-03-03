@@ -1,5 +1,26 @@
 import { FileBarChart, List,  Plus, User, FileCheck, UserPlus, ClipboardPlus, ShieldCheck } from "lucide-react";
-
+export const Paymentscolors=[
+  'text-green-600',
+  'text-green-500',
+  'text-green-400',
+  `text-red-400`,
+  `text-red-500`,
+  `text-gray-700`,
+]
+export const Riskcolors=[
+  'text-green-600',
+  'text-green-500',
+  'text-green-400',
+  'text-green-300',
+  `text-slate-400`,
+  `text-red-400`,
+  `text-red-500`,
+  `text-red-600`,
+  `text-red-700`,
+  `text-red-800`,
+  `text-yellow-500`,
+  'text-gray-600'
+]
 export const routes = [
   {
     label: "Add client",

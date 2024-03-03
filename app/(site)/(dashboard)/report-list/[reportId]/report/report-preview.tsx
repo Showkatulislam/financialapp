@@ -17,14 +17,18 @@ import { BankAndApprecation } from "./bank-list";
 import { SecondaryEstablishment } from "./secondary-establishment";
 import { OfficailPublication } from "./official-publication";
 import { useReactToPrint } from "react-to-print";
+import { usePathname } from "next/navigation";
+import { Conclusion } from "@/app/components/report/conclusion";
+import { CodeAndDefination } from "@/app/components/report/code-and-defination";
+import { CompanyContact } from "./company-contact-info";
 interface reportProps {
   report: Report | any;
-  
 }
 export const Reportpreview = ({ report }: reportProps) => {
   const [mounted, isMounded] = useState(false);
   const [myreport, setmyreport] = useState(report.report);
   const componentRef = useRef(null);
+  const path = usePathname();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     onAfterPrint() {
@@ -44,6 +48,7 @@ export const Reportpreview = ({ report }: reportProps) => {
         <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4">
           <ReportHeader companyName={myreport.companyName} />
           <OrderDetail orderdetail={myreport.orderdetail} />
+          <CompanyContact companydetail={myreport.companydetail}/>
           <OfficialCompanyData officaldata={myreport.officaldata} />
           <SummaryInfo summeryinfo={myreport.summeryinfo} />
           <ShareHolderList shareholders={myreport.shareholders} />
@@ -57,17 +62,21 @@ export const Reportpreview = ({ report }: reportProps) => {
           <BankAndApprecation banks={myreport.banks} />
           <SecondaryEstablishment extrainfo={myreport.extrainfo} />
           <OfficailPublication />
+          <Conclusion/>
+          <CodeAndDefination/>
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <Button
-          className="my-3 bg-indigo-500 hover:bg-indigo-400 text-2xl font-bold text-white p-1"
-          size="lg"
-          onClick={handlePrint}
-        >
-          Preview
-        </Button>
-      </div>
+      {!path.includes("report-list") && (
+        <div className="flex justify-center items-center">
+          <Button
+            className="my-3 bg-indigo-500 hover:bg-indigo-400 text-2xl font-bold text-white p-1"
+            size="lg"
+            onClick={handlePrint}
+          >
+            Preview
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

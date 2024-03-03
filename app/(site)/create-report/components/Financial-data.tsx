@@ -55,20 +55,7 @@ const formSchema = z.object({
 
 export const FinancialData = () => {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      year: "",
-      turnover: 0,
-      nprofit: 0,
-      oprofit: 0,
-      damorliztion: 0,
-      equityballocation: 0,
-      supplieraccounts: 0,
-      purchases: 0,
-      clientaccounts: 0,
-      stocks: 0,
-      total: 0,
-    },
+    resolver: zodResolver(formSchema)
   });
   const { setFinancialData } = useReportStore();
   const loading = form.formState.isSubmitting;

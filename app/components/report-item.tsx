@@ -3,12 +3,13 @@ import { cn } from "@/lib/utils";
 interface reportItemProps {
   title: string;
   description: string;
+  className?:string,
 }
-const ReportItem = ({ title, description }: reportItemProps) => {
+const ReportItem = ({className,title, description }: reportItemProps) => {
   return (
     <div className={cn("grid grid-cols-12 text-blue-900 font-normal lg:p-1 p-0.5")}>
       <p className="col-span-3">{title}</p>
-      <p className="col-span-9">{description}</p>
+      <p className={cn('col-span-9',className)}>{description}</p>
     </div>
   );
 };

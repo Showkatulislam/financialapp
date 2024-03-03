@@ -1,7 +1,9 @@
 import CapitalItem from "@/app/components/capital-item";
 import ReportItem from "@/app/components/report-item";
 import ReportTitle from "@/app/components/report-title";
+import { Paymentscolors, Riskcolors } from "@/app/data/routes";
 import { useReportStore } from "@/hooks/useReportStore";
+import { Payments, riskRating } from "@/public/dropdownData";
 
 export const SummaryInfo = () => {
   const { summeryinfo } = useReportStore();
@@ -12,10 +14,12 @@ export const SummaryInfo = () => {
         <ReportItem
           title="Credit rating"
           description={summeryinfo.riskRating}
+          className={summeryinfo.riskRating?Riskcolors[riskRating.indexOf(summeryinfo.riskRating)]:''}
         />
         <ReportItem
           title="Payments Experience"
           description={summeryinfo.paymentExperience}
+          className={summeryinfo.paymentExperience?Paymentscolors[Payments.indexOf(summeryinfo.paymentExperience)]:''}
         />
         <CapitalItem
           title="Recommended outstanding"

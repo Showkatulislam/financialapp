@@ -22,6 +22,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Conclusion } from "./conclusion";
 import { CodeAndDefination } from "./code-and-defination";
+import { CompanyContact } from "./company-contact-info";
 export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
   const {
@@ -35,7 +36,7 @@ export const Reportpreview = () => {
     financialdata,
     commercialdata,
     banks,
-    extrainfo
+    extrainfo,
   } = useReportStore();
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
@@ -63,18 +64,19 @@ export const Reportpreview = () => {
       financialdata,
       commercialdata,
       banks,
-      extrainfo
+      extrainfo,
     };
-    const report=await axios.post('/api/report',{mydata})
-    console.log(report);   
-    toast.success("report added successfullly")
+    const report = await axios.post("/api/report", { mydata });
+    console.log(report);
+    toast.success("report added successfullly");
   };
   return (
     <div>
       <div ref={componentRef}>
-        <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4">
+        <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20">
           <ReportHeader />
           <OrderDetail />
+          <CompanyContact />
           <OfficialCompanyData />
           <SummaryInfo />
           <ShareHolderList />
@@ -88,8 +90,8 @@ export const Reportpreview = () => {
           <BankAndApprecation />
           <SecondaryEstablishment />
           <OfficailPublication />
-          <Conclusion/>
-          <CodeAndDefination/>
+          <Conclusion />
+          <CodeAndDefination />
         </div>
       </div>
       <div className="flex justify-center items-center">

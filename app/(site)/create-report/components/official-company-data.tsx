@@ -39,15 +39,6 @@ export const OfficialCompanyData = () => {
           value={officaldata.creationData}
         />
       </div>
-      <div className="col-span-6">
-        <InputField
-          setValue={setofficailinfo}
-          type="text"
-          placeholder="legal Status"
-          name="startOfActivity"
-          value={officaldata.startOfActivity}
-        />
-      </div>
       <div className="col-span-12">
         <InputField
           setValue={setofficailinfo}
@@ -70,8 +61,8 @@ export const OfficialCompanyData = () => {
       <div className="col-span-4">
         <InputField
           setValue={setofficailinfo}
-          type="text"
-          placeholder="Share capital text"
+          type="number"
+          placeholder="Share capital"
           name="Sharecapitaltext"
           value={officaldata.Sharecapitaltext}
         />
@@ -89,8 +80,8 @@ export const OfficialCompanyData = () => {
       <div className="col-span-4">
         <InputField
           setValue={setofficailinfo}
-          type="text"
-          placeholder="pre Capital text"
+          type="number"
+          placeholder="pre Capital"
           name="preShareCapitaltext"
           value={officaldata.preShareCapitaltext}
         />

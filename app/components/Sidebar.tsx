@@ -10,7 +10,7 @@ import { routes } from "@/app/data/routes";
 const Sidebar = () => {
   const path = usePathname();
   return (
-    <div className="flex flex-col space-y-1 py-5 border-r px-8 overflow-y-auto h-full">
+    <div className="flex flex-col space-y-1 py-5  px-8 overflow-y-auto h-full">
       <div className="flex items-center gap-x-2 justify-between mb-4">
         <div className={`cursor-pointer duration-500 h-12 w-12`}>
           <Image src={logo} alt="logo" />

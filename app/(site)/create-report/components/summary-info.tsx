@@ -44,9 +44,9 @@ export const SummaryInfo = () => {
       <div className="col-span-6">
         <InputField
           setValue={setsummeryinfo}
-          type="text"
-          placeholder="recommend Credit text"
-          name="recommendCreditText"
+          type="number"
+          placeholder="recommend Credi"
+          name="recommendCredit"
           value={summeryinfo.recommendCreditText}
         />
       </div>
@@ -63,9 +63,9 @@ export const SummaryInfo = () => {
       <div className="col-span-6">
         <InputField
           setValue={setsummeryinfo}
-          type="text"
-          placeholder="equivalent To Credit text"
-          name="equivalentToCreditText"
+          type="number"
+          placeholder="equivalent To Credit"
+          name="equivalentToCredit"
           value={summeryinfo.equivalentToCreditText}
         />
       </div>
