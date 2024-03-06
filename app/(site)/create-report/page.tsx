@@ -3,16 +3,16 @@ import { Reportform } from "./components/report-form";
 import { GetClient } from "@/app/actions/get-client";
 import Container from "@/app/components/Container";
 
-const page =async () => {
-  const clients=await GetClient()
+const page = async () => {
+  const clients = await GetClient();
   return (
     <div className="h-full flex">
       <div className="w-1/2">
-        <Reportform clients={clients}/>
+        <Reportform clients={clients} />
       </div>
       <div className="w-1/2 ">
         <Container title="Report demo">
-        <Reportpreview />
+          <Reportpreview />
         </Container>
       </div>
     </div>

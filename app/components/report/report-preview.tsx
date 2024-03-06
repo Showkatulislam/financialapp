@@ -17,27 +17,18 @@ import { BankAndApprecation } from "./bank-list";
 import { SecondaryEstablishment } from "./secondary-establishment";
 import { OfficailPublication } from "./official-publication";
 import { useReactToPrint } from "react-to-print";
-import { useReportStore } from "@/hooks/useReportStore";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Conclusion } from "./conclusion";
 import { CodeAndDefination } from "./code-and-defination";
 import { CompanyContact } from "./company-contact-info";
+import { ReportState } from "@/hooks/ReportState";
+import { useRouter } from "next/navigation";
 export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
-  const {
-    companyName,
-    orderdetail,
-    companydetail,
-    officaldata,
-    summeryinfo,
-    shareholders,
-    managers,
-    financialdata,
-    commercialdata,
-    banks,
-    extrainfo,
-  } = useReportStore();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { report } = ReportState();
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -53,22 +44,18 @@ export const Reportpreview = () => {
   }
 
   const saveReport = async () => {
-    const mydata = {
-      companyName,
-      orderdetail,
-      companydetail,
-      officaldata,
-      summeryinfo,
-      shareholders,
-      managers,
-      financialdata,
-      commercialdata,
-      banks,
-      extrainfo,
-    };
-    const report = await axios.post("/api/report", { mydata });
-    console.log(report);
-    toast.success("report added successfullly");
+    setLoading(true);
+    try {
+      await axios.post("/api/report", {report:report});
+      console.log(report);
+      toast.success("report added successfullly");
+      router.refresh();
+    } catch (error) {
+      toast.error("Report not add at Database");
+    } finally {
+      router.refresh();
+      setLoading(false);
+    }
   };
   return (
     <div>
@@ -107,7 +94,7 @@ export const Reportpreview = () => {
           size="lg"
           onClick={saveReport}
         >
-          Save
+          {loading ? "Saving report" : "Save"}
         </Button>
       </div>
     </div>

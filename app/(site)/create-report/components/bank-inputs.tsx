@@ -3,8 +3,9 @@ import InputField from "@/components/inputs/InputField";
 import TextField from "@/components/inputs/textField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -19,22 +20,25 @@ const formSchema = z.object({
 });
 
 export const BankInfo = () => {
+  const { editBankRow, setBankData } = ReportState();
+  const { bank, agency, comment } = editBankRow;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      bank: "",
-      agency: "",
-      comment: "",
-    },
+    defaultValues: editBankRow,
   });
-  const { setBank } = useReportStore();
+  useEffect(() => {
+    form.setValue("bank", bank);
+    form.setValue("agency", agency);
+    form.setValue("comment", comment);
+  }, [form, bank, agency, comment]);
+
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setBank(values);
+    setBankData(values);
     form.reset();
   };
   return (
-    <div className="border p-3 col-span-12">
+    <div className="border space-y-3 p-3 col-span-12">
       <Form {...form}>
         <Title title="Bank Information" />
         <form

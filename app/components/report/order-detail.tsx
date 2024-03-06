@@ -1,10 +1,10 @@
 import ReportItem from "@/app/components/report-item";
 import ReportTitle from "@/app/components/report-title";
-import { useReportStore } from "@/hooks/useReportStore";
-
+import { ReportState } from "@/hooks/ReportState";
 export const OrderDetail = () => {
-  const {orderdetail}=useReportStore()
-  const {client,object,reference,priority,language,creditRequested}=orderdetail
+  const { report } = ReportState();
+  const { client, object, reference, priority, language, creditRequested } =
+    report;
   return (
     <div className="flex flex-col lg:space-y-2">
       <ReportTitle title="ORDER DETAIL" />

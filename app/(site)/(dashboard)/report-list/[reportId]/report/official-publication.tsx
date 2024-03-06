@@ -1,12 +1,15 @@
 import ReportTitle from "@/app/components/report-title";
-
-export const OfficailPublication = () => {
+import { report } from "@/hooks/ReportState";
+interface props{
+  report:report
+}
+export const OfficailPublication = ({report}:props) => {
   return (
     <div>
       <ReportTitle title="OFFICIAL PUBLICATIONS" />
       <div>
         <p className="text-base">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, ut?
+        {report.officailpublication}
         </p>
       </div>
     </div>

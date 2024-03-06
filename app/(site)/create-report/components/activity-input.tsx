@@ -1,16 +1,15 @@
-import InputField from "@/app/components/inputs/InputFields"
-import { useReportStore } from "@/hooks/useReportStore"
-
-export const ActivityInput=()=>{
-    const {setExtreInfo,extrainfo}=useReportStore()
-    return (
-        <div className="col-span-12">
-            <InputField
-             name="nace"
-             placeholder="Nace"
-             setValue={setExtreInfo}
-             value={extrainfo.nace}
-            />
-        </div>
-    )
-}
+import TextField from "@/app/components/inputs/TextField";
+import { ReportState } from "@/hooks/ReportState";
+export const ActivityInput = () => {
+  const { report, setTextField } = ReportState();
+  return (
+    <div className="col-span-12">
+      <TextField
+        name="nace"
+        placeholder="Activity"
+        setValue={setTextField}
+        value={report.nace}
+      />
+    </div>
+  );
+};

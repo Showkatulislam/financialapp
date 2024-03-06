@@ -13,15 +13,16 @@ interface DataTableRowShareProps<TData> {
 export function DataTableRowShareActions<TData>({
   row,
 }: DataTableRowShareProps<TData>) {
-  const [open,setOpen]=useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <ShareReportModal isOpen={open} onClose={setOpen} row={row?.original}/>
-      <Button variant={'ghost'}
-       className="flex h-8 w-8 p-0  text-center"
-       onClick={()=>setOpen(true)}
+      <ShareReportModal isOpen={open} onClose={setOpen} row={row?.original} />
+      <Button
+        variant={"ghost"}
+        className="flex h-8 w-8 p-0  text-center"
+        onClick={() => setOpen(true)}
       >
-       <Share className="w-4 h-4 text-center"/>
+        <Share className="w-4 h-4 text-center" />
       </Button>
     </>
   );

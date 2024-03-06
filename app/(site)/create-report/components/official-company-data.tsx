@@ -1,11 +1,11 @@
 import DropDownField from "@/app/components/inputs/Dropdown";
 import InputField from "@/app/components/inputs/InputFields";
 import Title from "@/components/Title";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 import { currency, legalStateMenu } from "@/public/dropdownData";
 
 export const OfficialCompanyData = () => {
-  const { officaldata, setofficailinfo } = useReportStore();
+  const { report, setTextField } = ReportState();
   return (
     <div className="col-span-12 grid grid-cols-12 gap-2 border p-2 space-y-2">
       <div className="col-span-12">
@@ -13,77 +13,77 @@ export const OfficialCompanyData = () => {
       </div>
       <div className="col-span-6">
         <DropDownField
-          setValue={setofficailinfo}
+          setValue={setTextField}
           placeholder="legal Status"
           name="legalStatus"
-          value={officaldata.legalStatus}
+          value={report.legalStatus}
           type1={true}
           items={legalStateMenu}
         />
       </div>
       <div className="col-span-6">
         <InputField
-          setValue={setofficailinfo}
+          setValue={setTextField}
           type="text"
           placeholder="Unique Identifier"
           name="uniqueIdentifier"
-          value={officaldata.uniqueIdentifier}
+          value={report.uniqueIdentifier}
         />
       </div>
       <div className="col-span-6">
         <InputField
-          setValue={setofficailinfo}
-          type="text"
+          setValue={setTextField}
+          type="date"
           placeholder="Creation Data"
           name="creationData"
-          value={officaldata.creationData}
+          value={report.creationData.toLocaleString()}
         />
       </div>
-      <div className="col-span-12">
+      <div className="col-span-6">
         <InputField
-          setValue={setofficailinfo}
-          type="text"
-          placeholder="Activity Status"
-          name="activityStatus"
-          value={officaldata.activityStatus}
+          setValue={setTextField}
+          type="date"
+          placeholder="Start of activity"
+          name="startOfActivity"
+          value={report.startOfActivity.toLocaleString()}
         />
       </div>
       <div className="col-span-2">
         <DropDownField
           name="Sharecapital"
           placeholder="Sharecapital"
-          setValue={setofficailinfo}
-          value={officaldata.Sharecapital}
+          setValue={setTextField}
+          value={report.Sharecapital}
           type1={true}
           items={currency}
         />
       </div>
       <div className="col-span-4">
         <InputField
-          setValue={setofficailinfo}
+          setValue={setTextField}
           type="number"
           placeholder="Share capital"
           name="Sharecapitaltext"
-          value={officaldata.Sharecapitaltext}
+          value={report.Sharecapitaltext}
         />
       </div>
       <div className="col-span-2">
         <DropDownField
           name="preShareCapital"
           placeholder="pre"
-          setValue={setofficailinfo}
-          value={officaldata.preShareCapital}
+          setValue={setTextField}
+          value={report.preShareCapital}
           type1={true}
           items={currency}
         />
       </div>
       <div className="col-span-4">
         <InputField
-          setValue={setofficailinfo}
+          setValue={setTextField}
           type="number"
           placeholder="pre Capital"
           name="preShareCapitaltext"
-          value={officaldata.preShareCapitaltext}
+          value={report.preShareCapitaltext}
         />
       </div>
     </div>

@@ -7,10 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-interface BankAndApprecationprops{
-  banks:any
+import { bank } from "@/hooks/ReportState";
+import { cn } from "@/lib/utils";
+interface BankAndApprecationprops {
+  banks: bank[];
 }
-export const BankAndApprecation = ({banks}:BankAndApprecationprops) => {
+export const BankAndApprecation = ({ banks }: BankAndApprecationprops) => {
   return (
     <div className="flex flex-col space-y-2">
       <ReportTitle title="BANKS AND BANK APPRECIATION" />
@@ -22,8 +24,8 @@ export const BankAndApprecation = ({banks}:BankAndApprecationprops) => {
             <TableHead className="text-blue-800">comment</TableHead>
           </TableHeader>
           <TableBody>
-            {banks.map((b:any) => (
-              <TableRow key={b.id}>
+            {banks?.map((b: any, i) => (
+              <TableRow key={b.id} className={cn(i % 2 == 0 && "bg-[#ECECEC]")}>
                 <TableCell>{b.bank}</TableCell>
                 <TableCell>{b.agency}</TableCell>
                 <TableCell>{b.comment}</TableCell>

@@ -3,27 +3,29 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-export const EffectivePart = () => {
+import {  effective } from "@/hooks/ReportState";
+import { cn } from "@/lib/utils";
+interface Effectiveprops {
+  effectives: effective[];
+}
+export const EffectivePart = ({effectives}:Effectiveprops) => {
   return (
     <div className="flex flex-col space-y-2">
       <ReportTitle title="EFFECTIVE" />
       <div>
         <Table>
-          <TableHeader>
-            <TableHead></TableHead>
-            <TableHead>2000</TableHead>
-            <TableHead>2000</TableHead>
-            <TableHead>2000</TableHead>
-          </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Effective</TableCell>
-            </TableRow>
+            {effectives?.map((e, i) => (
+              <TableRow
+                key={e.id}
+                className={cn(i % 2 == 2 && "bg-[#ECECEC]", "border-none")}
+              >
+                <TableCell>{e.year}</TableCell>
+                <TableCell>{e.count}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

@@ -2,9 +2,9 @@ import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useReportStore } from "@/hooks/useReportStore";
-
+import { ReportState } from "@/hooks/ReportState";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -20,23 +20,30 @@ const formSchema = z.object({
   }),
   nationality: z.string().min(2, {
     message: "Nationality must be need.",
-  })
+  }),
 });
 export const Manager = () => {
+  const { editManagerRow, setManager } = ReportState();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-        name:"",
-        companyName:"",
-        function:"",
-        nationality:""
-    },
+    defaultValues: editManagerRow,
   });
-  const loading=form.formState.isSubmitting
-  const {setManager}=useReportStore()
+  useEffect(() => {
+    form.setValue("name", editManagerRow.name);
+    form.setValue("function", editManagerRow.function);
+    form.setValue("companyName", editManagerRow.companyName);
+    form.setValue("nationality", editManagerRow.nationality);
+  }, [
+    form,
+    editManagerRow.companyName,
+    editManagerRow.function,
+    editManagerRow.name,
+    editManagerRow.nationality,
+  ]);
+  const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setManager(values)
-    form.reset()
+    setManager(values);
+    form.reset();
   };
   return (
     <div className="border p-3 col-span-12">
@@ -47,11 +54,7 @@ export const Manager = () => {
           className="space-y-4 grid grid-cols-12 gap-x-3 items-center"
         >
           <div className="col-span-6">
-            <InputField
-              name="name"
-              placeholder="Manager Name"
-              form={form}
-            />
+            <InputField name="name" placeholder="Manager Name" form={form} />
           </div>
           <div className="col-span-6">
             <InputField
@@ -61,11 +64,7 @@ export const Manager = () => {
             />
           </div>
           <div className="col-span-6">
-            <InputField
-              name="function"
-              placeholder="Function"
-              form={form}
-            />
+            <InputField name="function" placeholder="Function" form={form} />
           </div>
           <div className="col-span-6">
             <InputField
@@ -75,7 +74,7 @@ export const Manager = () => {
             />
           </div>
           <div className="col-span-12">
-            <Button disabled={loading} type="submit"  size="lg">
+            <Button disabled={loading} type="submit" size="lg">
               Submit
             </Button>
           </div>

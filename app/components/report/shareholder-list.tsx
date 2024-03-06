@@ -7,11 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useReportStore } from "@/hooks/useReportStore";
-import { useEffect, useState } from "react";
-
+import { ReportState } from "@/hooks/ReportState";
 export const ShareHolderList = () => {
-  const { shareholders } = useReportStore();
+  const { report } = ReportState();
   return (
     <div>
       <ReportTitle title="SHAREHOLDERS/ASSOCIATES" />
@@ -26,7 +24,7 @@ export const ShareHolderList = () => {
           </TableHead>
         </TableHeader>
         <TableBody>
-          {shareholders.map((s) => (
+          {report.shareholders.map((s) => (
             <TableRow key={s.id} className="border-none">
               <TableCell>{s.name}</TableCell>
               <TableCell>{s.percentage}</TableCell>

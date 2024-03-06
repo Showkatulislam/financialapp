@@ -7,23 +7,22 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import ReportTitle from "../report-title";
+import { ReportState } from "@/hooks/ReportState";
 
 export const EffectivePart = () => {
+  const { report } = ReportState();
   return (
     <div className="flex flex-col space-y-2">
       <ReportTitle title="EFFECTIVE" />
       <div>
         <Table>
-          <TableHeader>
-            <TableHead></TableHead>
-            <TableHead>2000</TableHead>
-            <TableHead>2000</TableHead>
-            <TableHead>2000</TableHead>
-          </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Effective</TableCell>
-            </TableRow>
+            {report.effectives.map((e) => (
+              <TableRow className="border" key={e.id}>
+                <TableCell>{e.year}</TableCell>
+                <TableCell>{e.count}</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

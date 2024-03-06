@@ -5,7 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import {dark} from "@clerk/themes";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import Toastprovider from "@/components/provider/toast-provider";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Create Next App",

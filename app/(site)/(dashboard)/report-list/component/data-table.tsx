@@ -27,7 +27,7 @@ import { DataTablePagination } from "@/app/components/data-table-pagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+  data: TData[] 
 }
 export function ReportDataTable<TData, TValue>({
   columns,
@@ -61,7 +61,6 @@ export function ReportDataTable<TData, TValue>({
   });
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

@@ -86,7 +86,6 @@ interface extreinfo {
   secondyestablishment: string;
   officailpublication: string;
 }
-
 interface reportState {
   companyName:string;
   orderdetail: orderdetail;

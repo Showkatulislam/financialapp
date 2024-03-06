@@ -7,18 +7,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { financialdata } from "@/hooks/useReportStore";
+import { financialdata } from "@/hooks/ReportState";
 import { Edit, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
-import { nan } from "zod";
 
 interface FinancialTableProps {
   rows: financialdata[];
   title: string;
   deleteFun: (id: string) => void;
+  editFun: (id: string) => void;
 }
 
-const FinancialTable = ({ rows, title, deleteFun }: FinancialTableProps) => {
+const FinancialTable = ({
+  rows,
+  title,
+  deleteFun,
+  editFun,
+}: FinancialTableProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -42,7 +47,7 @@ const FinancialTable = ({ rows, title, deleteFun }: FinancialTableProps) => {
           <TableRow className="border-none font-semibold">
             <TableCell>year</TableCell>
             {rows.map((f) => (
-              <TableCell key={f.id}>{f.year.substring(0, 4)}</TableCell>
+              <TableCell key={f.id}>{f.year}</TableCell>
             ))}
           </TableRow>
           <TableRow className="border-none font-semibold">
@@ -55,6 +60,12 @@ const FinancialTable = ({ rows, title, deleteFun }: FinancialTableProps) => {
             <TableCell>Operating profit</TableCell>
             {rows.map((f) => (
               <TableCell key={f.id}>{f.oprofit}</TableCell>
+            ))}
+          </TableRow>
+          <TableRow className="border-none font-semibold">
+            <TableCell>Net profit</TableCell>
+            {rows.map((f) => (
+              <TableCell key={f.id}>{f.nprofit}</TableCell>
             ))}
           </TableRow>
           <TableRow className="border-none font-semibold">
@@ -108,16 +119,16 @@ const FinancialTable = ({ rows, title, deleteFun }: FinancialTableProps) => {
           <TableRow className="border-none font-semibold">
             <TableCell>delete</TableCell>
             {rows.map((f: any) => (
-              <TableCell key={f.id} onClick={() => deleteFun(f?.id)}>
-                <Trash className="w-4 h-4" />
+              <TableCell key={f.id}>
+                <Trash className="w-4 h-4" onClick={() => deleteFun(f?.id)} />
               </TableCell>
             ))}
           </TableRow>
           <TableRow className="border-none font-semibold">
             <TableCell>Edit</TableCell>
             {rows.map((f: any) => (
-              <TableCell key={f.id} onClick={() => deleteFun(f?.id)}>
-                <Edit className="w-4 h-4" />
+              <TableCell key={f.id}>
+                <Edit className="w-4 h-4" onClick={() => editFun(f?.id)} />
               </TableCell>
             ))}
           </TableRow>

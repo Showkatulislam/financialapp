@@ -7,10 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-interface ShareHolderListProps{
-  shareholders:any
+import { shareholder } from "@/hooks/ReportState";
+import { cn } from "@/lib/utils";
+interface ShareHolderListProps {
+  shareholders: shareholder[];
 }
-export const ShareHolderList = ({shareholders}:ShareHolderListProps) => {
+export const ShareHolderList = ({ shareholders }: ShareHolderListProps) => {
   return (
     <div>
       <ReportTitle title="SHAREHOLDERS/ASSOCIATES" />
@@ -25,8 +27,11 @@ export const ShareHolderList = ({shareholders}:ShareHolderListProps) => {
           </TableHead>
         </TableHeader>
         <TableBody>
-          {shareholders.map((s:any) => (
-            <TableRow key={s.id} className="border-none">
+          {shareholders?.map((s: any, i) => (
+            <TableRow
+              key={s.id}
+              className={cn(i % 2 == 0 ? "bg-[#ECECEC]" : "")}
+            >
               <TableCell>{s.name}</TableCell>
               <TableCell>{s.percentage}</TableCell>
               <TableCell>{s.nationality}</TableCell>

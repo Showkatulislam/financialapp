@@ -4,10 +4,11 @@ interface reportItemProps {
   title: string;
   description: string;
   className?:string,
+  bg?:boolean
 }
-const ReportItem = ({className,title, description }: reportItemProps) => {
+const ReportItem = ({bg,className,title, description }: reportItemProps) => {
   return (
-    <div className={cn("grid grid-cols-12 text-blue-900 font-normal lg:p-1 p-0.5")}>
+    <div className={cn("grid grid-cols-12 text-base font-light lg:p-1 p-0.5",bg&&"bg-[#ECECEC]")}>
       <p className="col-span-3">{title}</p>
       <p className={cn('col-span-9',className)}>{description}</p>
     </div>

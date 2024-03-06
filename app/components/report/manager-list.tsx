@@ -7,9 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 export const Managers = () => {
-  const {managers}=useReportStore()
+  const {
+    report: { managers },
+  } = ReportState();
   return (
     <div>
       <ReportTitle title="MANAGERS" />
@@ -23,16 +25,14 @@ export const Managers = () => {
           <TableHead className="text-blue-600 font-bold">Nationality</TableHead>
         </TableHeader>
         <TableBody>
-        {
-          managers.map(m=>(
-            <TableRow key={m.id} className="border-none">
+          {managers.map((m) => (
+            <TableRow key={m.id}>
               <TableCell>{m.name}</TableCell>
               <TableCell>{m.companyName}</TableCell>
               <TableCell>{m.function}</TableCell>
               <TableCell>{m.nationality}</TableCell>
             </TableRow>
-          ))
-        }
+          ))}
         </TableBody>
       </Table>
     </div>

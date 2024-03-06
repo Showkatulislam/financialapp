@@ -4,7 +4,6 @@ import { OrderDetail } from "./order-details";
 import { ShareHolder } from "./shareholder";
 import { SummaryInfo } from "./summary-info";
 import { ReportTable } from "./report-table";
-import { useReportStore } from "@/hooks/useReportStore";
 import { Manager } from "./manager";
 import { FinancialData } from "./Financial-data";
 import CommercialData from "./commercial-data";
@@ -18,29 +17,38 @@ import Container from "@/app/components/Container";
 import Link from "next/link";
 import { ArrowLeftCircle } from "lucide-react";
 import FinancialTable from "./FinancialTable";
+import { ReportState } from "@/hooks/ReportState";
+import { usePathname } from "next/navigation";
+import { EffectivePart } from "./Effective-part";
+import { EffectiveTable } from "./EffectiveTable";
 interface reportProps {
   clients: Client[];
 }
 export const Reportform = ({ clients }: reportProps) => {
   const {
-    shareholders,
-    managers,
-    financialdata,
-    banks,
-    DeleteShareholder,
-    DeleteManager,
-    DeleteFinancialData,
-    DeleteBank,
-  } = useReportStore();
+    report,
+    deleteShareholder,
+    editShareholder,
+    deleteManager,
+    editManager,
+    deleteFinancialData,
+    editFinancialData,
+    deleteBank,
+    editBank,
+  } = ReportState();
+  const path = usePathname();
   return (
     <>
-      <Link
-        className="p-1 rounded-sm border my-4 flex gap-x-4 w-24 items-center"
-        href={"/dashboard"}
-      >
-        <ArrowLeftCircle />
-        Back
-      </Link>
+      {!path.includes("report-list") && (
+        <Link
+          className="p-1 rounded-sm border my-4 flex gap-x-4 w-24 items-center"
+          href={"/dashboard"}
+        >
+          <ArrowLeftCircle />
+          Back
+        </Link>
+      )}
+
       <Container title="Create Report">
         <div className="grid gird-col-12 gap-4 p-5">
           <CompanyName />
@@ -52,8 +60,9 @@ export const Reportform = ({ clients }: reportProps) => {
             <ReportTable
               title="shareholder list"
               cols={["name", "percentage", "nationality"]}
-              rows={shareholders}
-              deleteFun={DeleteShareholder}
+              rows={report.shareholders}
+              deleteFun={deleteShareholder}
+              editFun={editShareholder}
             />
             <ShareHolder />
           </div>
@@ -61,24 +70,31 @@ export const Reportform = ({ clients }: reportProps) => {
             <ReportTable
               title="Manager list"
               cols={["name", "companyName", "function", "nationality"]}
-              rows={managers}
-              deleteFun={DeleteManager}
+              rows={report.managers}
+              deleteFun={deleteManager}
+              editFun={editManager}
             />
             <Manager />
             <ActivityInput />
           </div>
-          <FinancialTable
-            title="financial list"
-            rows={financialdata}
-            deleteFun={DeleteFinancialData}
-          />
+          {report.financialDatas.length > 0 && (
+            <FinancialTable
+              title="financial list"
+              rows={report.financialDatas}
+              deleteFun={deleteFinancialData}
+              editFun={editFinancialData}
+            />
+          )}
           <FinancialData />
+          <EffectiveTable />
+          <EffectivePart />
           <CommercialData />
           <ReportTable
             title="bank list"
             cols={["bank", "agency", "comment"]}
-            rows={banks}
-            deleteFun={DeleteBank}
+            rows={report.banks}
+            deleteFun={deleteBank}
+            editFun={editBank}
           />
           <BankInfo />
           <ExtraInfo />

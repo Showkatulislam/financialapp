@@ -71,7 +71,6 @@ model Order {
 
 model Report {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  companyName String
   report    Json
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt

@@ -7,10 +7,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import ReportTitle from "../report-title";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 
 export const BankAndApprecation = () => {
-  const { banks } = useReportStore();
+  const {
+    report: { banks },
+  } = ReportState();
   return (
     <div className="flex flex-col space-y-2">
       <ReportTitle title="BANKS AND BANK APPRECIATION" />

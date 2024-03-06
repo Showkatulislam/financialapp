@@ -13,11 +13,18 @@ import { useEffect, useState } from "react";
 interface ReportTableProps {
   cols: string[];
   rows: {}[];
-  title:string
-  deleteFun:(id:string)=>void
+  title: string;
+  deleteFun: (id: string) => void;
+  editFun: (id: string) => void;
 }
 
-export const ReportTable = ({ cols, rows,title,deleteFun }: ReportTableProps) => {
+export const ReportTable = ({
+  cols,
+  rows,
+  title,
+  deleteFun,
+  editFun,
+}: ReportTableProps) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -36,6 +43,7 @@ export const ReportTable = ({ cols, rows,title,deleteFun }: ReportTableProps) =>
             <TableHead key={e}>{e}</TableHead>
           ))}
           <TableHead>Delete</TableHead>
+          <TableHead>Edit</TableHead>
         </TableHeader>
         <TableBody>
           {rows.map((r: any) => (
@@ -43,8 +51,11 @@ export const ReportTable = ({ cols, rows,title,deleteFun }: ReportTableProps) =>
               {cols.map((e) => {
                 return <TableCell key={e}>{r[e]}</TableCell>;
               })}
-              <TableCell onClick={()=>deleteFun(r.id)}>
-                <Trash/>
+              <TableCell>
+                <Trash className="w-5 h-5" onClick={() => deleteFun(r.id)} />
+              </TableCell>
+              <TableCell>
+                <Edit className="w-5 h-5" onClick={() => editFun(r.id)} />
               </TableCell>
             </TableRow>
           ))}

@@ -2,9 +2,10 @@ import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -21,19 +22,25 @@ const formSchema = z.object({
   }),
 });
 export const ShareHolder = () => {
-  const {setShareholder } = useReportStore();
+  const { setShareholder, editshareholderrow } = ReportState();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      percentage: 0,
-      nationality: "",
-    },
+    defaultValues: editshareholderrow,
   });
+  useEffect(() => {
+    form.setValue("name", editshareholderrow.name);
+    form.setValue("nationality", editshareholderrow.nationality);
+    form.setValue("percentage", editshareholderrow.percentage);
+  }, [
+    form,
+    editshareholderrow.name,
+    editshareholderrow.nationality,
+    editshareholderrow.percentage,
+  ]);
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setShareholder(values);
-    form.reset()
+    form.reset();
   };
   return (
     <div className="border p-3 col-span-12">

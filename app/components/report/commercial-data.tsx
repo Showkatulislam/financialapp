@@ -1,9 +1,9 @@
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import ReportTitle from "../report-title";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 
 export const CommercialData = () => {
-  const { commercialdata } = useReportStore();
+  const { report } = ReportState();
   return (
     <div>
       <ReportTitle title="COMMERCIAL DATA" />
@@ -11,19 +11,19 @@ export const CommercialData = () => {
         <TableBody className="font-normal">
           <TableRow className="border-none">
             <TableCell>Import</TableCell>
-            <TableCell>{commercialdata.importText}</TableCell>
+            <TableCell>{report.importText}</TableCell>
           </TableRow>
           <TableRow className="border-none">
             <TableCell>Suppliers Local</TableCell>
-            <TableCell>{commercialdata.suppliersLocal}</TableCell>
+            <TableCell>{report.suppliersLocal}</TableCell>
           </TableRow>
           <TableRow className="border-none">
             <TableCell>Export</TableCell>
-            <TableCell>{commercialdata.exportText}</TableCell>
+            <TableCell>{report.exportText}</TableCell>
           </TableRow>
           <TableRow className="border-none">
             <TableCell>Clients Local</TableCell>
-            <TableCell>{commercialdata.clientsLocal}</TableCell>
+            <TableCell>{report.clientsLocal}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

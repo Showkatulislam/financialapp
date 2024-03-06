@@ -7,11 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-interface managerProps{
-  managers:any
+import { manager } from "@/hooks/ReportState";
+import { cn } from "@/lib/utils";
+interface managerProps {
+  managers: manager[];
 }
-export const Managers = ({managers}:managerProps) => {
-
+export const Managers = ({ managers }: managerProps) => {
   return (
     <div>
       <ReportTitle title="MANAGERS" />
@@ -25,16 +26,17 @@ export const Managers = ({managers}:managerProps) => {
           <TableHead className="text-blue-600 font-bold">Nationality</TableHead>
         </TableHeader>
         <TableBody>
-        {
-          managers.map((m:any)=>(
-            <TableRow key={m.id} className="border-none">
+          {managers?.map((m: any, i) => (
+            <TableRow
+              key={m.id}
+              className={cn(i % 2 == 0 ? "bg-[#ECECEC]" : "")}
+            >
               <TableCell>{m.name}</TableCell>
               <TableCell>{m.companyName}</TableCell>
               <TableCell>{m.function}</TableCell>
               <TableCell>{m.nationality}</TableCell>
             </TableRow>
-          ))
-        }
+          ))}
         </TableBody>
       </Table>
     </div>

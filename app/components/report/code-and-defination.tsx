@@ -7,24 +7,24 @@ export const CodeAndDefination = () => {
   return (
     <div>
       <ReportTitle title="Code and Definations" />
-      <div className="flex flex-col space-y-2">
-        <p>Risk</p>
-        <ol >
+      <div className="flex flex-col space-y-2 ">
+        <p className="bg-[#ECECEC] p-2">Risk</p>
+        <ol className="space-x-2 p-2">
           {riskRating.map((r, i) => (
             <span className={cn(Riskcolors[i])} key={i}>
               {i + 1} . {r}
             </span>
           ))}
         </ol>
-        <p>Payment</p>
-        <ol>
+        <p className="bg-[#ECECEC] p-2">Payment</p>
+        <ol className="space-x-2 p-2">
           {Payments.map((r, i) => (
-            <li className={cn(Paymentscolors[i])} key={i}>
+            <span className={cn(Paymentscolors[i])} key={i}>
               {i + 1} .{r}
-            </li>
+            </span>
           ))}
         </ol>
-        <ol>
+        <ol className="p-2 text-justify space-y-2">
           <li>
             “Recommended outstanding amount” represents the highest amount that
             we can recommend for a transaction to purchase goods or services

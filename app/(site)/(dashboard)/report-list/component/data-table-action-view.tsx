@@ -12,23 +12,24 @@ interface DataTableRowViewsProps<TData> {
 export function DataTableRowViewActions<TData>({
   row,
 }: DataTableRowViewsProps<TData>) {
-  const [open,setOpen]=useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <>
       <RightViewModalNoTrigger
-      title="Report Preview"
-      open={open}
-      setOpen={setOpen}
+        title="Report Preview"
+        open={open}
+        setOpen={setOpen}
       >
-      <div className="max-w-5xl">
-      <Reportpreview report={row.original}/>
-      </div>
+        <div className="max-w-5xl">
+          <Reportpreview report={row.original} />
+        </div>
       </RightViewModalNoTrigger>
-      <Button variant={'ghost'}
-       className="flex h-8 w-8 p-0 data-[state=open]:bg-muted justify-center"
-       onClick={()=>setOpen(true)}
+      <Button
+        variant={"ghost"}
+        className="flex h-8 w-8 p-0 data-[state=open]:bg-muted justify-center"
+        onClick={() => setOpen(true)}
       >
-        <Eye className="w-4 h-4"/>
+        <Eye className="w-4 h-4" />
       </Button>
     </>
   );

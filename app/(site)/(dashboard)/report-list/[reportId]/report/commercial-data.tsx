@@ -1,10 +1,10 @@
 import ReportTitle from "@/app/components/report-title";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { useReportStore } from "@/hooks/useReportStore";
+import { report } from "@/hooks/ReportState";
 interface CommercialDataprops {
-  commercialdata: any;
+  report: report;
 }
-export const CommercialData = ({ commercialdata }: CommercialDataprops) => {
+export const CommercialData = ({ report }: CommercialDataprops) => {
   return (
     <div>
       <ReportTitle title="COMMERCIAL DATA" />
@@ -12,19 +12,19 @@ export const CommercialData = ({ commercialdata }: CommercialDataprops) => {
         <TableBody className="font-normal">
           <TableRow className="border-none">
             <TableCell>Import</TableCell>
-            <TableCell>{commercialdata.importText}</TableCell>
+            <TableCell>{report.importText}</TableCell>
           </TableRow>
-          <TableRow className="border-none">
+          <TableRow className="border-none bg-[#ECECEC]">
             <TableCell>Suppliers Local</TableCell>
-            <TableCell>{commercialdata.suppliersLocal}</TableCell>
+            <TableCell>{report.suppliersLocal}</TableCell>
           </TableRow>
           <TableRow className="border-none">
             <TableCell>Export</TableCell>
-            <TableCell>{commercialdata.exportText}</TableCell>
+            <TableCell>{report.exportText}</TableCell>
           </TableRow>
-          <TableRow className="border-none">
+          <TableRow className="border-none bg-[#ECECEC]">
             <TableCell>Clients Local</TableCell>
-            <TableCell>{commercialdata.clientsLocal}</TableCell>
+            <TableCell>{report.clientsLocal}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

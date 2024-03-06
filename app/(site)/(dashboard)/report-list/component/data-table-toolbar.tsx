@@ -11,6 +11,7 @@ export function DataTableToolbar<TData>({
   const isFiltered = table.getState().columnFilters.length > 0;
   const columnName = "companyName";
   const column = table.getColumn(columnName);
+  console.log(table)
   const filterValue = (column?.getFilterValue() as string) ?? "";
   return (
     <div className="flex justify-between items-center">

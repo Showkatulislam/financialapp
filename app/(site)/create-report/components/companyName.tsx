@@ -1,16 +1,16 @@
 import InputField from "@/app/components/inputs/InputFields";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 
 export const CompanyName = () => {
-  const { setComapanyName, companyName } = useReportStore();
+  const { report, setTextField } = ReportState();
   return (
     <div className="col-span-12">
       <div className="border p-2">
         <InputField
           name="companyName"
           placeholder="Company Name"
-          setValue={setComapanyName}
-          value={companyName}
+          setValue={setTextField}
+          value={report.companyName}
         />
       </div>
     </div>

@@ -17,18 +17,16 @@ import { BankAndApprecation } from "./bank-list";
 import { SecondaryEstablishment } from "./secondary-establishment";
 import { OfficailPublication } from "./official-publication";
 import { useReactToPrint } from "react-to-print";
-import { usePathname } from "next/navigation";
 import { Conclusion } from "@/app/components/report/conclusion";
 import { CodeAndDefination } from "@/app/components/report/code-and-defination";
 import { CompanyContact } from "./company-contact-info";
 interface reportProps {
-  report: Report | any;
+  report: any;
 }
 export const Reportpreview = ({ report }: reportProps) => {
   const [mounted, isMounded] = useState(false);
   const [myreport, setmyreport] = useState(report.report);
   const componentRef = useRef(null);
-  const path = usePathname();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     onAfterPrint() {
@@ -43,39 +41,65 @@ export const Reportpreview = ({ report }: reportProps) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col space-y-4">
       <div className="h-full" ref={componentRef}>
-        <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4">
+        <div
+          style={{
+            backgroundImage: "url(/bg.png)",
+            backgroundPosition: "bottom 10px right 10px",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "400px",
+          }}
+          className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4"
+        >
           <ReportHeader companyName={myreport.companyName} />
-          <OrderDetail orderdetail={myreport.orderdetail} />
-          <CompanyContact companydetail={myreport.companydetail}/>
-          <OfficialCompanyData officaldata={myreport.officaldata} />
-          <SummaryInfo summeryinfo={myreport.summeryinfo} />
-          <ShareHolderList shareholders={myreport.shareholders} />
-          <Managers managers={myreport.managers} />
-          <Activity extrainfo={myreport.extrainfo} />
-          <FinancialData financialdata={myreport.financialdata} />
-          <FinancailIndicator financialdata={myreport.financialdata} />
-          <FinancailIndicatorChart financialdata={myreport.financialdata} />
-          <EffectivePart />
-          <CommercialData commercialdata={myreport.commercialdata} />
-          <BankAndApprecation banks={myreport.banks} />
-          <SecondaryEstablishment extrainfo={myreport.extrainfo} />
-          <OfficailPublication />
-          <Conclusion/>
-          <CodeAndDefination/>
+          <OrderDetail report={myreport} />
+          <CompanyContact report={myreport} />
+          <OfficialCompanyData report={myreport} />
+          <SummaryInfo report={myreport} />
+          {myreport.shareholders.length > 0 && (
+            <ShareHolderList shareholders={myreport.shareholders} />
+          )}
+          {myreport.managers.length > 0 && (
+            <Managers managers={myreport.managers} />
+          )}
+          {myreport.nace != "" && <Activity report={myreport} />}
+          {myreport.financialDatas.length > 0 && (
+            <>
+              <FinancialData financialdata={myreport.financialDatas} />
+              <FinancailIndicator financialdata={myreport.financialDatas} />
+              <FinancailIndicatorChart
+                financialdata={myreport.financialDatas}
+              />
+            </>
+          )}
+
+          <EffectivePart effectives={myreport?.effectives} />
+          {myreport.importText && <CommercialData report={myreport} />}
+          {myreport.banks.length > 0 && (
+            <BankAndApprecation banks={myreport.banks} />
+          )}
+          {myreport?.secondyestablishment && (
+            <SecondaryEstablishment report={myreport} />
+          )}
+          {myreport.officailpublication && (
+            <OfficailPublication report={myreport} />
+          )}
+          {myreport.conclusion && <Conclusion />}
+          <CodeAndDefination />
         </div>
       </div>
-      {path.includes("report-list/") && (
-        <div className="flex justify-center items-center px-8 mb-20">
-          <Button
-           size={"lg"}
-            onClick={handlePrint}
-          >
-            Preview
-          </Button>
-        </div>
-      )}
+
+      <div className="flex justify-center items-center px-8 mb-20">
+        <Button size={"default"} onClick={handlePrint}>
+          Download
+        </Button>
+      </div>
     </div>
   );
 };
+/* 
+#ECECEC
+
+
+*/

@@ -18,7 +18,7 @@ import AlertModal from "@/components/model/alert-modal";
 import RightViewModalNoTrigger from "@/components/model/right-view-modal";
 import qs from "query-string";
 import { ReportSchema } from "./schema";
-import { EditClient } from "./edit-client";
+import { EditReport } from "./edit-report";
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -65,8 +65,7 @@ export function DataTableRowActions<TData>({
         open={updateOpen}
         setOpen={setUpdateOpen}
       >
-        {/* <EditClient intialData={row.original} setOpen={setUpdateOpen} /> */}
-        <p>hello</p>
+        <EditReport initialReport={row.original} />
       </RightViewModalNoTrigger>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

@@ -1,13 +1,13 @@
+import { ReportState } from "@/hooks/ReportState";
 import ReportTitle from "../report-title";
 
 export const OfficailPublication = () => {
+  const { report } = ReportState();
   return (
     <div>
       <ReportTitle title="OFFICIAL PUBLICATIONS" />
       <div>
-        <p className="text-base">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, ut?
-        </p>
+        <p className="text-base">{report.officailpublication}</p>
       </div>
     </div>
   );

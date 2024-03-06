@@ -2,34 +2,42 @@ import CapitalItem from "@/app/components/capital-item";
 import ReportItem from "@/app/components/report-item";
 import ReportTitle from "@/app/components/report-title";
 import { Paymentscolors, Riskcolors } from "@/app/data/routes";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 import { Payments, riskRating } from "@/public/dropdownData";
 
 export const SummaryInfo = () => {
-  const { summeryinfo } = useReportStore();
+  const { report } = ReportState();
   return (
     <div className="flex flex-col lg:space-y-2">
       <ReportTitle title="SUMMARY" />
       <div>
         <ReportItem
           title="Credit rating"
-          description={summeryinfo.riskRating}
-          className={summeryinfo.riskRating?Riskcolors[riskRating.indexOf(summeryinfo.riskRating)]:''}
+          description={report.riskRating}
+          className={
+            report.riskRating
+              ? Riskcolors[riskRating.indexOf(report.riskRating)]
+              : ""
+          }
         />
         <ReportItem
           title="Payments Experience"
-          description={summeryinfo.paymentExperience}
-          className={summeryinfo.paymentExperience?Paymentscolors[Payments.indexOf(summeryinfo.paymentExperience)]:''}
+          description={report.paymentExperience}
+          className={
+            report.paymentExperience
+              ? Paymentscolors[Payments.indexOf(report.paymentExperience)]
+              : ""
+          }
         />
         <CapitalItem
           title="Recommended outstanding"
-          capital={summeryinfo.recommendCredit}
-          text={summeryinfo.recommendCreditText}
+          capital={report.recommendCredit}
+          text={report.recommendCreditText}
         />
         <CapitalItem
           title="Equivalent to"
-          capital={summeryinfo.equivalentToCredit}
-          text={summeryinfo.equivalentToCreditText}
+          capital={report.equivalentToCredit}
+          text={report.equivalentToCreditText}
         />
       </div>
     </div>

@@ -4,13 +4,14 @@ interface CapitalItemProps {
   title: string;
   capital: string;
   text: string;
+  bg?:boolean
 }
-const CapitalItem = ({ text, title, capital }: CapitalItemProps) => {
+const CapitalItem = ({bg, text, title, capital }: CapitalItemProps) => {
   return (
-    <div className={cn("grid grid-cols-12 text-blue-800 font-normal lg:p-1 p-0.5")}>
+    <div className={cn("grid grid-cols-12  text-base font-light lg:p-1 p-0.5",bg&&"bg-[#ECECEC]")}>
       <p className="col-span-3">{title}</p>
       <p className="col-span-1">{capital}</p>
-      <p className="col-span-1">{text}</p>
+      <p className="col-span-1">{parseInt(text).toLocaleString('en-US')}</p>
     </div>
   );
 };

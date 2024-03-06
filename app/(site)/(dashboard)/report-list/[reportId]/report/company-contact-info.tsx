@@ -1,25 +1,26 @@
 import ReportItem from "@/app/components/report-item";
 import ReportTitle from "@/app/components/report-title";
+import { report } from "@/hooks/ReportState";
 
-interface CompanyContactProps{
-  companydetail:any
+interface CompanyContactProps {
+  report: report;
 }
-export const CompanyContact = ({companydetail}:CompanyContactProps) => {
+export const CompanyContact = ({ report }: CompanyContactProps) => {
   return (
     <div className="flex flex-col lg:space-y-2">
       <ReportTitle title="Company Contact" />
       <div>
-        <ReportItem title="Customer" description={companydetail.Denomination} />
-        <ReportItem title="Address" description={companydetail.address} />
+        <ReportItem title="Customer" description={report.Denomination} />
+        <ReportItem bg={true} title="Address" description={report.address} />
         <ReportItem
           title="Email
   "
-          description={companydetail.email}
+          description={report.email}
         />
-        <ReportItem title="Fax" description={companydetail.fax} />
-        <ReportItem title="Mobile" description={companydetail.mobile} />
-        <ReportItem title="Tel" description={companydetail.tel} />
-        <ReportItem title="Website" description={companydetail.website} />
+        <ReportItem bg={true} title="Fax" description={report.fax} />
+        <ReportItem title="Mobile" description={report.mobile} />
+        <ReportItem bg={true} title="Tel" description={report.tel} />
+        <ReportItem title="Website" description={report.website} />
       </div>
     </div>
   );

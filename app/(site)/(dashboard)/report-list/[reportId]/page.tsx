@@ -3,7 +3,6 @@ import { Reportpreview } from "./report/report-preview";
 
 const page = async ({ params }: { params: { reportId: string } }) => {
   const report = await GetReportById(params.reportId);
-  console.log(report);
   return (
     <div>
       <Reportpreview report={report}/>

@@ -2,14 +2,15 @@ import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { useReportStore } from "@/hooks/useReportStore";
+import { ReportState } from "@/hooks/ReportState";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  year: z.string().min(2, {
-    message: "Date must be need.",
+  year: z.string({
+    required_error: "A date of birth is required.",
   }),
   turnover: z.coerce.number({
     required_error: "Please enter a turnover.",
@@ -54,12 +55,52 @@ const formSchema = z.object({
 });
 
 export const FinancialData = () => {
+  const { setFinancialData, editFinancialDataRow } = ReportState();
+  const {
+    year,
+    clientaccounts,
+    damorliztion,
+    equityballocation,
+    nprofit,
+    oprofit,
+    purchases,
+    stocks,
+    supplieraccounts,
+    total,
+    turnover,
+  } = editFinancialDataRow;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: editFinancialDataRow,
   });
-  const { setFinancialData } = useReportStore();
+  useEffect(() => {
+    form.setValue("year", year);
+    form.setValue("clientaccounts", clientaccounts);
+    form.setValue("damorliztion", damorliztion);
+    form.setValue("equityballocation", equityballocation);
+    form.setValue("nprofit", nprofit);
+    form.setValue("oprofit", oprofit);
+    form.setValue("purchases", purchases);
+    form.setValue("stocks", stocks);
+    form.setValue("supplieraccounts", supplieraccounts);
+    form.setValue("total", total);
+    form.setValue("turnover", turnover);
+  }, [
+    year,
+    clientaccounts,
+    damorliztion,
+    equityballocation,
+    nprofit,
+    oprofit,
+    purchases,
+    stocks,
+    supplieraccounts,
+    total,
+    turnover,
+    form,
+  ]);
   const loading = form.formState.isSubmitting;
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     setFinancialData(values);
     form.reset();
   };
@@ -72,12 +113,7 @@ export const FinancialData = () => {
           className="space-y-4 grid grid-cols-12 gap-x-3 items-center"
         >
           <div className="col-span-6">
-            <InputField
-              name="year"
-              placeholder="Date"
-              type="text"
-              form={form}
-            />
+            <InputField name="year" placeholder="Year" form={form} />
           </div>
           <div className="col-span-6">
             <InputField name="turnover" placeholder="Turnover" form={form} />
