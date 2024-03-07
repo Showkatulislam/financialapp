@@ -21,8 +21,8 @@ interface DataTableToolbarProps {
   property: string;
   setProperty: (property: string) => void;
   setValue: (value: string) => void;
-  date:any
-  setDate: any
+  date: any;
+  setDate: any;
 }
 
 const searchBy = ["companyName", "client", "date"];
@@ -55,7 +55,12 @@ export const DataTableToolbar = ({
       </div>
       <div className="w-96">
         {(property === searchBy[0] || property === searchBy[1]) && (
-          <Input onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)} />
+          <Input
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setValue(e.target.value)
+            }
+            placeholder={`Search by ${property}`}
+          />
         )}
         {property === searchBy[2] && (
           <Popover>

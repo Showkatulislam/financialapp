@@ -46,7 +46,7 @@ export const Reportpreview = ({ report }: reportProps) => {
         <div
           style={{
             backgroundImage: "url(/bg.jpeg)",
-            backgroundPosition: "center",
+            backgroundPosition: "bottom 40px right 40px, bottom 40px left 40px",
             backgroundRepeat: "no-repeat",
             backgroundSize: "500px",
           }}
