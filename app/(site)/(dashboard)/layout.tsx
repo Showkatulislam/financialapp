@@ -9,7 +9,7 @@ const layout = async ({ children }: { children: ReactNode }) => {
   const Iam = await initailUser();
   return (
     <div className="h-full">
-      <div className="lg:fixed inset-y-0">
+      <div className="md:fixed inset-y-0">
         <Sidebar Iam={Iam} />
       </div>
       <div className="md:pl-60  m-4 h-full">

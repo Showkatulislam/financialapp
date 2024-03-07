@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 import { report } from "process";
-import { Effect } from "zod";
 export interface shareholder {
   id?: string;
   name: string;

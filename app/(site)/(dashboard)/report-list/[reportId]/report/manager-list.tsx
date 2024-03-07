@@ -29,7 +29,7 @@ export const Managers = ({ managers }: managerProps) => {
           {managers?.map((m: any, i) => (
             <TableRow
               key={m.id}
-              className={cn(i % 2 == 0 ? "bg-[#ECECEC]" : "")}
+              className={cn('border-none',i % 2 == 0 ? "bg-[#ECECEC]" : "")}
             >
               <TableCell>{m.name}</TableCell>
               <TableCell>{m.companyName}</TableCell>

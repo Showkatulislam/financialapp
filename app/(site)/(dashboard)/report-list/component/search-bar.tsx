@@ -25,7 +25,7 @@ export const SearchBar = ({
           defaultValue={property}
         >
           <SelectTrigger>
-            <SelectValue placeholder="ddd" />
+            <SelectValue placeholder={property} />
           </SelectTrigger>
           <SelectContent>
             {searchby.map((s, i) => (

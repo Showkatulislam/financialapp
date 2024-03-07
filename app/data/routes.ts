@@ -21,7 +21,7 @@ export const Riskcolors=[
   `text-yellow-500`,
   'text-gray-600'
 ]
-export const routes = [
+export const Adminroutes = [
   {
     label: "Add client",
     icon:  UserPlus,
@@ -90,3 +90,21 @@ export const routes = [
     href: "/admin-list",
   },
 ];
+
+export const userRoutes=[
+  {
+    label: "Invoice list",
+    icon: FileCheck,
+    href: "/invoice-list",
+  },
+  {
+    label: "New report",
+    icon: ClipboardPlus,
+    href: "/create-report",
+  },
+  {
+    label: "Report list",
+    icon: FileBarChart,
+    href: "/report-list",
+  },
+]

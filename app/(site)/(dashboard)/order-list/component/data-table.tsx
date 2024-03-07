@@ -14,7 +14,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { DataTableToolbar } from "./data-table-toolbar";
 import {
   Table,
   TableBody,
@@ -61,7 +60,6 @@ export function OrderDataTable<TData, TValue>({
   });
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

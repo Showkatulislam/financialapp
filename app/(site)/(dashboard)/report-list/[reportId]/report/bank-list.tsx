@@ -25,7 +25,7 @@ export const BankAndApprecation = ({ banks }: BankAndApprecationprops) => {
           </TableHeader>
           <TableBody>
             {banks?.map((b: any, i) => (
-              <TableRow key={b.id} className={cn(i % 2 == 0 && "bg-[#ECECEC]")}>
+              <TableRow key={b.id} className={cn('border-none',i % 2 == 0 && "bg-[#ECECEC]")}>
                 <TableCell>{b.bank}</TableCell>
                 <TableCell>{b.agency}</TableCell>
                 <TableCell>{b.comment}</TableCell>

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import img from "@/public/logo.svg";
+import moment from "moment";
 interface props {
   companyName: string;
+  date:any
 }
-export const ReportHeader = ({ companyName }: props) => {
+export const ReportHeader = ({date, companyName }: props) => {
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex justify-between items-center">
@@ -15,7 +17,7 @@ export const ReportHeader = ({ companyName }: props) => {
           <p>© Finance Go</p>
           <p>Renseignement commercial et Analyse financière</p>
           <p>email: max@financego.co.uk</p>
-          <p>{new Date().toLocaleDateString()}</p>
+          <p>{moment(date).format('YYYY-MM-DD')}</p>
         </div>
       </div>
       <div>

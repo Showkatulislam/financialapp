@@ -30,7 +30,7 @@ export const ShareHolderList = ({ shareholders }: ShareHolderListProps) => {
           {shareholders?.map((s: any, i) => (
             <TableRow
               key={s.id}
-              className={cn(i % 2 == 0 ? "bg-[#ECECEC]" : "")}
+              className={cn('border-none',i % 2 == 0 ? "bg-[#ECECEC]" : "")}
             >
               <TableCell>{s.name}</TableCell>
               <TableCell>{s.percentage}</TableCell>

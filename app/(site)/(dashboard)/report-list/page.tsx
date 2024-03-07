@@ -10,6 +10,7 @@ const page = async () => {
   } catch (error) {
     console.error("Error fetching reports:", error);
   }
+
   return (
     <TableContainer reports={reports}/>
   );
