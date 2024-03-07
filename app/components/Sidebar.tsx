@@ -7,7 +7,11 @@ import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { routes } from "@/app/data/routes";
-const Sidebar = () => {
+import { User } from "@prisma/client";
+interface sidebarProps{
+  Iam:User
+}
+const Sidebar = ({Iam}:sidebarProps) => {
   const path = usePathname();
   return (
     <div className="flex flex-col space-y-1 py-5  px-8 overflow-y-auto h-full">

@@ -61,7 +61,7 @@ export function DataTableRowActions<TData>({
         loading={loading}
       />
       <RightViewModalNoTrigger
-        title={"Edit client"}
+        title={"Edit report"}
         open={updateOpen}
         setOpen={setUpdateOpen}
       >

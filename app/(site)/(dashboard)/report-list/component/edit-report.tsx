@@ -44,9 +44,11 @@ export const EditReport = ({ initialReport }: reportprops) => {
   return (
     <div className="max-w-4xl">
       <Reportform clients={client} />
+      <div className="flex justify-center">
       <Button onClick={UpdateReport}>
-        {loading?"Updating ...":"Update"}
+        {loading?"Updating report ...":"Update report"}
       </Button>
+      </div>
     </div>
   );
 };

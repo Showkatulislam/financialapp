@@ -1,9 +1,9 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
-export async function GET(req:Request){
+export async function GET(req: Request) {
   try {
-    const user=await db.user.findMany()
-    return NextResponse.json(user)
+    const user = await db.user.findMany();
+    return NextResponse.json(user);
   } catch (error) {
     console.log("Error Comming From User GET Route", error);
     return new NextResponse("Internal Error", { status: 500 });
@@ -54,7 +54,7 @@ export async function DELETE(req: Request) {
     const user = await db.user.delete({
       where: {
         id: userId,
-      }
+      },
     });
     return NextResponse.json(user);
   } catch (error) {

@@ -14,7 +14,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { DataTableToolbar } from "./data-table-toolbar";
 import {
   Table,
   TableBody,
