@@ -45,10 +45,10 @@ export const Reportpreview = ({ report }: reportProps) => {
       <div className="h-full" ref={componentRef}>
         <div
           style={{
-            backgroundImage: "url(/bg.png)",
-            backgroundPosition: "bottom 10px right 10px",
+            backgroundImage: "url(/bg.jpeg)",
+            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "400px",
+            backgroundSize: "500px",
           }}
           className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4"
         >
