@@ -91,7 +91,7 @@ export const Reportform = ({ clients }: reportProps) => {
           <CommercialData />
           <ReportTable
             title="bank list"
-            cols={["bank", "agency", "comment"]}
+            cols={["bank", "agency"]}
             rows={report.banks}
             deleteFun={deleteBank}
             editFun={editBank}

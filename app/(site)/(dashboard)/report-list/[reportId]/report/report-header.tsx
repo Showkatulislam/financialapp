@@ -3,9 +3,11 @@ import img from "@/public/logo.svg";
 import moment from "moment";
 interface props {
   companyName: string;
-  date:any
+  date:Date
 }
 export const ReportHeader = ({date, companyName }: props) => {
+  console.log(date);
+  
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex justify-between items-center">
@@ -18,6 +20,7 @@ export const ReportHeader = ({date, companyName }: props) => {
           <p>Renseignement commercial et Analyse financière</p>
           <p>email: max@financego.co.uk</p>
           <p>{moment(date).format('YYYY-MM-DD')}</p>
+         
         </div>
       </div>
       <div>

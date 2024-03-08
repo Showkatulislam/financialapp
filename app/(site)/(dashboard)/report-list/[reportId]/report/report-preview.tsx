@@ -52,7 +52,7 @@ export const Reportpreview = ({ report }: reportProps) => {
           }}
           className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4"
         >
-          <ReportHeader companyName={myreport.companyName} date={report.createAt} />
+          <ReportHeader companyName={myreport.companyName} date={report.createdAt} />
           <OrderDetail report={myreport} />
           <CompanyContact report={myreport} />
           <OfficialCompanyData report={myreport} />

@@ -11,7 +11,7 @@ import { ReportState } from "@/hooks/ReportState";
 
 export const BankAndApprecation = () => {
   const {
-    report: { banks },
+    report: { banks,bankComment },
   } = ReportState();
   return (
     <div className="flex flex-col space-y-2">
@@ -21,16 +21,23 @@ export const BankAndApprecation = () => {
           <TableHeader>
             <TableHead className="text-blue-800">Bank</TableHead>
             <TableHead className="text-blue-800">Agency</TableHead>
-            <TableHead className="text-blue-800">comment</TableHead>
+            
           </TableHeader>
           <TableBody>
             {banks.map((b) => (
               <TableRow key={b.id}>
                 <TableCell>{b.bank}</TableCell>
                 <TableCell>{b.agency}</TableCell>
-                <TableCell>{b.comment}</TableCell>
               </TableRow>
             ))}
+            <TableRow>
+              <TableCell>
+                commment
+              </TableCell>
+              <TableCell>
+                {bankComment}
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>

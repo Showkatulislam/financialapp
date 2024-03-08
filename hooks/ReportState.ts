@@ -32,7 +32,6 @@ export interface bank {
   id?: string;
   bank: string;
   agency: string;
-  comment: string;
 }
 export interface effective {
   id?: string;
@@ -72,6 +71,7 @@ export interface report {
   managers: manager[];
   financialDatas: financialdata[];
   banks: bank[];
+  bankComment:string,
   effectives: effective[];
   importText: string;
   suppliersLocal: string;
@@ -141,6 +141,7 @@ export const ReportState = create<reportState>((set) => ({
     managers: [],
     financialDatas: [],
     banks: [],
+    bankComment:'',
     effectives: [],
     importText: "",
     suppliersLocal: "",
@@ -163,7 +164,7 @@ export const ReportState = create<reportState>((set) => ({
     nationality: "",
   },
   editFinancialDataRow: {
-    year: "2000",
+    year: "",
     turnover: 1,
     nprofit: 1,
     oprofit: 1,
@@ -178,7 +179,6 @@ export const ReportState = create<reportState>((set) => ({
   editBankRow: {
     bank: "",
     agency: "",
-    comment: "",
   },
   editEffectiverow: {
     year: "",

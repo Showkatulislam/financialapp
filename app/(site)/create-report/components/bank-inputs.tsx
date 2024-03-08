@@ -15,13 +15,12 @@ const formSchema = z.object({
   }),
   agency: z.string().min(2, {
     message: " agency Name must be need.",
-  }),
-  comment: z.string(),
+  })
 });
 
 export const BankInfo = () => {
-  const { editBankRow, setBankData } = ReportState();
-  const { bank, agency, comment } = editBankRow;
+  const { editBankRow, setBankData} = ReportState();
+  const { bank, agency } = editBankRow;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: editBankRow,
@@ -29,8 +28,7 @@ export const BankInfo = () => {
   useEffect(() => {
     form.setValue("bank", bank);
     form.setValue("agency", agency);
-    form.setValue("comment", comment);
-  }, [form, bank, agency, comment]);
+  }, [form, bank, agency]);
 
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -50,9 +48,6 @@ export const BankInfo = () => {
           </div>
           <div className="col-span-6">
             <InputField name="agency" placeholder="Agency Name" form={form} />
-          </div>
-          <div className="col-span-12">
-            <TextField name="comment" placeholder="Comment" form={form} />
           </div>
           <div className="col-span-12">
             <Button disabled={loading} type="submit" size="lg">
