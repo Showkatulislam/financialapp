@@ -30,20 +30,20 @@ const Sidebar = ({ Iam }: sidebarProps) => {
           FINANCE GO
         </h1>
       </div>
-      <div className="overflow-y-auto">
+      <div className="overflow-y-auto flex flex-col space-y-3">
         {Iam.role === "ADMIN" &&
           Adminroutes.map((route) => (
             <Link href={route.href} key={route.label}>
               <div
                 className={cn(
-                  "flex gap-2 px-2 py-1",
+                  "flex gap-2 px-2",
                   path.includes(route.href)
-                    ? "text-muted-foreground px-2 py-1 "
+                    ? "text-muted-foreground px-2"
                     : ""
                 )}
               >
-                <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />
-                {route.label}
+                <route.icon className={cn("w-5 h-5 mr-3")} />
+                <span className="text-sm ">{route.label}</span>
               </div>
             </Link>
           ))}
@@ -52,14 +52,14 @@ const Sidebar = ({ Iam }: sidebarProps) => {
             <Link href={route.href} key={route.label}>
               <div
                 className={cn(
-                  "flex gap-2 px-2 py-1",
+                  "flex gap-2 px-2",
                   path.includes(route.href)
-                    ? "text-muted-foreground px-2 py-1 "
+                    ? "text-muted-foreground px-2 "
                     : ""
                 )}
               >
                 <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />
-                {route.label}
+                <span className="text-sm ">{route.label}</span>
               </div>
             </Link>
           ))}

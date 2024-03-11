@@ -8,17 +8,10 @@ interface ContainerProps {
   children: React.ReactNode;
 }
 
-const Container = ({
-  title,
-  visibility,
-  children,
-}: ContainerProps) => {
+const Container = ({ title, visibility, children }: ContainerProps) => {
   return (
     <div className="flex-1 space-y-4 px-8 py-4 border-l h-full overflow-hidden">
-      <Heading
-        title={title}
-        visibility={visibility}
-      />
+      <Heading title={title} visibility={visibility} />
       <Separator />
       <div className="text-sm h-full overflow-auto pb-12  space-y-5">
         {children}

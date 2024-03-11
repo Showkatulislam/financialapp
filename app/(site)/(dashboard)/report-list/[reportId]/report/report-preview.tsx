@@ -25,15 +25,16 @@ interface reportProps {
 }
 export const Reportpreview = ({ report }: reportProps) => {
   const [mounted, isMounded] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
   const [myreport, setmyreport] = useState(report.report);
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-    onAfterPrint() {
-      console.log();
-    },
+    documentTitle: "Printable Document",
+    onAfterPrint: () => setPageNumber(1),
   });
-  useEffect(() => {
+ 
+ useEffect(() => {
     isMounded(true);
   }, []);
   if (!mounted) {
@@ -43,6 +44,7 @@ export const Reportpreview = ({ report }: reportProps) => {
   return (
     <div className="flex flex-col space-y-4">
       <div className="h-full" ref={componentRef}>
+        <p className="font-bold text-zinc-950">Page {pageNumber}</p>
         <div
           style={{
             backgroundImage: "url(/bg.jpeg)",
@@ -52,7 +54,10 @@ export const Reportpreview = ({ report }: reportProps) => {
           }}
           className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20 p-4"
         >
-          <ReportHeader companyName={myreport.companyName} date={report.createdAt} />
+          <ReportHeader
+            companyName={myreport.companyName}
+            date={report.createdAt}
+          />
           <OrderDetail report={myreport} />
           <CompanyContact report={myreport} />
           <OfficialCompanyData report={myreport} />

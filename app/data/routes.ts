@@ -1,4 +1,4 @@
-import { FileBarChart, List,  Plus, User, FileCheck, UserPlus, ClipboardPlus, ShieldCheck } from "lucide-react";
+import { FileBarChart, List,  Plus, User, FileCheck, UserPlus, ClipboardPlus, ShieldCheck, ListTodo } from "lucide-react";
 export const Paymentscolors=[
   'text-green-600',
   'text-green-500',
@@ -42,7 +42,6 @@ export const Adminroutes = [
     icon: List,
     href: "/product-list",
   },
-
   {
     label: "Add order",
     icon: Plus,
@@ -73,7 +72,11 @@ export const Adminroutes = [
     icon: FileBarChart,
     href: "/report-list",
   },
-
+  {
+    label: "Task",
+    icon: ListTodo,
+    href: "/task",
+  },
   {
     label: "Add user",
     icon: UserPlus,
