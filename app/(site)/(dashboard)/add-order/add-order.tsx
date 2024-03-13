@@ -25,6 +25,9 @@ export const formSchema = z.object({
   dob: z.date({
     required_error: "A date of birth is required.",
   }),
+  requiredby:z.date({
+    required_error: "A date of birth is required.",
+  }),
   priority: z.string().min(1, {
     message: "Please Select Product.",
   }),
@@ -54,6 +57,7 @@ export const AddOrder = ({ products, clients, users }: AddOrderProps) => {
       productId: "",
       userId: "",
       dob: new Date(),
+      requiredby:new Date(),
       priority: "",
       companyName: "",
     },
@@ -92,6 +96,7 @@ export const AddOrder = ({ products, clients, users }: AddOrderProps) => {
           form={form}
         />
         <DatePicker form={form} placeholder="Date Time" name="dob" />
+        <DatePicker form={form} placeholder="Required by" name="requiredby" />
         <DropDownField
           type1={true}
           items={priority}

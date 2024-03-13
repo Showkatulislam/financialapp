@@ -1,9 +1,13 @@
-import { AddTask } from "./components/add-task";
+import { getallTask } from "@/app/actions/get-task";
+import { AllTaskTable } from "./components/all-task-table";
+import { Task } from "./components/task";
 
-const page = () => {
+const page = async() => {
+    const task=await getallTask()
     return (
         <div>
-            <AddTask/>
+            <Task/>
+            <AllTaskTable task={task}/>
         </div>
     );
 };

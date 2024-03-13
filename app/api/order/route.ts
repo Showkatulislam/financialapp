@@ -1,7 +1,15 @@
 import { db } from "@/lib/db";
 import { initailUser } from "@/lib/intial-user";
 import { NextResponse } from "next/server";
-
+export async function GET(req: Request) {
+  try {
+    const orders = await db.order.findMany();
+    return NextResponse.json(orders);
+  } catch (error) {
+    console.log("Error coming from order route");
+    return new NextResponse("Internal Error", { status: 501 });
+  }
+}
 export async function POST(req: Request) {
   try {
     const Iam = await initailUser();
@@ -9,7 +17,7 @@ export async function POST(req: Request) {
       return new NextResponse("Unathorize User", { status: 501 });
     }
     const body = await req.json();
-    const { clientId, productId, dob, priority,companyName,userId} = body;
+    const { clientId, productId, dob, priority, companyName, userId } = body;
     const order = await db.order.create({
       data: {
         clientId,
@@ -17,7 +25,7 @@ export async function POST(req: Request) {
         dob,
         priority,
         companyName,
-        userId
+        userId,
       },
     });
 
@@ -39,7 +47,7 @@ export async function PATCH(req: Request) {
     const orderId = searchParams.get("orderId") as string;
     const order = await db.order.update({
       where: {
-        id: orderId  ?? undefined,
+        id: orderId ?? undefined,
       },
       data: {
         clientId,
@@ -48,9 +56,9 @@ export async function PATCH(req: Request) {
         priority,
       },
     });
-    return NextResponse.json(order)
+    return NextResponse.json(order);
   } catch (error) {
-    console.log("Error Come From order",error);
+    console.log("Error Come From order", error);
     return new NextResponse("Internal Error", { status: 501 });
   }
 }
@@ -67,10 +75,10 @@ export async function DELETE(req: Request) {
       where: {
         id: orderId ?? undefined,
       },
-      include:{
-        client:true,
-        product:true
-      }
+      include: {
+        client: true,
+        product: true,
+      },
     });
     return NextResponse.json(order);
   } catch (error) {

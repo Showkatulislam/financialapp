@@ -16,6 +16,7 @@ model User {
   name      String
   email     String     @db.String
   order     Order[]
+  task      Task[]
   role      MemberRole @default(GUEST)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -35,6 +36,7 @@ model Client {
   contact1  String
   contact2  String
   orders    Order[]
+  task      Task[]
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
@@ -53,6 +55,7 @@ model Product {
 model Order {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   dob         DateTime @default(now())
+  requiredby  DateTime @default(now())
   priority    String
   companyName String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -60,6 +63,7 @@ model Order {
   client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
   clientId    String   @db.ObjectId
   product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  task        Task[]
   productId   String   @db.ObjectId
   createdAt   DateTime @default(now())
   updateAt    DateTime @updatedAt
@@ -67,6 +71,25 @@ model Order {
   @@index([clientId])
   @@index([productId])
   @@index([userId])
+}
+
+model Task {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  taskName   String
+  progress   Progress @default(Pending)
+  requiredBy DateTime
+  orderId    String   @db.ObjectId
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clientId   String   @db.ObjectId
+  client     Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+enum Progress {
+  Pending
+  InProgress
+  Complete
 }
 
 model Report {

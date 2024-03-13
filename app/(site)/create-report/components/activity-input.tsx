@@ -1,15 +1,19 @@
-import TextField from "@/app/components/inputs/TextField";
+
+import DropDownField from "@/app/components/inputs/Dropdown";
+import { nace } from "@/app/data/routes";
 import { ReportState } from "@/hooks/ReportState";
 export const ActivityInput = () => {
   const { report, setTextField } = ReportState();
   return (
     <div className="col-span-12">
-      <TextField
-        name="nace"
-        placeholder="Activity"
-        setValue={setTextField}
-        value={report.nace}
-      />
+        <DropDownField
+          value={report.client}
+          setValue={setTextField}
+          name="nace"
+          placeholder="Nace"
+          type1={true}
+          items={nace}
+        />
     </div>
   );
 };
