@@ -59,9 +59,9 @@ export const columns: ColumnDef<Task>[] = [
       </div>
     ),
   },
-/*   {
+  {
     accessorKey: "Action",
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
-  }, */
+  },
 ];

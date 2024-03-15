@@ -17,7 +17,7 @@ import axios from "axios";
 import AlertModal from "@/components/model/alert-modal";
 import RightViewModalNoTrigger from "@/components/model/right-view-modal";
 import qs from "query-string";
-import { taskSchema } from "./schema";
+import { EditTask } from "./edit-task";
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
 }
@@ -26,18 +26,16 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const router = useRouter();
-  const task = taskSchema.parse(row.original);
-
-  const [open, setOpen] = useState(false);
+ const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [updateOpen, setUpdateOpen] = useState(false);
   const onDelete = async () => {
     setLoading(true);
     try {
       const url = qs.stringifyUrl({
-        url: "/api/order",
+        url: "/api/task",
         query: {
-          taskId: task.id
+          taskId: row.getValue("id")
         },
       });
       await axios.delete(url);
@@ -60,11 +58,11 @@ export function DataTableRowActions<TData>({
         loading={loading}
       />
       <RightViewModalNoTrigger
-        title={"Edit order"}
+        title={"Edit Task"}
         open={updateOpen}
         setOpen={setUpdateOpen}
       >
-        <h1>hello</h1>
+       <EditTask intialData={row.original} setOpen={setUpdateOpen}/>
       </RightViewModalNoTrigger>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

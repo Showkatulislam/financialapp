@@ -4,48 +4,26 @@ import DropDownField from "@/components/inputs/DropDownField";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { priority } from "@/public/dropdownData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { formSchema } from "./add-task";
 import qs from "query-string";
-export const formSchema = z.object({
-  taskName: z.string().min(2, {
-    message: "Task Name will be min 2 lenght",
-  }),
-  orderId: z.string().min(1, {
-    message: "Order Id is Needed",
-  }),
-  clientId: z.string().min(1, {
-    message: "Client id is Needed",
-  }),
-  userId: z.string().min(1, {
-    message: "User id is needed.",
-  }),
-  requiredBy: z.date({
-    required_error: "A date of RequiredBy  is required.",
-  }),
-});
-interface Props{
-  Colse:(b:boolean)=>void
+interface Props {
+  intialData: any;
+  setOpen: (value: boolean) => void;
 }
-export const AddTask = ({Colse}:Props) => {
+export const EditTask = ({ intialData, setOpen }: Props) => {
   const [allorder, setOrder] = useState();
   const [allclient, setClient] = useState();
   const [alluser, setUser] = useState();
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      taskName: "",
-      userId: "",
-      orderId: "",
-      clientId: "",
-      requiredBy: new Date(),
-    },
+    defaultValues: {...intialData}
   });
   useEffect(() => {
     const loadData = async () => {
@@ -61,10 +39,16 @@ export const AddTask = ({Colse}:Props) => {
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post('/api/task', {task:values});
+      const url = qs.stringifyUrl({
+        url: `/api/task`,
+        query: {
+          taskId: intialData.id,
+        },
+      });
+      await axios.patch(url, {task:values});
       form.reset();
       router.refresh();
-      Colse(false)
+      setOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -103,10 +87,10 @@ export const AddTask = ({Colse}:Props) => {
           <Button disabled={loading} type="submit">
             {loading ? (
               <span className="flex items-center animate-pulse">
-                Creating Task ...
+                Updating Task ...
               </span>
             ) : (
-              "Create Task"
+              "Update Task"
             )}
           </Button>
         </div>

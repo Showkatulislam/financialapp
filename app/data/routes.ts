@@ -119,9 +119,9 @@ export const Adminroutes = [
 
 export const userRoutes=[
   {
-    label: "Invoice list",
-    icon: FileCheck,
-    href: "/invoice-list",
+    label: "Task",
+    icon: ListTodo,
+    href: "/task",
   },
   {
     label: "New report",

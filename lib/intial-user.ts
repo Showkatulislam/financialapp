@@ -1,5 +1,6 @@
-import { currentUser, redirectToSignIn } from "@clerk/nextjs";
+import {  redirectToSignIn } from "@clerk/nextjs";
 import { db } from "./db";
+import { currentUser } from "@clerk/nextjs/server";
 
 export const initailUser = async () => {
   const user = await currentUser();
