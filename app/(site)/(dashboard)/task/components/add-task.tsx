@@ -13,8 +13,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import qs from "query-string";
 export const formSchema = z.object({
-  taskName: z.string().min(2, {
-    message: "Task Name will be min 2 lenght",
+  priority: z.string().min(1, {
+    message: "Order Id is Needed",
   }),
   orderId: z.string().min(1, {
     message: "Order Id is Needed",
@@ -28,11 +28,14 @@ export const formSchema = z.object({
   requiredBy: z.date({
     required_error: "A date of RequiredBy  is required.",
   }),
+  due_date: z.date({
+    required_error: "A date of RequiredBy  is required.",
+  }),
 });
-interface Props{
-  Colse:(b:boolean)=>void
+interface Props {
+  Colse: (b: boolean) => void;
 }
-export const AddTask = ({Colse}:Props) => {
+export const AddTask = ({ Colse }: Props) => {
   const [allorder, setOrder] = useState();
   const [allclient, setClient] = useState();
   const [alluser, setUser] = useState();
@@ -40,7 +43,8 @@ export const AddTask = ({Colse}:Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      taskName: "",
+      priority: "",
+      due_date: new Date(),
       userId: "",
       orderId: "",
       clientId: "",
@@ -61,10 +65,10 @@ export const AddTask = ({Colse}:Props) => {
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post('/api/task', {task:values});
+      await axios.post("/api/task", { task: values });
       form.reset();
       router.refresh();
-      Colse(false)
+      Colse(false);
     } catch (error) {
       console.log(error);
     }
@@ -75,8 +79,14 @@ export const AddTask = ({Colse}:Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="h-full space-y-2 max-w-xl w-96 mx-auto"
       >
-        <InputField form={form} name="taskName" placeholder="Task name" />
-
+        <DropDownField
+          type1={true}
+          items={priority}
+          name="priority"
+          placeholder="Priority"
+          form={form}
+        />
+        <DatePicker form={form} placeholder="Due Date" name="due_date" />
         <DropDownField
           type3={true}
           type3Items={allclient}

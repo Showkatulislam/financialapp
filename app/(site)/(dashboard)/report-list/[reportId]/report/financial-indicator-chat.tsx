@@ -22,7 +22,7 @@ export const FinancailIndicatorChart = ({
     "Net Income": f.nprofit,
   }));
   return (
-    <div className="flex p-6 justify-center items-center">
+    <div className="flex py-6  items-center">
       <BarChart width={800} height={400} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />
@@ -30,7 +30,7 @@ export const FinancailIndicatorChart = ({
         <Tooltip />
         <Legend verticalAlign="bottom" align="center" margin={{ right: 40 }} />
         <Bar dataKey="turnover" fill="#8884d8" />
-        <Bar dataKey="Net Income" fill="#82ca9d" />
+        <Bar dataKey="Net Income" fill="#FFFF00" />
       </BarChart>
     </div>
   );

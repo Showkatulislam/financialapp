@@ -12,9 +12,9 @@ datasource db {
 
 model User {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String?    @unique
+  userId    String?
   name      String
-  email     String     @db.String
+  email     String     @unique @db.String
   order     Order[]
   task      Task[]
   role      MemberRole @default(GUEST)
@@ -75,7 +75,8 @@ model Order {
 
 model Task {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  taskName   String
+  priority   String
+  due_date   DateTime
   progress   Progress @default(Pending)
   requiredBy DateTime
   orderId    String   @db.ObjectId

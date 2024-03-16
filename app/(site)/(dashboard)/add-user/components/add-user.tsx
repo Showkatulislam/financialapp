@@ -35,6 +35,7 @@ const Adduser = () => {
       await axios.post('/api/user',values)
       router.refresh()
       form.reset()
+      router.refresh()
       toast.success("User Added Successfully.")
     } catch (error) {
       console.log(error);

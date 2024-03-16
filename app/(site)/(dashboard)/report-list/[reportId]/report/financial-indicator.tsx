@@ -26,7 +26,7 @@ export const FinancailIndicator = ({
               <TableCell>Net profitability</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.nprofit / f.turnover).toFixed(3)}
+                  {(f.nprofit / f.turnover).toFixed(3)} %
                 </TableCell>
               ))}
             </TableRow>
@@ -34,7 +34,7 @@ export const FinancailIndicator = ({
               <TableCell>ROE Return On Equity</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.nprofit / f.equityballocation).toFixed(3)}
+                  {(f.nprofit / f.equityballocation).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>
@@ -42,7 +42,7 @@ export const FinancailIndicator = ({
               <TableCell>ROA Return On Asset</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.nprofit / f.total).toFixed(3)}
+                  {(f.nprofit / f.total).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>
@@ -50,7 +50,7 @@ export const FinancailIndicator = ({
               <TableCell>Autonomy Financial</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.equityballocation / f.total).toFixed(3)}
+                  {(f.equityballocation / f.total).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>
@@ -58,7 +58,7 @@ export const FinancailIndicator = ({
               <TableCell>EBITDA</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.oprofit / f.damorliztion).toFixed(3)}
+                  {(f.oprofit / f.damorliztion).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>
@@ -66,7 +66,7 @@ export const FinancailIndicator = ({
               <TableCell>Lead time Suppliers</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.supplieraccounts / (f.purchases * 360)).toFixed(3)}
+                  {(f.supplieraccounts / (f.purchases * 360)).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>
@@ -74,7 +74,7 @@ export const FinancailIndicator = ({
               <TableCell>Customer lead time</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
-                  {(f.clientaccounts / (f.turnover * 360)).toFixed(3)}
+                  {(f.clientaccounts / (f.turnover * 360)).toFixed(3)}%
                 </TableCell>
               ))}
             </TableRow>

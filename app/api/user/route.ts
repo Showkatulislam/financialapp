@@ -13,6 +13,8 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email } = body;
+    console.log(email,"this is email");
+    
     const user = await db.user.create({
       data: {
         name,
