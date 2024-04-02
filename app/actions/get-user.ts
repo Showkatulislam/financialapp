@@ -2,8 +2,8 @@ import { db } from "@/lib/db";
 import { initailUser } from "@/lib/intial-user";
 
 export const getUser = async () => {
+  const iam=await initailUser()
   try {
-    const iam=await initailUser()
     const user = await db.user.findMany({
       where:{
        id:{
@@ -11,6 +11,9 @@ export const getUser = async () => {
        } 
       }
     });
+    if(!user){
+      return []
+    }
     return user;
   } catch (error) {
     console.log("Error From getUser", { error });

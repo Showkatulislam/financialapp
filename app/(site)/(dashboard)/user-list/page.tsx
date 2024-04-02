@@ -3,8 +3,8 @@ import Container from "@/app/components/Container";
 import { UserDataTable } from "./component/data-table";
 import { columns } from "./component/columns";
 const page = async () => {
-  const userData =getUser();
-  const [user]=await Promise.all([userData])
+  const user=await getUser();
+  
   
   return (
     <Container title="User list">
