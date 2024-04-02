@@ -50,13 +50,13 @@ export async function PATCH(req: Request) {
     const { searchParams } = new URL(req.url);
     const taskId = (await searchParams.get("taskId")) as string;
     const body = await req.json();
-    const { task } = body;
-    console.log(task)
     const newTask = await db.task.update({
       where:{
         id:taskId
       },
-      data:task
+      data:{
+        progress:"Complete"
+      }
     })
     return NextResponse.json(newTask);
   } catch (error) {

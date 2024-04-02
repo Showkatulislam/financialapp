@@ -24,11 +24,13 @@ import { CodeAndDefination } from "./code-and-defination";
 import { CompanyContact } from "./company-contact-info";
 import { ReportState } from "@/hooks/ReportState";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 export const Reportpreview = () => {
   const [mounted, isMounded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { userId } = useAuth();
   const router = useRouter();
-  const { report } = ReportState();
+  const { report,setTextField } = ReportState();
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -46,14 +48,21 @@ export const Reportpreview = () => {
   const saveReport = async () => {
     setLoading(true);
     try {
-      await axios.post("/api/report", {report:report});
-      console.log(report);
+      await axios.post("/api/report", { report: report, userId: userId });
+      if (report.status === "pending") {
+        await axios.patch(`/api/order/${report.id}`,{});
+      }
       toast.success("report added successfullly");
-      router.refresh();
     } catch (error) {
       toast.error("Report not add at Database");
     } finally {
+      setTextField({ client: '' });
+      setTextField({ priority: '' });
+      setTextField({ companyName: '' });
+      setTextField({ status: '' });
+      setTextField({ id: '' });
       router.refresh();
+      router.push("/report-list");
       setLoading(false);
     }
   };

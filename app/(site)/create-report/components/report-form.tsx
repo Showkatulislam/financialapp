@@ -41,7 +41,7 @@ export const Reportform = ({ clients }: reportProps) => {
     <>
       {!path.includes("report-list") && (
         <Link
-          className="p-1 rounded-sm border my-4 flex gap-x-4 w-24 items-center"
+          className="pl-5 rounded-sm border my-4 flex gap-x-4 w-24 items-center"
           href={"/dashboard"}
         >
           <ArrowLeftCircle />
@@ -50,7 +50,7 @@ export const Reportform = ({ clients }: reportProps) => {
       )}
 
       <Container title="Create Report">
-        <div className="grid gird-col-12 gap-4 p-5">
+        <div className="grid gird-col-12 gap-4 ">
           <CompanyName />
           <OrderDetail clients={clients} />
           <CompanyContactInfo />

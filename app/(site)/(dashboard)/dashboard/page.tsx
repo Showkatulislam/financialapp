@@ -3,8 +3,8 @@ import React from 'react';
 import logo from '@/public/logo.svg'
 import { initailUser } from '@/lib/intial-user';
 const page = async() => {    
-    const Iam = await initailUser();
-    console.log(Iam);
+    const Iam =initailUser();
+    
     return (
         <div className='h-full flex justify-center items-center'>
             <div className='flex flex-col items-center'>

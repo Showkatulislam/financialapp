@@ -4,12 +4,13 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { report } = body;
-    console.log(report)
+    const { report,userId } = body;
+    console.log(report,userId)
 
     const myreport = await db.report.create({
       data: {
         report: report,
+        userId:userId
       },
     });
     return NextResponse.json(myreport);

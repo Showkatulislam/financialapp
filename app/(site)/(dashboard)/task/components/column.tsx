@@ -1,74 +1,70 @@
 "use client";
-
-import { Client, Order, User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import moment from "moment";
-import { DataTableRowActions } from "./data-table-action-row";
-
-export type Task = {
+import { DataTabledo } from "./data-table-do";
+export type Order = {
   id: string;
+  dob: Date;
   priority: string;
-  due_date: string;
-  client: Client;
-  order: Order;
-  user: User;
-  requiredBy: Date;
+  companyName: string;
+  userId: string;
+  clientId: string;
+  productId: string;
+  product: any;
+  client: any;
 };
-
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<Order>[] = [
   {
-    accessorKey: "id",
-    header: "id",
-  },
-  {
-    accessorKey: "priority",
-    header: "Priority",
-  },
-  {
-    accessorKey: "due_date",
+    accessorKey: "companyName",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Due Date" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[80px]">
-        {moment(row.getValue("due_date")).format("YY-MM-DD")}
-      </div>
+      <DataTableColumnHeader column={column} title="Company Name" />
     ),
     enableSorting: true,
     enableHiding: false,
   },
-
   {
-    accessorKey: "requiredBy",
+    accessorKey: "dob",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date" />
     ),
     cell: ({ row }) => (
       <div className="w-[80px]">
-        {moment(row.getValue("requiredBy")).format("YY-MM-DD")}
+        {moment(row.getValue("dob")).format("YY-MM-DD")}
       </div>
     ),
     enableSorting: true,
     enableHiding: false,
+  },
+  {
+    accessorKey: "priority",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Priority" />
+    ),
+  },
+  {
+    accessorKey: "product",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Product Name" />
+    ),
+    cell: ({ row }) => (
+      <div>
+        {row.original.product.productName ?? "Unassigned"}
+      </div>
+    ),
   },
   {
     accessorKey: "client",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Client Name" />
     ),
-    cell: ({ row }) => <div>{row.original.client.name ?? "Unassigned"}</div>,
-  },
-  {
-    accessorKey: "user",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="User Name" />
+    cell: ({ row }) => (
+      <div >{row?.original.client.name ?? "Unassigned"}</div>
     ),
-    cell: ({ row }) => <div>{row.original.user.name ?? "Unassigned"}</div>,
   },
   {
-    accessorKey: "Action",
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
-  },
+    accessorKey:'Do',
+    id: "do",
+    cell: ({ row }) => <DataTabledo row={row}/>,
+  }
 ];

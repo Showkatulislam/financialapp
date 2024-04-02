@@ -81,6 +81,8 @@ export interface report {
   secondyestablishment: string;
   officailpublication: string;
   conclusion: string;
+  status:string
+  id:string
 }
 interface reportState {
   report: report;
@@ -151,6 +153,8 @@ export const ReportState = create<reportState>((set) => ({
     secondyestablishment: "",
     officailpublication: "",
     conclusion: "",
+    status:"",
+    id:""
   },
   editshareholderrow: {
     name: "",

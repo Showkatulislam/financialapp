@@ -18,6 +18,7 @@ export const FinancailIndicatorChart = () => {
     year: f.year,
     turnover: f.turnover,
     "Net Income": f.nprofit,
+    "Net profitability":f.nprofit/f.turnover
   }));
   return (
     <div className="flex p-6 justify-center items-center">
@@ -27,8 +28,9 @@ export const FinancailIndicatorChart = () => {
         <YAxis />
         <Tooltip />
         <Legend verticalAlign="bottom" align="center" margin={{ right: 40 }} />
-        <Bar dataKey="turnover" fill="#8884d8" />
-        <Bar dataKey="Net Income" fill="#82ca9d" />
+        <Bar dataKey="turnover" fill="#70ad47" />
+        <Bar dataKey="Net Income" fill="#70ad47" />
+        <Bar dataKey="Net profitability" fill="#ffc000" />
       </BarChart>
     </div>
   );

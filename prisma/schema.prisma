@@ -58,6 +58,7 @@ model Order {
   requiredby  DateTime @default(now())
   priority    String
   companyName String
+  progress   Progress @default(Pending)
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String   @db.ObjectId
   client      Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
@@ -89,13 +90,13 @@ model Task {
 
 enum Progress {
   Pending
-  InProgress
   Complete
 }
 
 model Report {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   report    Json
+  userId    String?
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }

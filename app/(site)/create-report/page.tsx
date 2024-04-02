@@ -4,7 +4,8 @@ import { GetClient } from "@/app/actions/get-client";
 import Container from "@/app/components/Container";
 
 const page = async () => {
-  const clients = await GetClient();
+  const clientData = GetClient();
+  const [clients]=await Promise.all([clientData])
   return (
     <div className="h-full flex">
       <div className="w-1/2">
