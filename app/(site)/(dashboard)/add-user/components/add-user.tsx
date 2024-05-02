@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Form } from "@/components/ui/form"
+import { Form } from "@/components/ui/form";
 import axios from "axios";
 import toast from "react-hot-toast";
 export const formSchema = z.object({
@@ -16,7 +16,10 @@ export const formSchema = z.object({
     .string({
       required_error: "Please select an email to display.",
     })
-    .email()
+    .email(),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
 });
 const Adduser = () => {
   const router = useRouter();
@@ -24,7 +27,8 @@ const Adduser = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: ""
+      email: "",
+      password: "",
     },
   });
   const loading = form.formState.isSubmitting;
@@ -32,18 +36,21 @@ const Adduser = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       console.log(values);
-      await axios.post('/api/user',values)
-      router.refresh()
-      form.reset()
-      router.refresh()
-      toast.success("User Added Successfully.")
+      await axios.post("/api/user", values);
+      router.refresh();
+      form.reset();
+      router.refresh();
+      toast.success("User Added Successfully.");
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 max-w-xl w-96 mx-auto">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-2 max-w-xl w-96 mx-auto"
+      >
         <InputField
           disable={loading}
           name="name"
@@ -56,9 +63,15 @@ const Adduser = () => {
           placeholder="Email"
           form={form}
         />
+        <InputField
+          disable={loading}
+          name="password"
+          placeholder="Password"
+          form={form}
+        />
         <div className="pt-2">
           <Button disabled={loading} type="submit" size="lg">
-            Submit
+          {loading?<p className="animate-spin">FG</p>:"Save"}
           </Button>
         </div>
       </form>

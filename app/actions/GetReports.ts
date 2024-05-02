@@ -1,17 +1,16 @@
 import { db } from "@/lib/db";
-import { initailUser } from "@/lib/intial-user";
 import { MemberRole } from "@prisma/client";
+import getCurrentUser from "./get-user";
 export const GetReports = async () => {
-  const iam=await initailUser()
-  console.log(iam.userId);
+  const iam=await getCurrentUser()
   try {
     let reports;
-    if(iam.role==MemberRole.ADMIN){
+    if(iam?.role==MemberRole.ADMIN){
       reports = await db.report.findMany({})
     }else{
       reports = await db.report.findMany({
         where:{
-          userId:iam.userId
+          userId:iam?.id
         }
       })
     }

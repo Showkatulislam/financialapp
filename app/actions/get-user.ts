@@ -1,22 +1,21 @@
+import getSession from "../utils/getSessiondata";
 import { db } from "@/lib/db";
-import { initailUser } from "@/lib/intial-user";
-
-export const getUser = async () => {
-  const iam=await initailUser()
-  try {
-    const user = await db.user.findMany({
-      where:{
-       id:{
-        not:iam.id
-       } 
-      }
-    });
-    if(!user){
-      return []
+const getCurrentUser=async()=>{
+    const session=await getSession();
+    if(!session?.user?.email){
+        return null;
     }
-    return user;
-  } catch (error) {
-    console.log("Error From getUser", { error });
-    return [];
-  }
-};
+    try {
+        const user=await db.user.findUnique({
+            where:{
+                email:session?.user?.email as string
+            }
+        })
+
+        return user
+    } catch (error) {
+        return null;
+    }
+}
+
+export default getCurrentUser

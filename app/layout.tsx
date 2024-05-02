@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import {dark} from "@clerk/themes";
+
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import Toastprovider from "@/components/provider/toast-provider";
-const inter = Inter({ subsets: ["latin"]});
+import AuthProvider from "@/context/AuthContext";
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Finance GO",
@@ -18,12 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-    appearance={{
-      baseTheme: dark
-    }}
-    >
-      <html lang="en">
+    <html lang="en">
+      <AuthProvider>
         <body className={inter.className} suppressHydrationWarning>
           <ThemeProvider
             attribute="class"
@@ -33,9 +29,9 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-          <Toastprovider/>
+          <Toastprovider />
         </body>
-      </html>
-    </ClerkProvider>
+      </AuthProvider>
+    </html>
   );
 }

@@ -21,6 +21,7 @@ import { ReportState } from "@/hooks/ReportState";
 import { usePathname } from "next/navigation";
 import { EffectivePart } from "./Effective-part";
 import { EffectiveTable } from "./EffectiveTable";
+import { Button } from "@/components/ui/button";
 interface reportProps {
   clients: Client[];
 }
@@ -38,68 +39,69 @@ export const Reportform = ({ clients }: reportProps) => {
   } = ReportState();
   const path = usePathname();
   return (
-    <>
-      {!path.includes("report-list") && (
-        <Link
-          className="pl-5 rounded-sm border my-4 flex gap-x-4 w-24 items-center"
-          href={"/dashboard"}
-        >
-          <ArrowLeftCircle />
-          Back
-        </Link>
-      )}
-
-      <Container title="Create Report">
-        <div className="grid gird-col-12 gap-4 ">
-          <CompanyName />
-          <OrderDetail clients={clients} />
-          <CompanyContactInfo />
-          <OfficialCompanyData />
-          <SummaryInfo />
-          <div className="col-span-12 border p-2 space-y-2">
-            <ReportTable
-              title="shareholder list"
-              cols={["name", "percentage", "nationality"]}
-              rows={report.shareholders}
-              deleteFun={deleteShareholder}
-              editFun={editShareholder}
-            />
-            <ShareHolder />
-          </div>
-          <div className="col-span-12 border p-2 space-y-2">
-            <ReportTable
-              title="Manager list"
-              cols={["name", "companyName", "function", "nationality"]}
-              rows={report.managers}
-              deleteFun={deleteManager}
-              editFun={editManager}
-            />
-            <Manager />
-            <ActivityInput />
-          </div>
-          {report.financialDatas.length > 0 && (
-            <FinancialTable
-              title="financial list"
-              rows={report.financialDatas}
-              deleteFun={deleteFinancialData}
-              editFun={editFinancialData}
-            />
-          )}
-          <FinancialData />
-          <EffectiveTable />
-          <EffectivePart />
-          <CommercialData />
-          <ReportTable
-            title="bank list"
-            cols={["bank", "agency"]}
-            rows={report.banks}
-            deleteFun={deleteBank}
-            editFun={editBank}
-          />
-          <BankInfo />
-          <ExtraInfo />
+    <div className="px-4">
+      <div className="flex justify-between items-center">
+        {!path.includes("report-list") && (
+          <Button>
+            <Link className="flex gap-x-4 items-center" href={"/dashboard"}>
+              <ArrowLeftCircle />
+              Back
+            </Link>
+          </Button>
+        )}
+        <div>
+          <h2 className="text-2xl font-bold my-4">Create Report</h2>
         </div>
-      </Container>
-    </>
+      </div>
+      <div className="grid gird-col-12 gap-4 overflow-y-auto h-[550px]">
+        <CompanyName />
+        <OrderDetail clients={clients} />
+        <CompanyContactInfo />
+        <OfficialCompanyData />
+        <SummaryInfo />
+        <div className="col-span-12 border p-2 space-y-2">
+          <ReportTable
+            title="shareholder list"
+            cols={["name", "percentage", "nationality"]}
+            rows={report.shareholders}
+            deleteFun={deleteShareholder}
+            editFun={editShareholder}
+          />
+          <ShareHolder />
+        </div>
+        <div className="col-span-12 border p-2 space-y-2">
+          <ReportTable
+            title="Manager list"
+            cols={["name", "companyName", "function", "nationality"]}
+            rows={report.managers}
+            deleteFun={deleteManager}
+            editFun={editManager}
+          />
+          <Manager />
+          <ActivityInput />
+        </div>
+        {report.financialDatas.length > 0 && (
+          <FinancialTable
+            title="financial list"
+            rows={report.financialDatas}
+            deleteFun={deleteFinancialData}
+            editFun={editFinancialData}
+          />
+        )}
+        <FinancialData />
+        <EffectiveTable />
+        <EffectivePart />
+        <CommercialData />
+        <ReportTable
+          title="bank list"
+          cols={["bank", "agency"]}
+          rows={report.banks}
+          deleteFun={deleteBank}
+          editFun={editBank}
+        />
+        <BankInfo />
+        <ExtraInfo />
+      </div>
+    </div>
   );
 };

@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 export async function GET(req: Request) {
   try {
     const user = await db.user.findMany();
@@ -9,22 +10,30 @@ export async function GET(req: Request) {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const { name, email } = body;
-    console.log(email,"this is email");
-    
+    const body = await request.json();
+    const { name, email, password } = body;
+
+    console.log(name, email, password);
+
+    if (!name || !email || !password) {
+      return  NextResponse.json({"message":"Name ,Email,Password any Missing"},{status:501})
+    }
+
+    const hashedpassword = await bcrypt.hash(password, 10);
+
     const user = await db.user.create({
       data: {
         name,
         email,
+        password: hashedpassword,
       },
     });
-    return NextResponse.json(user);
+
+    return NextResponse.json(user, { status: 200 });
   } catch (error) {
-    console.log("Error Comming From User Route", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("Internal Error", { status: 501 });
   }
 }
 export async function PATCH(req: Request) {

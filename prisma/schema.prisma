@@ -15,6 +15,7 @@ model User {
   userId    String?
   name      String
   email     String     @unique @db.String
+  password String
   order     Order[]
   task      Task[]
   role      MemberRole @default(GUEST)

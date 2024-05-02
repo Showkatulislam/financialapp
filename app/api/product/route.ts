@@ -1,9 +1,9 @@
+import getCurrentUser from "@/app/actions/get-user";
 import { db } from "@/lib/db";
-import { initailUser } from "@/lib/intial-user";
 import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     const body = await request.json();
     const { productName, country, language, price } = body;
     if (!Iam) {
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }
@@ -42,7 +42,7 @@ export async function PATCH(req: Request) {
   try {
     const body = await req.json();
     const { productName, country, language, price } = body;
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     const { searchParams } = new URL(req.url);
     const productId = searchParams.get("productId") as string;
 
@@ -69,7 +69,7 @@ export async function PATCH(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }

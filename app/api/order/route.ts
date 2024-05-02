@@ -1,5 +1,5 @@
+import getCurrentUser from "@/app/actions/get-user";
 import { db } from "@/lib/db";
-import { initailUser } from "@/lib/intial-user";
 import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   try {
@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 }
 export async function POST(req: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     if (!Iam) {
       return new NextResponse("Unathorize User", { status: 501 });
     }
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 }
 export async function PATCH(req: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     if (!Iam) {
       return new NextResponse("Unathorize User", { status: 501 });
     }
@@ -65,7 +65,7 @@ export async function PATCH(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    const Iam = await initailUser();
+    const Iam = await getCurrentUser()
     if (!Iam) {
       return new NextResponse("UnAthorized User", { status: 401 });
     }

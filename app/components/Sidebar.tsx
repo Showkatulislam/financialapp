@@ -7,18 +7,13 @@ import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { User } from "@prisma/client";
-import { useUser } from "@/hooks/useUser";
 import { Adminroutes, userRoutes } from "../constant/routes";
 
 interface sidebarProps {
-  Iam: User;
+  Iam: User | null;
 }
 const Sidebar = ({ Iam }: sidebarProps) => {
   const path = usePathname();
-  const { setRole } = useUser();
-  useEffect(() => {
-    setRole(Iam.role);
-  }, [Iam.role, setRole]);
   return (
     <div className="flex flex-col space-y-1 py-5  px-8 overflow-y-auto h-full">
       <div className="flex items-center gap-x-2  mb-4">
@@ -26,39 +21,47 @@ const Sidebar = ({ Iam }: sidebarProps) => {
           <Image src={logo} alt="logo" />
         </div>
 
-        <h1 className={`origin-left font-medium text-xl duration-200`}>
+        <h1 className={`origin-left mt-[-4px] font-medium text-xl duration-200`}>
           FINANCE GO
         </h1>
       </div>
-      <div className="overflow-y-auto flex flex-col space-y-3">
-        {Iam.role === "ADMIN" &&
+      <div className="overflow-y-auto flex flex-col space-y-2">
+        {Iam?.role === "ADMIN" &&
           Adminroutes.map((route) => (
             <Link href={route.href} key={route.label}>
               <div
                 className={cn(
-                  "flex gap-2 px-2",
+                  "flex items-center gap-2 px-2 rounded-md",
                   path.includes(route.href)
-                    ? "text-muted-foreground px-2"
+                    ? "text-muted-foreground px-2 bg-secondary/90"
                     : ""
                 )}
               >
-                <route.icon className={cn("w-5 h-5 mr-3")} />
+                <route.icon
+                  className={cn(
+                    "w-8 h-8 mr-3 p-1.5 rounded-full font-extrabold bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  )}
+                />
                 <span className="text-sm ">{route.label}</span>
               </div>
             </Link>
           ))}
-        {Iam.role === "GUEST" &&
+        {Iam?.role === "GUEST" &&
           userRoutes.map((route) => (
             <Link href={route.href} key={route.label}>
               <div
                 className={cn(
-                  "flex gap-2 px-2",
+                  "flex items-center gap-2 px-2 rounded-md",
                   path.includes(route.href)
-                    ? "text-muted-foreground px-2 "
+                    ? "text-muted-foreground px-2 bg-secondary/90"
                     : ""
                 )}
               >
-                <route.icon className={cn("w-5 h-5 mr-3 font-extrabold")} />
+                <route.icon
+                  className={cn(
+                    "w-8 h-8 mr-3 p-1.5 rounded-full font-extrabold bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  )}
+                />
                 <span className="text-sm ">{route.label}</span>
               </div>
             </Link>

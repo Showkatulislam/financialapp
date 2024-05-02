@@ -1,14 +1,14 @@
-import { getUser } from "@/app/actions/get-user";
 import Container from "@/app/components/Container";
 import { UserDataTable } from "./component/data-table";
 import { columns } from "./component/columns";
+import { getAllUser } from "@/app/actions/getAllUser";
 const page = async () => {
-  const user=await getUser();
-  
-  
+  const user = await getAllUser();
+  console.log(user);
+
   return (
     <Container title="User list">
-        <UserDataTable columns={columns} data={user}/>
+      <UserDataTable columns={columns} data={user} />
     </Container>
   );
 };

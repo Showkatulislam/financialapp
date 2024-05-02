@@ -24,11 +24,13 @@ import { CodeAndDefination } from "./code-and-defination";
 import { CompanyContact } from "./company-contact-info";
 import { ReportState } from "@/hooks/ReportState";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
-export const Reportpreview = () => {
+import { User } from "@prisma/client";
+interface ReportpreviewProps {
+  Iam: User|null;
+}
+export const Reportpreview = ({Iam}:ReportpreviewProps) => {
   const [mounted, isMounded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { userId } = useAuth();
   const router = useRouter();
   const { report,setTextField } = ReportState();
   const componentRef = useRef(null);
@@ -48,7 +50,7 @@ export const Reportpreview = () => {
   const saveReport = async () => {
     setLoading(true);
     try {
-      await axios.post("/api/report", { report: report, userId: userId });
+      await axios.post("/api/report", { report: report, userId: Iam?.id });
       if (report.status === "pending") {
         await axios.patch(`/api/order/${report.id}`,{});
       }
@@ -69,7 +71,7 @@ export const Reportpreview = () => {
   return (
     <div>
       <div ref={componentRef}>
-        <div className="flex flex-col space-y-4 text-zinc-900 bg-white  h-full lg:p-20">
+        <div className="flex flex-col space-y-4 text-zinc-900 bg-white   lg:p-20 h-[550px] overflow-y-scroll overflow-x-hidden">
           <ReportHeader />
           <OrderDetail />
           <CompanyContact />

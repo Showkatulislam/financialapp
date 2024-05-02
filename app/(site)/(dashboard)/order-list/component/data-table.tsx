@@ -60,7 +60,7 @@ export function OrderDataTable<TData, TValue>({
   });
   return (
     <div className="space-y-4">
-      <div className="rounded-md border">
+      <div className="rounded-md border h-[400px] overflow-y-scroll p-4">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

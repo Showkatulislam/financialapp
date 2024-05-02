@@ -1,12 +1,12 @@
 import { db } from "@/lib/db";
-import { initailUser } from "@/lib/intial-user";
 import { MemberRole } from "@prisma/client";
+import getCurrentUser from "./get-user";
 
 export const getallTask = async () => {
-  const Iam=await initailUser()
+  const Iam=await getCurrentUser()
   try {
     let task;
-    if(Iam.role==MemberRole.ADMIN){
+    if(Iam?.role==MemberRole.ADMIN){
       task=await db.order.findMany({
         include:{
           user:true,
@@ -17,7 +17,7 @@ export const getallTask = async () => {
     }else{
       task = await db.order.findMany({
         where:{
-          userId:Iam.id
+          userId:Iam?.id
         },
         include:{
           user:true,
@@ -26,11 +26,15 @@ export const getallTask = async () => {
         }
       })
     }
+    console.log(task);
+    
     if(!task){
       return []
     }
     return task;
   } catch (error) {
+    console.log(error);
+    
     return [];
   }
 };

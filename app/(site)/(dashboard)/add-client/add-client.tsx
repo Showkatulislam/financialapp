@@ -100,7 +100,7 @@ export const AddClient = () => {
         />
         <div className="pt-2">
           <Button disabled={loading} type="submit" size="lg">
-            Submit
+           {loading?<p className="animate-spin">FG</p>:"Save"}
           </Button>
         </div>
       </form>

@@ -1,9 +1,8 @@
 import { getallTask } from "@/app/actions/get-task";
 import { AllTaskTable } from "./components/all-task-table";
 const page = async () => {
-  const task =await getallTask()
-/*   const [task] = await Promise.all([taskData]); 
-  console.log("helll",task) */
+  const task = await getallTask();
+  console.log(task);
   return (
     <div>
       <AllTaskTable task={task} />
