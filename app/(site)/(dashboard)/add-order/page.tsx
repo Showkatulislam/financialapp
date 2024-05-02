@@ -9,9 +9,9 @@ const page = async () => {
   const products = await getProduct();
   const users = await getUser();
   return (
-    <Container title="Add Order">
-      <AddOrder clients={clients} products={products} users={users} />
-    </Container>
+    <div className="border-l">
+       <AddOrder clients={clients} products={products} users={users} />
+    </div>
   );
 };
 

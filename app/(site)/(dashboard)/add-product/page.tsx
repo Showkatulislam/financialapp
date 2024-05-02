@@ -1,13 +1,10 @@
-import Container from "@/app/components/Container";
 import { AddProduct } from "./add-product";
 
 const page = () => {
   return (
-    <Container
-    title="Add Product"
-   >
-      <AddProduct/>
-    </Container>
+    <div className="border-l">
+        <AddProduct />
+      </div>
   );
 };
 

@@ -26,6 +26,7 @@ interface DataTableToolbarProps {
 }
 
 const searchBy = ["companyName", "client", "date"];
+const searchFieldName = ["Company Name", "Client", "Date"];
 
 export const DataTableToolbar = ({
   setValue,
@@ -47,7 +48,7 @@ export const DataTableToolbar = ({
           <SelectContent>
             {searchBy.map((p, i) => (
               <SelectItem key={i} value={p}>
-                {p}
+                {searchFieldName[i]}
               </SelectItem>
             ))}
           </SelectContent>
@@ -59,7 +60,9 @@ export const DataTableToolbar = ({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setValue(e.target.value)
             }
-            placeholder={`Search by ${property}`}
+            placeholder={`Search by ${
+              searchFieldName[searchBy.indexOf(property)]
+            }`}
           />
         )}
         {property === searchBy[2] && (

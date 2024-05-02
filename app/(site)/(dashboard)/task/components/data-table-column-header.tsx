@@ -69,8 +69,3 @@ import {
       </div>
     );
   }
-  /* 
-  7C:1C:68:AE:1C:D8 mobile
-  84:FD:D1:D9:85:1E des
-  D4:72:26:B5:55:38 mob1
-  */

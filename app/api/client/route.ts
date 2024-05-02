@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    const client = await db.client.findMany();
+    const client = await db.client.findMany({});
     return NextResponse.json(client);
   } catch (error) {
     console.log("Error Comming From Client GET", { error });
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     console.log("Error Come From Client");
     console.log(error);
 
-    return new NextResponse("Internal Server Error", { status: 501 });
+    return new NextResponse("Internal Server Error", { status: 501});
   }
 }
 export async function PATCH(req: Request) {
@@ -81,6 +81,8 @@ export async function DELETE(req: Request) {
     }
     const { searchParams } = new URL(req.url);
     const clientId = searchParams.get("clientId") as string;
+    console.log(clientId);
+    
     const client = await db.client.delete({
       where: {
         id: clientId ?? undefined,
@@ -91,7 +93,7 @@ export async function DELETE(req: Request) {
     });
     return NextResponse.json(client);
   } catch (error) {
-    console.log("Error Come From Client");
-    return new NextResponse("Internal Error", { status: 501 });
+    console.log("Error Come From Client",error);
+    return new NextResponse("Internal Error email should be unique", { status: 501 })
   }
 }

@@ -4,9 +4,9 @@ import Container from "@/app/components/Container";
 
 const page = () => {
   return (
-    <Container title="Add client">
-      <AddClient />
-    </Container>
+      <div className="border-l">
+        <AddClient />
+      </div>
   );
 };
 

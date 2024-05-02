@@ -38,14 +38,14 @@ export function DataTableRowActions<TData>({
       const url = qs.stringifyUrl({
         url: "/api/client",
         query: {
-          userId: client.id,
+          clientId: client.id,
         },
       });
       await axios.delete(url);
-      toast.success("User Delete Successfully");
-      router.refresh()
+      toast.success("Client Delete Successfully");
+      router.refresh();
     } catch (error) {
-      toast.error("User Not Delete");
+      toast.error("client not delete");
     } finally {
       setLoading(false);
       setOpen(false);

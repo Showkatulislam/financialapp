@@ -79,7 +79,7 @@ export const AddOrder = ({ products, clients, users }: AddOrderProps) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 px-4 max-w-lg mx-auto"
+        className="space-y-2 px-4 w-96 mx-auto"
       >
         <DropDownField
           type3={true}

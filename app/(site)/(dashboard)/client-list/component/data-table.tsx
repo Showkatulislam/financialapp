@@ -60,7 +60,7 @@ export function ClientDataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>

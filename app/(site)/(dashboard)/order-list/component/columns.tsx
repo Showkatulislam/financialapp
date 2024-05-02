@@ -1,8 +1,8 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-action-row";
 import moment from "moment";
+import { DataTableColumnHeader } from "@/app/components/data-table-column-header";
 export type Order = {
   id: string;
   dob: Date;

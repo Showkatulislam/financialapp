@@ -1,7 +1,7 @@
 import CapitalItem from "@/app/components/capital-item";
 import ReportItem from "@/app/components/report-item";
 import ReportTitle from "@/app/components/report-title";
-import { Paymentscolors, Riskcolors } from "@/app/data/routes";
+import { Paymentscolors, Riskcolors } from "@/app/constant/routes";
 import { ReportState } from "@/hooks/ReportState";
 import { Payments, riskRating } from "@/public/dropdownData";
 

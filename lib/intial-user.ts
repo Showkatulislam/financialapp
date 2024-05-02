@@ -1,9 +1,8 @@
-import {  redirectToSignIn,currentUser} from "@clerk/nextjs";
+import { currentUser, redirectToSignIn } from "@clerk/nextjs/server";
 import { db } from "./db";
 
-
 export const initailUser = async () => {
-  const user = await currentUser()
+  const user = await currentUser();
   if (!user) {
     return redirectToSignIn();
   }

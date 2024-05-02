@@ -1,7 +1,8 @@
 import { Payments, riskRating } from "@/public/dropdownData";
 import ReportTitle from "../report-title";
 import { cn } from "@/lib/utils";
-import { Paymentscolors, Riskcolors } from "@/app/data/routes";
+import { Paymentscolors, Riskcolors } from "@/app/constant/routes";
+
 
 export const CodeAndDefination = () => {
   return (

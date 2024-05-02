@@ -1,8 +1,8 @@
 import {
     ArrowDownIcon,
+    ArrowDownUp,
+    ArrowUpDown,
     ArrowUpIcon,
-    SortAsc,
-    SortDesc,
   } from "lucide-react";
   import { Column } from "@tanstack/react-table";
   
@@ -46,7 +46,7 @@ import {
               ) : column.getIsSorted() === "asc" ? (
                 <ArrowUpIcon className="ml-2 h-4 w-4" />
               ) : (
-                <SortDesc className="ml-2 h-4 w-4" />
+                <ArrowDownUp className="ml-2 h-4 w-4" />
               )}
             </Button>
           </DropdownMenuTrigger>
@@ -61,7 +61,7 @@ import {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-              <SortAsc className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              <ArrowUpDown className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
               Hide
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -69,4 +69,3 @@ import {
       </div>
     );
   }
-  

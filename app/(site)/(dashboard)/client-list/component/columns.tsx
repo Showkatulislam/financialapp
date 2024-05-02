@@ -1,7 +1,7 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-action-row";
+import { DataTableColumnHeader } from "@/app/components/data-table-column-header";
 export type Client = {
   id: string;
   name: string;

@@ -6,9 +6,9 @@ import React, { useEffect } from "react";
 import logo from "@/public/logo.svg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Adminroutes, userRoutes } from "@/app/data/routes";
 import { User } from "@prisma/client";
 import { useUser } from "@/hooks/useUser";
+import { Adminroutes, userRoutes } from "../constant/routes";
 
 interface sidebarProps {
   Iam: User;
