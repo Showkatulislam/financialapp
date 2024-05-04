@@ -32,6 +32,7 @@ export const Reportpreview = ({ Iam }: ReportpreviewProps) => {
   const [mounted, isMounded] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  console.log(Iam);
   const { report, setTextField } = ReportState();
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({

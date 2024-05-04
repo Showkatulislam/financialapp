@@ -1,4 +1,3 @@
-
 export const Payments = [
   "Very Regular",
   "Regular",
@@ -20,6 +19,19 @@ export const riskRating = [
   "Extremely High Risk",
   "Undefined Risk",
 ];
+
+export const riskRatingFa=[
+  "Risque Excellent",
+  "Risque très bas",
+  "Risque bas",
+  "Risque modéré",
+  "Risque acceptable",
+  "Risque moyennement élevé",
+  "Risque d'insolvabilité significatif",
+  "Risque élevé 2 Risque très élevé",
+  "Risque extrêmement élevé",
+  "Contentieux/Recouvrement ND Risque non défini",
+]
 
 export const languages = ["English", "Franch"];
 export const priority = ["Flash", "Express", "Standard", "Relaxed"];

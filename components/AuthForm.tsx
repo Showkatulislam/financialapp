@@ -7,6 +7,7 @@ import { Form } from "./ui/form";
 import InputField from "./inputs/InputField";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -15,6 +16,7 @@ const formSchema = z.object({
 
 const AuthForm = () => {
   const router = useRouter();
+  const [error,setError]=useState("")
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,12 +35,13 @@ const AuthForm = () => {
       });
       if (res?.error) {
         console.log(res.error);
+        setError("Invalid credentails")
       }
       if (res?.ok && !res?.error) {
         router.push("/dashboard");
       }
     } catch (error) {
-      console.log(error);
+      setError("Invalid credentails")
     }
   };
   return (
@@ -61,6 +64,9 @@ const AuthForm = () => {
           form={form}
           type="password"
         />
+        {
+          error && <p className="text-yellow-600">{error}</p>
+        }
         <div className="pt-2">
           <Button disabled={loading} type="submit" size="lg">
             {loading?<p className="animate-spin">FG</p>:"Login"}

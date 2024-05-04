@@ -1,4 +1,4 @@
-import { Payments, riskRating } from "@/public/dropdownData";
+import { Payments, riskRating, riskRatingFa } from "@/public/dropdownData";
 import ReportTitle from "../report-title";
 import { cn } from "@/lib/utils";
 import { Paymentscolors, Riskcolors } from "@/app/constant/routes";
@@ -8,13 +8,14 @@ import { dic } from "@/dictionaries";
 export const CodeAndDefination = () => {
   const { LAN } = useLanguage();
   const index = LAN == "EN" ? 0 : 1;
+  const riskTemp=index==0?riskRating:riskRatingFa
   return (
     <div>
       <ReportTitle title={dic.CodeAndDefinationtitle[index]} />
       <div className="flex flex-col space-y-2 ">
         <p className="bg-[#ECECEC] p-2">{dic.risk[index]}</p>
         <ol className="space-x-2 p-2">
-          {riskRating.map((r, i) => (
+          {riskTemp.map((r, i) => (
             <span className={cn(Riskcolors[i])} key={i}>
               {i + 1} . {r}
             </span>

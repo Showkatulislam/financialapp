@@ -26,7 +26,6 @@ export const authOption: AuthOptions = {
           },
         });
 
-        console.log(user)
 
         if (!user || !user?.password) {
           throw new Error("Invalid credentails ");

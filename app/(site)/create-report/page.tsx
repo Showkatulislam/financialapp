@@ -3,6 +3,7 @@ import { Reportform } from "./components/report-form";
 import { GetClient } from "@/app/actions/get-client";
 import Container from "@/app/share//Container";
 import getCurrentUser from "@/app/actions/get-user";
+import { redirect } from "next/navigation";
 
 const page = async () => {
   const clientData = GetClient();

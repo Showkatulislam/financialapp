@@ -4,6 +4,8 @@ import getCurrentUser from "./get-user";
 
 export const getallTask = async () => {
   const Iam=await getCurrentUser()
+  console.log(Iam?.userId);
+  
   try {
     let task;
     if(Iam?.role==MemberRole.ADMIN){
