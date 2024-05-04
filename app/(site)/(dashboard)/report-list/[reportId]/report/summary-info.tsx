@@ -1,19 +1,23 @@
-import CapitalItem from "@/app/components/capital-item";
-import ReportItem from "@/app/components/report-item";
-import ReportTitle from "@/app/components/report-title";
+import CapitalItem from "@/app/share//capital-item";
+import ReportItem from "@/app/share//report-item";
+import ReportTitle from "@/app/share//report-title";
 import { Paymentscolors, Riskcolors } from "@/app/constant/routes";
 import { report } from "@/hooks/ReportState";
 import { Payments, riskRating } from "@/public/dropdownData";
+import { useLanguage } from "@/hooks/UseLanguage";
+import { dic } from "@/dictionaries";
 interface SummaryInfoProps {
   report: report;
 }
 export const SummaryInfo = ({ report }: SummaryInfoProps) => {
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div className="flex flex-col lg:space-y-2">
-      <ReportTitle title="SUMMARY" />
+      <ReportTitle title={dic.summary[index]} />
       <div>
         <ReportItem
-          title="Credit rating"
+        title={dic.riskRating[index]}
           description={report.riskRating}
           className={
             report.riskRating
@@ -23,7 +27,7 @@ export const SummaryInfo = ({ report }: SummaryInfoProps) => {
           bg={true}
         />
         <ReportItem
-          title="Payments Experience"
+          title={dic.paymentExperience[index]}
           description={report.paymentExperience}
           className={
             report.paymentExperience
@@ -32,13 +36,13 @@ export const SummaryInfo = ({ report }: SummaryInfoProps) => {
           }
         />
         <CapitalItem
-          title="Recommended outstanding"
+          title={dic.recommendCredit[index]}
           capital={report.recommendCredit}
           text={report.recommendCreditText}
           bg={true}
         />
         <CapitalItem
-          title="Equivalent to"
+          title={dic.equivalentToCredit[index]}
           capital={report.equivalentToCredit}
           text={report.equivalentToCreditText}
         />

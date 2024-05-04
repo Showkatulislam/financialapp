@@ -1,5 +1,5 @@
 "use client";
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 import { OrderDataTable } from "./data-table";
 import { columns } from "./columns";
 import { OrderWithClientAndProduct } from "@/types";

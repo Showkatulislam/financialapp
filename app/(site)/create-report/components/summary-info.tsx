@@ -1,5 +1,6 @@
-import DropDownField from "@/app/components/inputs/Dropdown";
-import InputField from "@/app/components/inputs/InputFields";
+import DropDownField from "@/app/share//inputs/Dropdown";
+import InputField from "@/app/share//inputs/InputFields";
+import { CL } from "@/app/utils/change-language";
 import Title from "@/components/Title";
 import { ReportState } from "@/hooks/ReportState";
 import { Payments, currency, riskRating } from "@/public/dropdownData";
@@ -9,12 +10,12 @@ export const SummaryInfo = () => {
   return (
     <div className="col-span-12 grid grid-cols-12 gap-2 border p-2 space-y-2">
       <div className="col-span-12 p-2 border">
-        <Title title="SUMMARY" />
+        <Title title={CL("summary")} />
       </div>
       <div className="col-span-6">
         <DropDownField
           name="riskRating"
-          placeholder="Risk Rating"
+          placeholder={CL("riskRating")}
           setValue={setTextField}
           type1={true}
           items={riskRating}
@@ -24,7 +25,7 @@ export const SummaryInfo = () => {
       <div className="col-span-6">
         <DropDownField
           name="paymentExperience"
-          placeholder="Paymen tExperience"
+          placeholder={CL("paymentExperience")}
           type1={true}
           setValue={setTextField}
           items={Payments}
@@ -34,7 +35,7 @@ export const SummaryInfo = () => {
       <div className="col-span-6">
         <DropDownField
           name="recommendCredit"
-          placeholder="recommend Credit"
+          placeholder={CL("recommendCredit")}
           setValue={setTextField}
           value={report.recommendCredit}
           type1={true}
@@ -45,7 +46,7 @@ export const SummaryInfo = () => {
         <InputField
           setValue={setTextField}
           type="number"
-          placeholder="recommend Credi"
+          placeholder={CL("recommendCredit")}
           name="recommendCreditText"
           value={report.recommendCreditText}
         />
@@ -53,7 +54,7 @@ export const SummaryInfo = () => {
       <div className="col-span-6">
         <DropDownField
           name="equivalentToCredit"
-          placeholder="equivalentToCredit"
+          placeholder={CL("equivalentToCredit")}
           setValue={setTextField}
           value={report.equivalentToCredit}
           type1={true}

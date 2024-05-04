@@ -1,6 +1,6 @@
 import React from "react";
 import { AddClient } from "./add-client";
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 
 const page = () => {
   return (

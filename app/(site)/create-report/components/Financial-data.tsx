@@ -1,3 +1,4 @@
+import { CL } from "@/app/utils/change-language";
 import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
@@ -107,59 +108,60 @@ export const FinancialData = () => {
   return (
     <div className="border p-3 col-span-12">
       <Form {...form}>
-        <Title title="Financial Data" />
+        <Title title={CL('FinancialData')} />
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4 grid grid-cols-12 gap-x-3 items-center"
         >
           <div className="col-span-6">
-            <InputField name="year" placeholder="Year" form={form} />
+            <InputField name="year" placeholder={CL("Year")} form={form} />
           </div>
           <div className="col-span-6">
-            <InputField name="turnover" placeholder="Turnover" form={form} />
+            <InputField name="turnover" placeholder={CL("Turnover")} form={form} />
           </div>
           <div className="col-span-6">
-            <InputField name="nprofit" placeholder="Net Profit " form={form} />
+            <InputField name="nprofit" 
+            placeholder={CL("NetProfit")} form={form} />
           </div>
           <div className="col-span-6">
-            <InputField name="oprofit" placeholder="oprofit" form={form} />
+            <InputField name="oprofit" placeholder={CL("Oprofit")} form={form} />
           </div>
           <div className="col-span-6">
             <InputField
               name="damorliztion"
-              placeholder="damorliztion"
+              placeholder={CL("denomination")}
               form={form}
             />
           </div>
           <div className="col-span-6">
             <InputField
               name="equityballocation"
-              placeholder="equityballocation"
+              placeholder={CL("equityballocation")}
               form={form}
             />
           </div>
           <div className="col-span-6">
             <InputField
               name="supplieraccounts"
-              placeholder="supplieraccounts"
+              placeholder={CL("supplieraccounts")}
               form={form}
             />
           </div>
           <div className="col-span-6">
-            <InputField name="purchases" placeholder="purchases" form={form} />
+            <InputField name="purchases" placeholder={CL("purchases")} form={form} />
           </div>
           <div className="col-span-6">
             <InputField
               name="clientaccounts"
-              placeholder="clientaccounts"
+              placeholder={CL("clientaccounts")}
               form={form}
             />
           </div>
           <div className="col-span-6">
-            <InputField name="stocks" placeholder="stocks" form={form} />
+            <InputField name="stocks" placeholder={CL("stocks")} form={form} />
           </div>
           <div className="col-span-6">
-            <InputField name="total" placeholder="Total" form={form} />
+            <InputField name="total" placeholder={CL("total")} form={form} />
           </div>
           <div className="col-span-12">
             <Button disabled={loading} type="submit" size="lg">

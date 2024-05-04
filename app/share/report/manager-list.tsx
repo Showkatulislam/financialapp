@@ -1,4 +1,5 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
+import { CL } from "@/app/utils/change-language";
 import {
   Table,
   TableBody,
@@ -14,15 +15,15 @@ export const Managers = () => {
   } = ReportState();
   return (
     <div>
-      <ReportTitle title="MANAGERS" />
+      <ReportTitle title={CL("Managers")} />
       <Table>
         <TableHeader>
-          <TableHead className="text-blue-600 font-bold">Name</TableHead>
+          <TableHead className="text-blue-600 font-bold">{CL("ManagerName")}</TableHead>
           <TableHead className="text-blue-600 font-bold">
-            Company Name
+           {CL("CompanyName")}
           </TableHead>
-          <TableHead className="text-blue-600 font-bold">Function</TableHead>
-          <TableHead className="text-blue-600 font-bold">Nationality</TableHead>
+          <TableHead className="text-blue-600 font-bold">{CL("Function")}</TableHead>
+          <TableHead className="text-blue-600 font-bold">{CL("Nationality")}</TableHead>
         </TableHeader>
         <TableBody>
           {managers.map((m) => (

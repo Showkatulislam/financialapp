@@ -8,7 +8,7 @@ interface reportItemProps {
 }
 const ReportItem = ({bg,className,title, description }: reportItemProps) => {
   return (
-    <div className={cn("grid grid-cols-12 text-base font-light lg:p-1 p-0.5",bg&&"bg-[#ECECEC]")}>
+    <div className={cn("grid grid-cols-12 text-base  lg:p-1 p-0.5",bg&&"bg-[#ECECEC]")}>
       <p className="col-span-3">{title}</p>
       <p className={cn('col-span-9',className)}>{description}</p>
     </div>

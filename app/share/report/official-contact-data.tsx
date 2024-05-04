@@ -1,6 +1,7 @@
-import CapitalItem from "@/app/components/capital-item";
-import ReportItem from "@/app/components/report-item";
-import ReportTitle from "@/app/components/report-title";
+import CapitalItem from "@/app/share//capital-item";
+import ReportItem from "@/app/share//report-item";
+import ReportTitle from "@/app/share//report-title";
+import { CL } from "@/app/utils/change-language";
 import { ReportState } from "@/hooks/ReportState";
 import moment from "moment";
 
@@ -8,28 +9,28 @@ export const OfficialCompanyData = () => {
   const { report } = ReportState();
   return (
     <div className="flex flex-col lg:space-y-2">
-      <ReportTitle title="OFFICIAL COMPANY DATA" />
+      <ReportTitle title={CL("OfficialCompanyData")} />
       <div>
-        <ReportItem title="Legal status" description={report.legalStatus} />
+        <ReportItem title={CL("legalStatus")} description={report.legalStatus} />
         <ReportItem
-          title="Unique identifier"
+          title={CL("uniqueIdentifier")}
           description={report.uniqueIdentifier}
         />
         <ReportItem
-          title="Creation date"
+          title={CL("CreationDate")}
           description={moment(report.creationData).format("YYYY/MM/DD")}
         />
         <ReportItem
-          title="Activity status"
+          title={CL("Startofactivity")}
           description={moment(report.startOfActivity).format("YYYY.MM.DD")}
         />
         <CapitalItem
-          title="Share capital"
+          title={CL("Sharecapital")}
           capital={report.Sharecapital}
           text={report.Sharecapitaltext}
         />
         <CapitalItem
-          title="Pre Share capital"
+          title={CL("preSharecapital")}
           capital={report.preShareCapital}
           text={report.preShareCapitaltext}
         />

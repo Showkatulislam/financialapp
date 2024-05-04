@@ -2,7 +2,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableRowActions } from "./data-table-action-row";
 import moment from "moment";
-import { DataTableColumnHeader } from "@/app/components/data-table-column-header";
+import { DataTableColumnHeader } from "@/app/share//data-table-column-header";
 export type Order = {
   id: string;
   dob: Date;

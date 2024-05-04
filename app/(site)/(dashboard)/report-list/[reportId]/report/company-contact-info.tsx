@@ -1,26 +1,57 @@
-import ReportItem from "@/app/components/report-item";
-import ReportTitle from "@/app/components/report-title";
+import ReportItem from "@/app/share//report-item";
+import ReportTitle from "@/app/share//report-title";
+import { dic } from "@/dictionaries";
 import { report } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 
 interface CompanyContactProps {
   report: report;
 }
 export const CompanyContact = ({ report }: CompanyContactProps) => {
+  const { LAN } = useLanguage();
+  const index = LAN == "EN" ? 0 : 1;
   return (
     <div className="flex flex-col lg:space-y-2">
-      <ReportTitle title="Company Contact" />
+      <ReportTitle title={dic.companyinfo[index]} />
       <div>
-        <ReportItem title="Customer" description={report.Denomination} />
-        <ReportItem bg={true} title="Address" description={report.address} />
-        <ReportItem
-          title="Email
-  "
-          description={report.email}
-        />
-        <ReportItem bg={true} title="Fax" description={report.fax} />
-        <ReportItem title="Mobile" description={report.mobile} />
-        <ReportItem bg={true} title="Tel" description={report.tel} />
-        <ReportItem title="Website" description={report.website} />
+        {report.Denomination && (
+          <ReportItem
+            title={dic.client[index]}
+            description={report.Denomination}
+          />
+        )}
+        {report.address && (
+          <ReportItem bg={true} title="Address" description={report.address} />
+        )}
+        {report.email && (
+          <ReportItem title={dic.email[index]} description={report.email} />
+        )}
+        {report.fax && (
+          <ReportItem
+            bg={true}
+            title={dic.Fax[index]}
+            description={report.fax}
+          />
+        )}
+        {report.mobile && (
+          <ReportItem title={dic.Mobile[index]} description={report.mobile} />
+        )}
+        {report.tel && (
+          <ReportItem
+            bg={true}
+            title={dic.Telephone[index]}
+            description={report.tel}
+          />
+        )}
+        {report.website && (
+          <ReportItem title={dic.Website[index]} description={report.website} />
+        )}
+        {report.nif && (
+          <ReportItem title={dic.nif[index]} description={report.nif} />
+        )}
+        {report.nis && (
+          <ReportItem title={dic.nis[index]} description={report.nis} />
+        )}
       </div>
     </div>
   );

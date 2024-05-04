@@ -1,18 +1,19 @@
-import CapitalItem from "@/app/components/capital-item";
-import ReportItem from "@/app/components/report-item";
-import ReportTitle from "@/app/components/report-title";
+import CapitalItem from "@/app/share//capital-item";
+import ReportItem from "@/app/share//report-item";
+import ReportTitle from "@/app/share//report-title";
 import { Paymentscolors, Riskcolors } from "@/app/constant/routes";
 import { ReportState } from "@/hooks/ReportState";
 import { Payments, riskRating } from "@/public/dropdownData";
+import { CL } from "@/app/utils/change-language";
 
 export const SummaryInfo = () => {
   const { report } = ReportState();
   return (
     <div className="flex flex-col lg:space-y-2">
-      <ReportTitle title="SUMMARY" />
+      <ReportTitle title={CL("summary")} />
       <div>
         <ReportItem
-          title="Credit rating"
+          title={CL("riskRating")} 
           description={report.riskRating}
           className={
             report.riskRating
@@ -21,7 +22,7 @@ export const SummaryInfo = () => {
           }
         />
         <ReportItem
-          title="Payments Experience"
+        title={CL("paymentExperience")} 
           description={report.paymentExperience}
           className={
             report.paymentExperience
@@ -35,7 +36,7 @@ export const SummaryInfo = () => {
           text={report.recommendCreditText}
         />
         <CapitalItem
-          title="Equivalent to"
+         title={CL("equivalentToCredit")} 
           capital={report.equivalentToCredit}
           text={report.equivalentToCreditText}
         />

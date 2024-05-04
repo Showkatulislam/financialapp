@@ -1,4 +1,4 @@
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 import { UserDataTable } from "./component/data-table";
 import { columns } from "./component/columns";
 import { getAllUser } from "@/app/actions/getAllUser";

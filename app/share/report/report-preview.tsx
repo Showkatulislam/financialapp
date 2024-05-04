@@ -26,13 +26,13 @@ import { ReportState } from "@/hooks/ReportState";
 import { useRouter } from "next/navigation";
 import { User } from "@prisma/client";
 interface ReportpreviewProps {
-  Iam: User|null;
+  Iam: User | null;
 }
-export const Reportpreview = ({Iam}:ReportpreviewProps) => {
+export const Reportpreview = ({ Iam }: ReportpreviewProps) => {
   const [mounted, isMounded] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { report,setTextField } = ReportState();
+  const { report, setTextField } = ReportState();
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -48,21 +48,25 @@ export const Reportpreview = ({Iam}:ReportpreviewProps) => {
   }
 
   const saveReport = async () => {
+    if(!report.companyName || !report.client){
+      toast.error("Something is missing")
+      return
+    }
     setLoading(true);
     try {
       await axios.post("/api/report", { report: report, userId: Iam?.id });
       if (report.status === "pending") {
-        await axios.patch(`/api/order/${report.id}`,{});
+        await axios.patch(`/api/order/${report.id}`, {});
       }
       toast.success("report added successfullly");
     } catch (error) {
       toast.error("Report not add at Database");
     } finally {
-      setTextField({ client: '' });
-      setTextField({ priority: '' });
-      setTextField({ companyName: '' });
-      setTextField({ status: '' });
-      setTextField({ id: '' });
+      setTextField({ client: "" });
+      setTextField({ priority: "" });
+      setTextField({ companyName: "" });
+      setTextField({ status: "" });
+      setTextField({ id: "" });
       router.refresh();
       router.push("/report-list");
       setLoading(false);
@@ -92,16 +96,16 @@ export const Reportpreview = ({Iam}:ReportpreviewProps) => {
           <CodeAndDefination />
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <Button
+      <div className="mx-auto">
+        {/*         <Button
           className="my-3 bg-indigo-500 hover:bg-indigo-400 text-2xl font-bold text-white p-1"
           size="lg"
           onClick={handlePrint}
         >
           Preview
-        </Button>
+        </Button> */}
         <Button
-          className="my-3 bg-sky-500 hover:bg-sky-400 text-2xl font-bold text-white p-1 ml-10"
+          className="my-3  text-2xl font-bold  p-1"
           size="lg"
           onClick={saveReport}
         >

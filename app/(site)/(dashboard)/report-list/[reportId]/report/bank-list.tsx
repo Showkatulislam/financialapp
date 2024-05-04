@@ -1,4 +1,4 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
 import {
   Table,
   TableBody,
@@ -7,21 +7,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { dic } from "@/dictionaries";
 import { ReportState, bank } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 import { cn } from "@/lib/utils";
 interface BankAndApprecationprops {
   banks: bank[];
 }
 export const BankAndApprecation = ({ banks }: BankAndApprecationprops) => {
   const { report } = ReportState();
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div className="flex flex-col space-y-2">
-      <ReportTitle title="BANKS AND BANK APPRECIATION" />
+      <ReportTitle title={dic.bankandapprociation[index]} />
       <div>
         <Table>
           <TableHeader>
-            <TableHead className="text-blue-800">Bank</TableHead>
-            <TableHead className="text-blue-800">Agency</TableHead>
+            <TableHead className="text-blue-800">{dic.bank[index]}</TableHead>
+            <TableHead className="text-blue-800">{dic.agency[index]}</TableHead>
           </TableHeader>
           <TableBody>
             {banks?.map((b: any, i) => (
@@ -40,7 +44,9 @@ export const BankAndApprecation = ({ banks }: BankAndApprecationprops) => {
               )}
             >
               <TableCell>
-              <span className="font-bold">Comment</span>
+              <span className="font-bold">
+              {dic.comment[index]}
+              </span>
               </TableCell>
               <TableCell>{report.bankComment}</TableCell>
             </TableRow>

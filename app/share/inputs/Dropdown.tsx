@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { language } from "@/hooks/UseLanguage";
 import { Client,  Product } from "@prisma/client";
 
 interface DropDownFieldProps {
@@ -20,6 +21,7 @@ interface DropDownFieldProps {
   type2?: boolean;
   type3?: boolean;
   placeholder: string;
+  handleClick?:(v:language)=>void
 }
 const DropDownField = ({
   items,
@@ -32,12 +34,26 @@ const DropDownField = ({
   value,
   setValue,
   name,
+  handleClick
 }: DropDownFieldProps) => {
+  const handleValueChange = (newValue: any) => {
+    setValue({ ...value, [name]: newValue });
+    console.log(newValue);
+    
+    if (handleClick) {
+      if(newValue==='Franch'){
+
+        handleClick("FN");
+      }else{
+        handleClick("EN");
+      }
+    }
+  };
   return (
     <div className="flex flex-col space-y-2">
       <Label>{placeholder}</Label>
       <Select
-        onValueChange={(value) => setValue({ [name]: value })}
+        onValueChange={handleValueChange}
         defaultValue={value}
       >
         <SelectTrigger>

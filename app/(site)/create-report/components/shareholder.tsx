@@ -1,3 +1,4 @@
+import { CL } from "@/app/utils/change-language";
 import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import { ReportState } from "@/hooks/ReportState";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -45,7 +47,7 @@ export const ShareHolder = () => {
   return (
     <div className="border p-3 col-span-12">
       <Form {...form}>
-        <Title title="ShareHolders" />
+        <Title title={CL("ShareHolders")}/>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="grid grid-cols-12 gap-2"
@@ -53,14 +55,14 @@ export const ShareHolder = () => {
           <div className="col-span-4">
             <InputField
               name="name"
-              placeholder="ShareHolder Name"
+              placeholder={CL("ShareHolderName")}
               form={form}
             />
           </div>
           <div className="col-span-4">
             <InputField
               name="percentage"
-              placeholder="percentage %"
+              placeholder={CL("percentage")}
               type="number"
               form={form}
             />
@@ -68,7 +70,7 @@ export const ShareHolder = () => {
           <div className="col-span-4">
             <InputField
               name="nationality"
-              placeholder="Nationality"
+              placeholder={CL("nationality")}
               form={form}
             />
           </div>

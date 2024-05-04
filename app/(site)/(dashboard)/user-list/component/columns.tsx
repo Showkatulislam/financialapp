@@ -1,8 +1,8 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-action-row";
 import { DataTableRollAction } from "./data-table-roll-action";
+import { DataTableColumnHeader } from "@/app/share//data-table-column-header";
 export type User = {
   id: string;
   name: string;

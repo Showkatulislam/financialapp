@@ -1,3 +1,4 @@
+import { CL } from "@/app/utils/change-language";
 import Title from "@/components/Title";
 import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
@@ -48,28 +49,28 @@ export const Manager = () => {
   return (
     <div className="border p-3 col-span-12">
       <Form {...form}>
-        <Title title="Managers" />
+        <Title title={CL("Managers")} />
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4 grid grid-cols-12 gap-x-3 items-center"
         >
           <div className="col-span-6">
-            <InputField name="name" placeholder="Manager Name" form={form} />
+            <InputField name="name" placeholder={CL("ManagerName")} form={form} />
           </div>
           <div className="col-span-6">
             <InputField
               name="companyName"
-              placeholder="Company Name"
+              placeholder={CL("CompanyName")}
               form={form}
             />
           </div>
           <div className="col-span-6">
-            <InputField name="function" placeholder="Function" form={form} />
+            <InputField name="function" placeholder={CL("Function")} form={form} />
           </div>
           <div className="col-span-6">
             <InputField
               name="nationality"
-              placeholder="Nationality"
+              placeholder={CL("Nationality")}
               form={form}
             />
           </div>

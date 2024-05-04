@@ -41,7 +41,7 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId") as string;
-    const { name, email } = body;
+    const { name, email,password } = body;
     const user = await db.user.update({
       where: {
         id: userId,
@@ -49,6 +49,7 @@ export async function PATCH(req: Request) {
       data: {
         email,
         name,
+        password
       },
     });
     return NextResponse.json(user);

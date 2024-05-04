@@ -5,7 +5,7 @@ import { OrderDetail } from "./order-detail";
 import { OfficialCompanyData } from "./official-contact-data";
 import { SummaryInfo } from "./summary-info";
 import { ShareHolderList } from "./shareholder-list";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Managers } from "./manager-list";
 import { Activity } from "./activity";
 import { FinancialData } from "./financial-data";
@@ -17,9 +17,10 @@ import { BankAndApprecation } from "./bank-list";
 import { SecondaryEstablishment } from "./secondary-establishment";
 import { OfficailPublication } from "./official-publication";
 import { useReactToPrint } from "react-to-print";
-import { Conclusion } from "@/app/components/report/conclusion";
-import { CodeAndDefination } from "@/app/components/report/code-and-defination";
+import { Conclusion } from "@/app/share//report/conclusion";
+import { CodeAndDefination } from "@/app/share//report/code-and-defination";
 import { CompanyContact } from "./company-contact-info";
+import { useLanguage } from "@/hooks/UseLanguage";
 interface reportProps {
   report: any;
 }
@@ -27,19 +28,34 @@ export const Reportpreview = ({ report }: reportProps) => {
   const [mounted, isMounded] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const [myreport, setmyreport] = useState(report.report);
+  const {setLanguage}=useLanguage()
+
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: "Printable Document",
     onAfterPrint: () => setPageNumber(1),
   });
+
+  const handlechangeLanguage=useCallback(()=>{
+    console.log(report.report.language);
+    if(report.report.language==='Franch'){
+      setLanguage("FN")
+    }else{
+      setLanguage("EN")
+    }
+    
+  },[report.report.language,setLanguage])
  
  useEffect(() => {
     isMounded(true);
-  }, []);
+    handlechangeLanguage()
+  }, [handlechangeLanguage]);
   if (!mounted) {
     return null;
   }
+
+ 
 
   return (
     <div className="flex flex-col space-y-4">

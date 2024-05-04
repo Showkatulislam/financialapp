@@ -1,4 +1,4 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
 import {
   Table,
   TableBody,
@@ -7,23 +7,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { dic } from "@/dictionaries";
 import { shareholder } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 import { cn } from "@/lib/utils";
 interface ShareHolderListProps {
   shareholders: shareholder[];
 }
 export const ShareHolderList = ({ shareholders }: ShareHolderListProps) => {
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div>
-      <ReportTitle title="SHAREHOLDERS/ASSOCIATES" />
+      <ReportTitle title={`${dic.ShareHolders[index]} /ASSOCIATES`}/>
       <Table>
         <TableHeader>
-          <TableHead className="text-blue-600 font-normal">Name</TableHead>
+          <TableHead className="text-blue-600 font-normal">{dic.ShareHolderName[index]}</TableHead>
           <TableHead className="text-blue-600 font-normal">
-            Percentage
+          {dic.percentage[index]}
           </TableHead>
           <TableHead className="text-blue-600 font-normal">
-            Nationality
+          {dic.nationality[index]}
           </TableHead>
         </TableHeader>
         <TableBody>

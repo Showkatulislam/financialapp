@@ -13,7 +13,7 @@ import { ExtraInfo } from "./extra-info";
 import { Client } from "@prisma/client";
 import { CompanyName } from "./companyName";
 import { CompanyContactInfo } from "./company-contact-info";
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 import Link from "next/link";
 import { ArrowLeftCircle } from "lucide-react";
 import FinancialTable from "./FinancialTable";
@@ -80,14 +80,16 @@ export const Reportform = ({ clients }: reportProps) => {
           <Manager />
           <ActivityInput />
         </div>
-        {report.financialDatas.length > 0 && (
-          <FinancialTable
-            title="financial list"
-            rows={report.financialDatas}
-            deleteFun={deleteFinancialData}
-            editFun={editFinancialData}
-          />
-        )}
+        <div className="col-span-12 border p-2 space-y-2">
+          {report.financialDatas.length > 0 && (
+            <FinancialTable
+              title="financial list"
+              rows={report.financialDatas}
+              deleteFun={deleteFinancialData}
+              editFun={editFinancialData}
+            />
+          )}
+        </div>
         <FinancialData />
         <EffectiveTable />
         <EffectivePart />

@@ -53,6 +53,8 @@ export interface report {
   mobile: string;
   email: string;
   website: string;
+  nif:string,
+  nis:string,
   legalStatus: string;
   uniqueIdentifier: string;
   creationData: Date;
@@ -78,6 +80,7 @@ export interface report {
   exportText: string;
   clientsLocal: string;
   nace: string;
+  nacecomment:string;
   secondyestablishment: string;
   officailpublication: string;
   conclusion: string;
@@ -125,6 +128,8 @@ export const ReportState = create<reportState>((set) => ({
     mobile: "",
     email: "",
     website: "",
+    nif:"",
+    nis:"",
     legalStatus: "",
     uniqueIdentifier: "",
     creationData: new Date(),
@@ -150,6 +155,7 @@ export const ReportState = create<reportState>((set) => ({
     exportText: "",
     clientsLocal: "",
     nace: "",
+    nacecomment:"",
     secondyestablishment: "",
     officailpublication: "",
     conclusion: "",

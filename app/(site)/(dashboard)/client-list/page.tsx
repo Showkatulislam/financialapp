@@ -1,5 +1,5 @@
 import { GetClient } from "@/app/actions/get-client";
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 import { ClientDataTable } from "./component/data-table";
 import { columns } from "./component/columns";
 

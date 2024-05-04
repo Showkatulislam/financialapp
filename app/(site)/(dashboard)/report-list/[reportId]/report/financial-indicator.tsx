@@ -1,17 +1,20 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { dic } from "@/dictionaries";
 import { financialdata } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 interface FinancailIndicatorprops {
   financialdata: financialdata[];
 }
 export const FinancailIndicator = ({
   financialdata,
 }: FinancailIndicatorprops) => {
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div>
       <ReportTitle
-        title="FINANCIAL INDICATORS
-  "
+        title={dic.financialIndicator[index]}
       />
       <div>
         <Table>
@@ -23,7 +26,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Net profitability</TableCell>
+              <TableCell>{dic.netProfitability[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.nprofit / f.turnover).toFixed(3)} %
@@ -31,7 +34,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className=" border-none">
-              <TableCell>ROE Return On Equity</TableCell>
+              <TableCell>{dic.roeReturnOnEquity[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.nprofit / f.equityballocation).toFixed(3)}%
@@ -39,7 +42,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>ROA Return On Asset</TableCell>
+              <TableCell>{dic.roaReturnOnAsset[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.nprofit / f.total).toFixed(3)}%
@@ -47,7 +50,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className=" border-none">
-              <TableCell>Autonomy Financial</TableCell>
+              <TableCell>{dic.autonomyFinancial[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.equityballocation / f.total).toFixed(3)}%
@@ -55,7 +58,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>EBITDA</TableCell>
+              <TableCell>{dic.ebitada[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.oprofit / f.damorliztion).toFixed(3)}%
@@ -63,7 +66,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className=" border-none">
-              <TableCell>Lead time Suppliers</TableCell>
+              <TableCell>{dic.leadTimeSuppliers[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.supplieraccounts / (f.purchases * 360)).toFixed(3)}%
@@ -71,7 +74,7 @@ export const FinancailIndicator = ({
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Customer lead time</TableCell>
+              <TableCell>{dic.customerLeadTime[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>
                   {(f.clientaccounts / (f.turnover * 360)).toFixed(3)}%

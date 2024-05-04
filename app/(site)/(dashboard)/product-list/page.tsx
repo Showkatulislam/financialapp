@@ -1,5 +1,5 @@
 import { getProduct } from "@/app/actions/get-product";
-import Container from "@/app/components/Container";
+import Container from "@/app/share//Container";
 import { ProductDataTable } from "./component/data-table";
 import { columns } from "./component/columns";
 

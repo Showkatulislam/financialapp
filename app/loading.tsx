@@ -1,5 +1,5 @@
 import LoadingBox from "@/components/loading-box";
-import LoadingComponent from "./components/LoadingComponent";
+import LoadingComponent from "./share/LoadingComponent";
 
 export default function loading() {
   return (

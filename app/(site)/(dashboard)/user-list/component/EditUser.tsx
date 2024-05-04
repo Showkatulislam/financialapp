@@ -8,6 +8,7 @@ import InputField from "@/components/inputs/InputField";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import qs from "query-string";
+import bcrypt from "bcryptjs"
 interface Props {
   intialData: any;
   setOpen: (value: boolean) => void;
@@ -19,10 +20,13 @@ const EditUser = ({ intialData, setOpen }: Props) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       ...intialData,
+      password:""
     },
   });
   const loading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const hashpassword=await bcrypt.hash(values.password,10);
+    values.password=hashpassword 
     try {
       const url = qs.stringifyUrl({
         url: `/api/user`,
@@ -46,6 +50,7 @@ const EditUser = ({ intialData, setOpen }: Props) => {
       >
         <InputField name="name" placeholder="Name" form={form} />
         <InputField name="email" placeholder="Email" type="email" form={form} />
+        <InputField name="password" placeholder="password" form={form}  />
         <div className="mt-5">
           <Button disabled={loading} type="submit">
             {loading ? (
@@ -53,7 +58,7 @@ const EditUser = ({ intialData, setOpen }: Props) => {
                 Saving data ...
               </span>
             ) : (
-              "Updates User"
+              "Save"
             )}
           </Button>
         </div>

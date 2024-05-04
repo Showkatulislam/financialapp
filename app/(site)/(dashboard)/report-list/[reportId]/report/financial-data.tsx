@@ -1,72 +1,76 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { dic } from "@/dictionaries";
 import { financialdata } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 interface financialProps {
   financialdata: financialdata[];
 }
 export const FinancialData = ({ financialdata }: financialProps) => {
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div className="col-span-12">
-      <ReportTitle title="FINANCIAL DATA (EXPRESSED IN TND)" />
+      <ReportTitle title={dic.FinancialData[index]} />
       <div>
         <Table>
           <TableBody>
             <TableRow className="border-none">
-              <TableCell>year</TableCell>
+              <TableCell>{dic.Year[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.year.substring(0, 4)}</TableCell>
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Turnover</TableCell>
+              <TableCell>{dic.Turnover[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.turnover}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Operating profit</TableCell>
+              <TableCell>{dic.Oprofit[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.oprofit}</TableCell>
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Dowry. to amortization</TableCell>
+              <TableCell>{dic.denomination[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.damorliztion}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Equity before allocation</TableCell>
+              <TableCell>{dic.equityballocation[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.equityballocation}</TableCell>
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Suppliers and Linked Account</TableCell>
+              <TableCell>{dic.supplieraccounts[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.supplieraccounts}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Consumed purchases</TableCell>
+              <TableCell>{dic.purchases[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.purchases}</TableCell>
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Clients and associated accounts</TableCell>
+              <TableCell>{dic.clientaccounts[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.clientaccounts}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Stocks</TableCell>
+              <TableCell>{dic.stocks[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.stocks}</TableCell>
               ))}
             </TableRow>
             <TableRow className="bg-[#ECECEC] border-none">
-              <TableCell>Balance sheet total</TableCell>
+              <TableCell>{dic.total[index]}</TableCell>
               {financialdata?.map((f: any) => (
                 <TableCell key={f.id}>{f.total}</TableCell>
               ))}

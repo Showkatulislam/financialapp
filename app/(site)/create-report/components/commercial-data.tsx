@@ -1,33 +1,37 @@
-import TextField from "@/app/components/inputs/TextField";
+import TextField from "@/app/share//inputs/TextField";
 import Title from "@/components/Title";
+import { dic } from "@/dictionaries";
 import { ReportState } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 
 const CommercialData = () => {
   const { report, setTextField } = ReportState();
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div className="flex flex-col space-y-3 col-span-12 border p-2">
-      <Title title="Commercial Data" />
+      <Title title={dic.commercialDataTitle[index]} />
       <TextField
         name="importText"
-        placeholder="importText"
+        placeholder={`${dic.Import[index]} text`}
         setValue={setTextField}
         value={report.importText}
       />
       <TextField
         name="suppliersLocal"
-        placeholder="suppliers Local"
+        placeholder={dic.suppliersLocal[index]}
         setValue={setTextField}
         value={report.suppliersLocal}
       />
       <TextField
         name="exportText"
-        placeholder="export Text"
+        placeholder={dic.export[index]}
         setValue={setTextField}
         value={report.exportText}
       />
       <TextField
         name="clientsLocal"
-        placeholder="Clients Local"
+        placeholder={dic.clientsLocal[index]}
         setValue={setTextField}
         value={report.clientsLocal}
       />

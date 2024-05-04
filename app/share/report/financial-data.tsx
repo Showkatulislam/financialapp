@@ -2,8 +2,12 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import ReportTitle from "../report-title";
 import { ReportState } from "@/hooks/ReportState";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/hooks/UseLanguage";
+import { dic } from "@/dictionaries";
 export const FinancialData = () => {
   const [mounted, isMounded] = useState(false);
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   const {
     report: { financialDatas },
   } = ReportState();
@@ -15,72 +19,72 @@ export const FinancialData = () => {
   }
   return (
     <div className="col-span-12">
-      <ReportTitle title="FINANCIAL DATA (EXPRESSED IN TND)" />
+      <ReportTitle title={`${dic.FinancialData[index]}`}/>
       <div>
         <Table>
           <TableBody>
             <TableRow className="border-none">
-              <TableCell>year</TableCell>
+              <TableCell> {`${dic.Year[index]}`}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.year}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Turnover</TableCell>
+              <TableCell> {`${dic.Turnover[index]}`}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.turnover}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Operating profit</TableCell>
+              <TableCell> {dic.Oprofit[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.oprofit}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Net profit</TableCell>
+              <TableCell>{dic.NetProfit[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.nprofit}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Dowry. to amortization</TableCell>
+              <TableCell>{dic.damorliztion[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.damorliztion}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Equity before allocation</TableCell>
+              <TableCell>{dic.equityballocation[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.equityballocation}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Suppliers and Linked Account</TableCell>
+              <TableCell>{dic.supplieraccounts[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.supplieraccounts}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Consumed purchases</TableCell>
+              <TableCell>{dic.purchases[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.purchases}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Clients and associated accounts</TableCell>
+              <TableCell>{dic.clientaccounts[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.clientaccounts}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Stocks</TableCell>
+              <TableCell>{dic.stocks[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.stocks}</TableCell>
               ))}
             </TableRow>
             <TableRow className="border-none">
-              <TableCell>Balance sheet total</TableCell>
+              <TableCell>{dic.total[index]}</TableCell>
               {financialDatas.map((f) => (
                 <TableCell key={f.id}>{f.total}</TableCell>
               ))}

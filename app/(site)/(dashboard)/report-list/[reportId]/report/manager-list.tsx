@@ -1,4 +1,4 @@
-import ReportTitle from "@/app/components/report-title";
+import ReportTitle from "@/app/share//report-title";
 import {
   Table,
   TableBody,
@@ -7,23 +7,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { dic } from "@/dictionaries";
 import { manager } from "@/hooks/ReportState";
+import { useLanguage } from "@/hooks/UseLanguage";
 import { cn } from "@/lib/utils";
 interface managerProps {
   managers: manager[];
 }
 export const Managers = ({ managers }: managerProps) => {
+  const {LAN}=useLanguage()
+  const index=LAN=="EN"?0:1
   return (
     <div>
-      <ReportTitle title="MANAGERS" />
+      <ReportTitle title={dic.Managers[index]} />
       <Table>
         <TableHeader>
-          <TableHead className="text-blue-600 font-bold">Name</TableHead>
+          <TableHead className="text-blue-600 font-bold">{dic.ManagerName[index]}</TableHead>
           <TableHead className="text-blue-600 font-bold">
-            Company Name
+          {dic.companyName[index]}
           </TableHead>
-          <TableHead className="text-blue-600 font-bold">Function</TableHead>
-          <TableHead className="text-blue-600 font-bold">Nationality</TableHead>
+          <TableHead className="text-blue-600 font-bold">{dic.Function[index]}</TableHead>
+          <TableHead className="text-blue-600 font-bold">{dic.Nationality[index]}</TableHead>
         </TableHeader>
         <TableBody>
           {managers?.map((m: any, i) => (
