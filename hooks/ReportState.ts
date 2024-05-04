@@ -63,6 +63,7 @@ export interface report {
   Sharecapitaltext: string;
   preShareCapital: string;
   preShareCapitaltext: string;
+  OfficialCompanyDatacmd:string,
   riskRating: string;
   paymentExperience: string;
   recommendCredit: string;
@@ -70,7 +71,9 @@ export interface report {
   equivalentToCredit: string;
   equivalentToCreditText: string;
   shareholders: shareholder[];
+  shareholdercmd:string,
   managers: manager[];
+  managercmd:string,
   financialDatas: financialdata[];
   banks: bank[];
   bankComment:string,
@@ -138,6 +141,7 @@ export const ReportState = create<reportState>((set) => ({
     Sharecapitaltext: "",
     preShareCapital: "",
     preShareCapitaltext: "",
+    OfficialCompanyDatacmd:"",
     riskRating: "",
     paymentExperience: "",
     recommendCredit: "",
@@ -145,7 +149,9 @@ export const ReportState = create<reportState>((set) => ({
     equivalentToCredit: "",
     equivalentToCreditText: "",
     shareholders: [],
+    shareholdercmd:"",
     managers: [],
+    managercmd:"",
     financialDatas: [],
     banks: [],
     bankComment:'',

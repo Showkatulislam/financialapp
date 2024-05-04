@@ -76,7 +76,7 @@ export const Reportpreview = ({ Iam }: ReportpreviewProps) => {
   return (
     <div>
       <div ref={componentRef}>
-        <div className="flex flex-col space-y-4 text-zinc-900 bg-white   lg:p-20 h-[550px] overflow-y-scroll overflow-x-hidden">
+        <div className="flex flex-col space-y-4 text-zinc-900 bg-white   lg:p-20 h-[500px] overflow-y-scroll overflow-x-hidden">
           <ReportHeader />
           <OrderDetail />
           <CompanyContact />

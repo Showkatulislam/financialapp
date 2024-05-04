@@ -1290,12 +1290,7 @@ export const Adminroutes = [
     label: "User list",
     icon: User,
     href: "/user-list",
-  },
-  {
-    label: "Admin",
-    icon: ShieldCheck,
-    href: "/admin-list",
-  },
+  }
 ];
 
 export const userRoutes=[

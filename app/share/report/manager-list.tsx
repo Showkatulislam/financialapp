@@ -11,7 +11,8 @@ import {
 import { ReportState } from "@/hooks/ReportState";
 export const Managers = () => {
   const {
-    report: { managers },
+    report: { managers,managercmd },
+    
   } = ReportState();
   return (
     <div>
@@ -36,6 +37,9 @@ export const Managers = () => {
           ))}
         </TableBody>
       </Table>
+      {
+        managercmd && <p className="font-normal">{managercmd}</p>
+      }
     </div>
   );
 };

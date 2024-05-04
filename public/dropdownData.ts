@@ -6,6 +6,11 @@ export const Payments = [
   "In Payment Default (Bankrupt)",
   "Not Available",
 ];
+export const PaymentsFr=[
+  "Très réguliers",
+  "Réguliers " ,
+   "Non Disponible",
+]
 export const riskRating = [
   "Excellent Risk",
   "Very Low Risk",

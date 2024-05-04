@@ -38,6 +38,9 @@ export const ShareHolderList = () => {
           ))}
         </TableBody>
       </Table>
+      {
+        report.shareholdercmd && <p className="font-normal">{report.shareholdercmd}</p>
+      }
     </div>
   );
 };

@@ -13,7 +13,6 @@ import { ExtraInfo } from "./extra-info";
 import { Client } from "@prisma/client";
 import { CompanyName } from "./companyName";
 import { CompanyContactInfo } from "./company-contact-info";
-import Container from "@/app/share//Container";
 import Link from "next/link";
 import { ArrowLeftCircle } from "lucide-react";
 import FinancialTable from "./FinancialTable";
@@ -22,6 +21,8 @@ import { usePathname } from "next/navigation";
 import { EffectivePart } from "./Effective-part";
 import { EffectiveTable } from "./EffectiveTable";
 import { Button } from "@/components/ui/button";
+import TextField from "@/app/share/inputs/TextField";
+import { useReportStore } from "@/temp/d";
 interface reportProps {
   clients: Client[];
 }
@@ -36,6 +37,7 @@ export const Reportform = ({ clients }: reportProps) => {
     editFinancialData,
     deleteBank,
     editBank,
+    setTextField,
   } = ReportState();
   const path = usePathname();
   return (
@@ -53,7 +55,7 @@ export const Reportform = ({ clients }: reportProps) => {
           <h2 className="text-2xl font-bold my-4">Create Report</h2>
         </div>
       </div>
-      <div className="grid gird-col-12 gap-4 overflow-y-auto h-[550px]">
+      <div className="grid gird-col-12 gap-4 overflow-y-auto h-[500px]">
         <CompanyName />
         <OrderDetail clients={clients} />
         <CompanyContactInfo />
@@ -68,6 +70,13 @@ export const Reportform = ({ clients }: reportProps) => {
             editFun={editShareholder}
           />
           <ShareHolder />
+
+          <TextField
+            name="shareholdercmd"
+            placeholder="comment"
+            setValue={setTextField}
+            value={report.shareholdercmd}
+          />
         </div>
         <div className="col-span-12 border p-2 space-y-2">
           <ReportTable
@@ -78,6 +87,12 @@ export const Reportform = ({ clients }: reportProps) => {
             editFun={editManager}
           />
           <Manager />
+          <TextField
+            name="managercmd"
+            placeholder="comment"
+            setValue={setTextField}
+            value={report.managercmd}
+          />
           <ActivityInput />
         </div>
         <div className="col-span-12 border p-2 space-y-2">

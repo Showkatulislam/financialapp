@@ -60,7 +60,7 @@ export function TaskDataTable<TData, TValue>({
   });
   return (
     <div className="space-y-4">
-      <div className="rounded-md border">
+      <div className="rounded-md border h-[350px] overflow-y-scroll">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

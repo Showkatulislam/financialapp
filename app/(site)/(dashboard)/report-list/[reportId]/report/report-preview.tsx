@@ -94,7 +94,6 @@ export const Reportpreview = ({ report }: reportProps) => {
               />
             </>
           )}
-
           <EffectivePart effectives={myreport?.effectives} />
           {myreport.importText && <CommercialData report={myreport} />}
           {myreport.banks.length > 0 && (

@@ -16,35 +16,58 @@ export const OfficialCompanyData = ({ report }: OfficialCompanyDataProps) => {
     <div className="flex flex-col lg:space-y-2">
       <ReportTitle title={dic.OfficialCompanyData[index]} />
       <div>
-        <ReportItem
-          title={dic.legalStatus[index]}
-          description={report.legalStatus}
-        />
-        <ReportItem
-          title={dic.uniqueIdentifier[index]}
-          bg={true}
-          description={report.uniqueIdentifier}
-        />
-        <ReportItem
-          title={dic.CreationDate[index]}
-          description={moment(report.creationData).format("YYYY/MM/DD")}
-        />
-        <ReportItem
-          title={dic.Startofactivity[index]}
-          bg={true}
-          description={moment(report.startOfActivity).format("YYYY/MM/DD")}
-        />
-        <CapitalItem
-          title={dic.Sharecapital[index]}
-          capital={report.Sharecapital}
-          text={report.Sharecapitaltext}
-        />
-        <CapitalItem
-          title={dic.preSharecapital[index]}
-          bg={true}
-          capital={report.preShareCapital}
-          text={report.preShareCapitaltext}
-        />
+        {report.legalStatus && (
+          <ReportItem
+            title={dic.legalStatus[index]}
+            description={report.legalStatus}
+          />
+        )}
+        {report.uniqueIdentifier && (
+          <ReportItem
+            title={dic.uniqueIdentifier[index]}
+            bg={true}
+            description={report.uniqueIdentifier}
+          />
+        )}
+        {report.creationData && (
+          <ReportItem
+            title={dic.CreationDate[index]}
+            description={moment(report.creationData).format("YYYY/MM/DD")}
+          />
+        )}
+
+        {report.startOfActivity && (
+          <ReportItem
+            title={dic.Startofactivity[index]}
+            bg={true}
+            description={moment(report.startOfActivity).format("YYYY/MM/DD")}
+          />
+        )}
+
+        {report.Sharecapital && (
+          <CapitalItem
+            title={dic.Sharecapital[index]}
+            capital={report.Sharecapital}
+            text={report.Sharecapitaltext}
+          />
+        )}
+        {report.preShareCapital && (
+          <CapitalItem
+            title={dic.preSharecapital[index]}
+            bg={true}
+            capital={report.preShareCapital}
+            text={report.preShareCapitaltext}
+          />
+        )}
+        {
+          report.OfficialCompanyDatacmd && (
+            <ReportItem
+            title="comment"
+            bg={true}
+            description={report.OfficialCompanyDatacmd}
+          />
+          )
+        }
       </div>
     </div>
   );

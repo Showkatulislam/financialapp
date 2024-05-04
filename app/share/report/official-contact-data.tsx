@@ -11,7 +11,10 @@ export const OfficialCompanyData = () => {
     <div className="flex flex-col lg:space-y-2">
       <ReportTitle title={CL("OfficialCompanyData")} />
       <div>
-        <ReportItem title={CL("legalStatus")} description={report.legalStatus} />
+        <ReportItem
+          title={CL("legalStatus")}
+          description={report.legalStatus}
+        />
         <ReportItem
           title={CL("uniqueIdentifier")}
           description={report.uniqueIdentifier}
@@ -34,6 +37,12 @@ export const OfficialCompanyData = () => {
           capital={report.preShareCapital}
           text={report.preShareCapitaltext}
         />
+        {report.OfficialCompanyDatacmd && (
+          <ReportItem
+            title="comment"
+            description={report.OfficialCompanyDatacmd}
+          />
+        )}
       </div>
     </div>
   );

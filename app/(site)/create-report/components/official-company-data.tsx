@@ -1,5 +1,6 @@
 import DropDownField from "@/app/share//inputs/Dropdown";
 import InputField from "@/app/share//inputs/InputFields";
+import TextField from "@/app/share/inputs/TextField";
 import { CL } from "@/app/utils/change-language";
 import Title from "@/components/Title";
 import { dic } from "@/dictionaries";
@@ -86,6 +87,14 @@ export const OfficialCompanyData = () => {
           placeholder={CL("preSharecapitalValue")}
           name="preShareCapitaltext"
           value={report.preShareCapitaltext}
+        />
+      </div>
+      <div className="col-span-12">
+      <TextField
+          name="OfficialCompanyDatacmd"
+          placeholder="Comment"
+          setValue={setTextField}
+          value={report.OfficialCompanyDatacmd}
         />
       </div>
     </div>

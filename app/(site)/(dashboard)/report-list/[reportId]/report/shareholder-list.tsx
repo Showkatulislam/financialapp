@@ -8,15 +8,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { dic } from "@/dictionaries";
-import { shareholder } from "@/hooks/ReportState";
+import { ReportState, shareholder } from "@/hooks/ReportState";
 import { useLanguage } from "@/hooks/UseLanguage";
 import { cn } from "@/lib/utils";
+import { report } from "process";
 interface ShareHolderListProps {
   shareholders: shareholder[];
 }
 export const ShareHolderList = ({ shareholders }: ShareHolderListProps) => {
   const {LAN}=useLanguage()
   const index=LAN=="EN"?0:1
+  const {report}=ReportState()
   return (
     <div>
       <ReportTitle title={`${dic.ShareHolders[index]} /ASSOCIATES`}/>
@@ -43,6 +45,9 @@ export const ShareHolderList = ({ shareholders }: ShareHolderListProps) => {
           ))}
         </TableBody>
       </Table>
+      {
+        report.shareholdercmd && <p className="font-normal">{report.shareholdercmd}</p>
+      }
     </div>
   );
 };
