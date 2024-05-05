@@ -51,7 +51,7 @@ export const AddProduct = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 px-4 w-96 mx-auto">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 max-w-xl w-96 mx-auto">
         <InputField placeholder="Product Name" form={form} name="productName" />
         <DropDownField
          type1={true}
