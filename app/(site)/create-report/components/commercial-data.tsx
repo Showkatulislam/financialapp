@@ -12,8 +12,8 @@ const CommercialData = () => {
     <div className="flex flex-col space-y-3 col-span-12 border p-2">
       <Title title={dic.commercialDataTitle[index]} />
       <TextField
-        name="importText"
-        placeholder={`${dic.Import[index]} text`}
+        name="import"
+        placeholder={`${dic.Import[index]}`}
         setValue={setTextField}
         value={report.importText}
       />
