@@ -20,9 +20,6 @@ export const Managers = () => {
       <Table>
         <TableHeader>
           <TableHead className="text-blue-600 font-bold">{CL("ManagerName")}</TableHead>
-          <TableHead className="text-blue-600 font-bold">
-           {CL("CompanyName")}
-          </TableHead>
           <TableHead className="text-blue-600 font-bold">{CL("Function")}</TableHead>
           <TableHead className="text-blue-600 font-bold">{CL("Nationality")}</TableHead>
         </TableHeader>
@@ -30,7 +27,6 @@ export const Managers = () => {
           {managers.map((m) => (
             <TableRow key={m.id}>
               <TableCell>{m.name}</TableCell>
-              <TableCell>{m.companyName}</TableCell>
               <TableCell>{m.function}</TableCell>
               <TableCell>{m.nationality}</TableCell>
             </TableRow>

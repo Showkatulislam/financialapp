@@ -81,7 +81,7 @@ export const Reportform = ({ clients }: reportProps) => {
         <div className="col-span-12 border p-2 space-y-2">
           <ReportTable
             title="Manager list"
-            cols={["name", "companyName", "function", "nationality"]}
+            cols={["name", "function", "nationality"]}
             rows={report.managers}
             deleteFun={deleteManager}
             editFun={editManager}

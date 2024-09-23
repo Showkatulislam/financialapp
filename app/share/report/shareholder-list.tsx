@@ -32,7 +32,7 @@ export const ShareHolderList = () => {
           {report.shareholders.map((s) => (
             <TableRow key={s.id} className="border-none">
               <TableCell>{s.name}</TableCell>
-              <TableCell>{s.percentage}</TableCell>
+              <TableCell>{s.percentage} %</TableCell>
               <TableCell>{s.nationality}</TableCell>
             </TableRow>
           ))}

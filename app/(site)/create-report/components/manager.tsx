@@ -58,17 +58,17 @@ export const Manager = () => {
           <div className="col-span-6">
             <InputField name="name" placeholder={CL("ManagerName")} form={form} />
           </div>
-          <div className="col-span-6">
+{/*           <div className="col-span-6">
             <InputField
               name="companyName"
               placeholder={CL("CompanyName")}
               form={form}
             />
-          </div>
+          </div> */}
           <div className="col-span-6">
             <InputField name="function" placeholder={CL("Function")} form={form} />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12">
             <InputField
               name="nationality"
               placeholder={CL("Nationality")}
